@@ -56,7 +56,7 @@ disclaimer:
   message: ''
   hidden: false
 email_contacts:
-  questions: test@example.com
+  questions: robert.deusser@umwelt.hessen.de
   suggestions: test@example.com
   functional: test@example.com
 empty_metadata_placeholder: ''
