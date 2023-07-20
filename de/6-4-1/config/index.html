@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CArray.prototype.forEach%2CString.prototype.includes%2CURLSearchParams%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.filter%2CArray.prototype.some%2CArray.prototype.find%2CArray.prototype.reduce%2CObject.assign%2CArray.isArray%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex%2Cfetch"></script>
+<script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.15.0/js/canvas-to-blob.min.js"></script>
+
+        <script>
+// This is where we initialise any global variables, namespaced in "opensdg".
+var opensdg = {
+
+  // A base URL for asynchronous calls to SDG data.
+  remoteDataBaseUrl: 'https://rde-hmuklv.github.io/daten/de',
+
+  chartConfigAlterations: [],
+  // A hook which can be used to modify the configuration for Chart.js.
+  chartConfigAlter: function(callback) {
+    this.chartConfigAlterations.push(callback);
+  },
+
+  tableConfigAlterations: [],
+  // A hook which can be used to modify the configuration for Datatables.
+  tableConfigAlter: function(callback) {
+    this.tableConfigAlterations.push(callback);
+  },
+
+  // A hook which can be replaced to alter whether/how the values that are
+  // displayed on indicator tables/graphs get rounded. A "context" parameter
+  // is also passed which contains additional information.
+  dataRounding: function(value, context) {
+    // Alterations go here.
+    return value;
+  },
+
+  // A hook which can be used to alter the data before it is displayed on charts/tables.
+  dataDisplayAlterations: [],
+  dataDisplayAlter: function(callback) {
+    this.dataDisplayAlterations.push(callback);
+  },
+
+  // Disaggregations which should be ignored on indicator pages.
+  ignoredDisaggregations: null,
+
+  language: 'de',
+
+  mapColors: {
+    "default": [
+        "#c4e1c6",
+        "#b0d1b3",
+        "#9bc2a1",
+        "#87b28f",
+        "#74a37c",
+        "#60946b",
+        "#4d8559",
+        "#3a7747",
+        "#276836"
+    ]
+},
+};
+
+</script>
+
+        <script>
+// JavaScript container for translation data.
+var translations = {
+  //Javascript version of the "t" filter from jekyll-open-sdg-plugins.
+  t: function(key) {
+
+    if (!key || typeof key !== 'string') {
+      return '';
+    }
+
+    // The majority of uses of this function are to translate disaggregation
+    // data. To spare data providers of needing to enter "data." in front of
+    // their disaggregation data, we specifically look for that here.
+    if (typeof this.data === 'object' && this.data !== null && this.data[key]) {
+      return this.data[key];
+    }
+
+    var originalKey = key;
+    var drilled = this;
+    var levelsDrilled = 0;
+    var levels = key.split('.');
+
+    for (var level in levels) {
+      // If we have drilled down to soon, abort.
+      if (typeof drilled !== 'object') {
+        break;
+      }
+
+      if (levels[level] in drilled) {
+        drilled = drilled[levels[level]];
+        levelsDrilled += 1;
+      }
+    }
+
+    // If we didn't drill the right number of levels, return the original string.
+    if (levels.length != levelsDrilled) {
+      return originalKey;
+    }
+
+    // Otherwise we must have drilled all the way.
+    return drilled;
+  },
+};
+</script>
+
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- Mobile Specific Metas
+        ================================================== -->
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title and meta description
+        ================================================== -->
+
+        
+    <title>Konfiguration bearbeiten: 6.4.1 - Indikatoren für die nachhaltigen Entwicklungsziele</title>
+
+
+
+        
+        <meta name="robots" content="noindex, nofollow">
+        
+
+        <!--[if IE 9]>
+        <script src="/seite/assets/js/lib/classList.js"></script>
+        <![endif]-->
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/seite/assets/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/seite/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/seite/assets/img/favicons/favicon-16x16.png">
+<link rel="icon" type="image/x-icon" href="/seite/assets/img/favicons/favicon.ico" />
+
+        
+
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
+        <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
+        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20230720101216">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+        <link rel="stylesheet" href="https://cdn.rawgit.com/socib/Leaflet.TimeDimension/master/dist/leaflet.timedimension.control.min.css"  crossorigin=""/>
+        <link rel="stylesheet" href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css'  crossorigin=""/>
+        <link rel="stylesheet" href="https://bowercdn.net/c/leaflet.zoomhome-latest/dist/leaflet.zoomhome.css"  crossorigin=""/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css" crossorigin="">
+        <link rel="stylesheet" href="https://cdn.kiprotect.com/klaro/v0.7/klaro.min.css" crossorigin=""/>
+        
+
+        
+
+
+        <!--[if IE]>
+        <link rel="stylesheet" href="/seite/assets/css/ie.css">
+        <![endif]-->
+
+        
+
+    </head>
+<body class="language-de
+layout-config-builder
+">
+<!-- <div class="container"> -->
+
+<script>translations['header'] = {"alpha":"Alpha-Version","default_contrast":"Standard kontrast","disable_high_contrast":"Hoher Kontrast deaktivieren","disclaimer":"Diese Seite befindet sich im Entwicklungsstadium.Wir freuen uns über Ihre <a href=\"mailto:%email_contacts.suggestions\">Kommentare</a>.","enable_high_contrast":"Aktivieren Sie hohen Kontrast","hide_menu":"Navigationsmenü ausblenden","high_contrast":"Hoher kontrast","internet_explorer_message":"Wir haben festgestellt, dass Sie den Internet Explorer verwenden, um diese Website zu besuchen. Der Internet Explorer wird von Microsoft nicht mehr unterstützt. Aus diesem Grund hat diese Website ebenfalls die Unterstützung für alle Versionen des Internet Explorers eingestellt, einige Bereiche auf dieser Website werden daher nicht oder nur eingeschränkt funktionieren. Bitte verwenden Sie einen modernen Browser wie Edge, Chrome, Firefox oder Safari. Wenn Sie Schwierigkeiten haben, einen anderen Browser zu installieren oder darauf zuzugreifen, wenden Sie sich bitte an Ihr IT-Supportteam.","internet_explorer_message_title":"Der Internet-Browser wird nicht mehr unterstützt","logo_title":"Zur Homepage gehen","show_menu":"Navigationsmenü anzeigen","skip_link":"Zum Hauptinhalt springen","tag_line":"17 Ziele, um unsere Welt zu verändern","toggle_menu":"Menü umschalten. Klicken Sie darauf, um das Menü zu erweitern oder zu reduzieren.","toggle_search":"Umschalten der Suche. Klicken Sie darauf, um die Suchleiste ein- oder auszublenden."};</script>
+
+<a class="sr-only-focusable" id="skiplink" href="#main-content" tabindex="0">Zum Hauptinhalt springen</a>
+<div class="container internet-explorer-message">
+    <h2 class="internet-explorer-message-title">Der Internet-Browser wird nicht mehr unterstützt</h2>
+    <p class="internet-explorer-message-body">Wir haben festgestellt, dass Sie den Internet Explorer verwenden, um diese Website zu besuchen. Der Internet Explorer wird von Microsoft nicht mehr unterstützt. Aus diesem Grund hat diese Website ebenfalls die Unterstützung für alle Versionen des Internet Explorers eingestellt, einige Bereiche auf dieser Website werden daher nicht oder nur eingeschränkt funktionieren. Bitte verwenden Sie einen modernen Browser wie Edge, Chrome, Firefox oder Safari. Wenn Sie Schwierigkeiten haben, einen anderen Browser zu installieren oder darauf zuzugreifen, wenden Sie sich bitte an Ihr IT-Supportteam.</p>
+</div>
+<div id="disclaimer">
+    
+<div class="container">
+  <div class="disclaimer-alert">
+    <strong class="phase-tag">Alpha-Version</strong>
+    
+    Diese Seite befindet sich im Entwicklungsstadium.Wir freuen uns über Ihre <a href="mailto:test@example.com">Kommentare</a>.
+    
+  </div>
+</div>
+
+</div>
+
+<header role="banner" class="">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light flex-wrap align-items-start">
+            <a class="navbar-brand" href="/seite/de/" id="home" aria-label="Zur Homepage gehen" title="Zur Homepage gehen">
+    <img src="/seite/assets/img/SDG_logo.png" alt="Ziele für Nachhaltige Entwicklung - 17 Ziele, um unsere Welt zu verändern" />
+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Navigationsmenü anzeigen">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="d-flex flex-wrap w-100 justify-content-between">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav" id="menu"><li class="nav-item ">
+    <a class="nav-link" href="/seite/de/">Startseite</a>
+</li><li class="nav-item ">
+    <a class="nav-link" href="/seite/de/goals">Ziele</a>
+</li><li class="nav-item ">
+    <a class="nav-link" href="/seite/de/reporting-status">Berichtsstatus</a>
+</li><li class="nav-item ">
+    <a class="nav-link" href="/seite/de/news">Aktualisierungen</a>
+</li><li class="nav-item ">
+    <a class="nav-link" href="/seite/de/faq">FAQ</a>
+</li><li class="nav-item ">
+    <a class="nav-link" href="/seite/de/about">Über uns</a>
+</li></ul>
+    
+                </div>
+                <div class="header-search-bar">
+                    <form class="align-self-lg-end" id="search" action="/seite/de/search/">
+    <div class="input-group">
+        <label class="visually-hidden" for="indicator_search">Suche</label>
+        <input class="form-control" type="search" name="q" id="indicator_search" title="Suche">
+        <span class="input-group-append">
+            <button class="btn btn-outline-secondary ms-n5" aria-label="Suche vor Ort" id="search-btn" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </span>
+    </div>
+</form>
+
+                </div>
+                <div class="header-toggles d-flex">
+
+
+
+
+
+  <div class="language-toggle-container">
+  
+  <div class="btn-group language-toggle-dropdown  dropdown">
+    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-globe"></i>
+      Deutsch
+    </button>
+    <ul class="dropdown-menu"><li>
+            <a class="dropdown-item" href="/seite/6-4-1/config/">
+              English
+            </a>
+          </li><li>
+            <a class="dropdown-item" href="/seite/es/6-4-1/config/">
+              Español
+            </a>
+          </li></ul>
+  </div>
+</div>
+
+
+
+                    <span class="no-js-language-toggle"><div class="language-toggle-container d-flex">
+    <i class="fa fa-globe language-toggle-globe-links"></i>
+    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-en list-inline-item">
+            <a class="language-toggle-link" href="/seite/6-4-1/config/">
+                English
+            </a>
+        </li><li class="language-option-de list-inline-item">
+            <span class="language-toggle-active-language">
+                Deutsch
+            </span>
+        </li><li class="language-option-es list-inline-item">
+            <a class="language-toggle-link" href="/seite/es/6-4-1/config/">
+                Español
+            </a>
+        </li></ul>
+</div></span><a title="Aktivieren Sie hohen Kontrast" aria-label="Aktivieren Sie hohen Kontrast"
+    data-contrast-switch-to="" href="javascript:void(0)" data-on="click"
+data-event-category="Accessibility"
+data-event-action="Change contrast setting"
+data-event-label="high"
+>A</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="top" tabindex=-1></div>
+
+
+<div id="main-content" class="container" role="main">
+  <div class="row">
+    <div class="col-md-12"><h1>Konfiguration bearbeiten: 6.4.1</h1></div>
+  </div>
+  <div class="config-widgets row">
+    <div class="col-md-6" id="search_holder">
+      <label for="config-search">Filter settings</label>
+      <input id="config-search" />
+      <input id="config-search-button" type="button" value="Filter">
+      <input id="config-reset-button" type="button" value="Reset">
+    </div>
+    <div class="col-md-6" id="button_holder">
+      <button class="config-download-button btn btn-primary btn-download" id="export">Download configuration</button>
+      
+      
+      
+      
+      
+      <a class="config-repository-button btn btn-primary btn-download" target="_blank" href="https://rde-hmuklv.github.io/daten//tree/develop/indicator-config">
+        Go to repository
+      </a>
+      
+    </div>
+  </div>
+  <div class="row" id="results-status" role="status"></div>
+  <div class="row" id="editor_holder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@2.6.1/dist/jsoneditor.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@3.14.0/dist/js-yaml.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/g/filesaver.js"></script>
+  <script>
+    // For this page, it is helpful to have every single translation.
+    var allTranslations = {"calendar":{"April":"April","August":"August","December":"Dezember","February":"Februar","January":"Januar","July":"Juli","June":"Juni","March":"März","May":"Kann","November":"November","October":"Oktober","September":"September"},"data":{"Year":"Jahr"},"frontpage":{"download_all":"Alle Daten herunterladen (.zip)","file_size":"Größe","heading":"%country.name Daten zu den Indikatoren für die Ziele für nachhaltige Entwicklung","heading_short":"%country.name Daten für die Ziele für nachhaltige Entwicklung","instructions":"Klicken Sie auf die einzelnen Ziele um zu den Daten zu den Daten zu den Indikatoren der Ziele für nachhaltige Entwicklung für %country.name zu gelangen. Oder %before_link suchen %after_link Sie gezielt nach spezifischenThemen.","instructions_short":"Klicken Sie auf die einzelnen Ziele, um Daten zu den globalen Indikatoren für die Ziele für nachhaltige Entwicklung zu erhalten.","instructions_shorter":"Wählen Sie ein Ziel um zu den Daten der Indikatoren zu gelangen.","intro_body":"Die <a href=\"https://www.un.org/sustainabledevelopment/sustainable-development-goals/\">Sustainable Development Goals (SDGs)</a> sind ein universeller Aufruf zum Handeln, um die Armut zu beenden, den Planeten zu schützen und das Leben und die Perspektiven aller Menschen überall zu verbessern. Die 17 Ziele wurden 2015 von allen UN-Mitgliedsstaaten als Teil der <a href=\"http://www.un.org/ga/search/view_doc.asp?symbol=A/RES/70/1&Lang= E\">Agenda 2030 für nachhaltige Entwicklung</a> beschlossen.","intro_title":"17 Ziele, um unsere Welt zu verändern","zip_file":"ZIP-Datei"},"general":{"back_to_top":"Zurück nach oben","built_using_open_sdg":"Erstellt mit Open SDG","facebook":"Facebook","goal":"Ziel","goals":"Ziele","hide":"ausblenden","home":"Startseite","indicator":"Indikator","indicators":"Indikatoren","label_warning":"Warnung:","loading":"Ergebnisse werden geladen","opens_new_window":"in neuem Fenster öffnen","page":"Seite","pages":"Webseiten","sdg":"Ziele für Nachhaltige Entwicklung","site_title":"Indikatoren für die nachhaltigen Entwicklungsziele","target":"Unterziel","targets":"Unterziele","targets_and_indicators":"Ziele und Indikatoren","twitter":"Twitter"},"global_goals":{"1-short":"Keine Armut","1-title":"Armut in allen ihren Formen und überall beenden","10-short":"Weniger Ungleichheiten","10-title":"Ungleichheit in und zwischen Ländern verringern","11-short":"Nachhaltige Städte und Gemeinden","11-title":"Städte und Siedlungen inklusiv, sicher, widerstandsfähig und nachhaltig gestalten","12-short":"Verantwortungsvolle Konsum- und Produktionsmuster","12-title":"Nachhaltige Konsum- und Produktionsmuster sicherstellen","13-short":"Maßnahmen zum Klimaschutz","13-title":"Umgehend Maßnahmen zur Bekämpfung des Klimawandels und seiner Auswirkungen ergreifen","14-short":"Leben unter Wasser","14-title":"Ozeane, Meere und Meeresressourcen im Sinne nachhaltiger Entwicklung erhalten und nachhaltig nutzen","15-short":"Leben an Land","15-title":"Landökosysteme schützen, wiederherstellen und ihre nachhaltige Nutzung fördern, Wälder nachhaltig bewirtschaften, Wüstenbildung bekämpfen, Bodendegradation beenden und umkehren und dem Verlust der biologischen Vielfalt ein Ende setzen","16-short":"Frieden, Gerechtigkeit und starke Institutionen","16-title":"Friedliche und inklusive Gesellschaften für eine nachhaltige Entwicklung fördern, allen Menschen Zugang zur Justiz ermöglichen und leistungsfähige, rechenschaftspflichtige und inklusive Institutionen auf allen Ebenen aufbauen","17-short":"Partnerschaften zur Erreichung der Ziele","17-title":"Umsetzungsmittel stärken und die Globale Partnerschaft für nachhaltige Entwicklung mit neuem Leben erfüllen","2-short":"Kein Hunger","2-title":"Den Hunger beenden, Ernährungssicherheit und eine bessere Ernährung erreichen und eine nachhaltige Landwirtschaft fördern","3-short":"Gesundheit und Wohlergehen","3-title":"Ein gesundes Leben für alle Menschen jeden Alters gewährleisten und ihr Wohlergehen fördern","4-short":"Hochwertige Bildung","4-title":"Inklusive, gleichberechtigte und hochwertige Bildung gewährleisten und Möglichkeiten lebenslangen Lernens für alle fördern","5-short":"Geschlechtergleichstellung","5-title":"Geschlechtergleichstellung erreichen und alle Frauen und Mädchen zur Selbstbestimmung befähigen","6-short":"Sauberes Wasser und Sanitärversorgung","6-title":"Verfügbarkeit und nachhaltige Bewirtschaftung von Wasser und Sanitärversorgung für alle gewährleisten","7-short":"Bezahlbare und saubere Energie","7-title":"Zugang zu bezahlbarer, verlässlicher, nachhaltiger und moderner Energie für alle sichern","8-short":"Menschenwürdige Arbeit und Wirtschaftswachstum","8-title":"Dauerhaftes, breitenwirksames und nachhaltiges Wirtschaftswachstum, produktive Vollbeschäftigung und menschenwürdige Arbeit für alle fördern","9-short":"Industrie, Innovationen und Infrastruktur","9-title":"Eine widerstandsfähige Infrastruktur aufbauen, breitenwirksame und nachhaltige Industrialisierung fördern und Innovationen unterstützen"},"global_indicators":{"1-1-1-title":"Anteil der Bevölkerung, die unter der internationalen Armutsgrenze lebt, nach Geschlecht, Alter, Erwerbsstatus  und geographischer Lage (urban/rural)","1-2-1-title":"Anteil der Bevölkerung, die unter der nationalen Armutsgrenze lebt, nach Geschlecht und Alter","1-2-2-title":"Anteil der Männer, Frauen und Kinder jeden Alters, die in Armut in all ihren Dimensionen gemäß nationaler Definitionen leben","1-3-1-title":"Anteil der Bevölkerung, die durch soziale Sicherungssysteme abgesichert sind, nach Geschlecht, untergliedert nach Kindern, Arbeitslosen, älteren Personen, Menschen mit Behinderungen, Schwangeren, Neugeborenen, Opfern von Arbeitsunfällen sowie Armen und Schwachen","1-4-1-title":"Anteil der Bevölkerung, die in Haushalten mit Anschluss an die Grundversorgung lebt","1-4-2-title":"Anteil der erwachsenen Gesamtbevölkerung mit gesicherter Verfügungsgewalt über Grundeigentum, (a) mit gesetzlich anerkannter Dokumentation und (b) die ihr Eigentumsrecht als sicher erachten, nach Geschlecht und nach Art der Eigentumsverhältnisse","1-5-1-title":"Anzahl der infolge von Katastrophen getöteten, vermissten und direkt betroffenen Personen, je 100.000 Einwohner","1-5-2-title":"Unmittelbarer wirtschaftlicher Schaden infolge von Katastrophen, im Verhältnis zum globalen Bruttoinlandsprodukt (BIP)","1-5-3-title":"Anzahl der Staaten, die nationale Strategien zur Reduzierung des Katastrophenrisikos in Einklang mit dem Sendai-Rahmenwerk zur Katastrophenvorsorge 2015-2030 verabschiedet und umgesetzt haben","1-5-4-title":"Anteil der lokalen Regierungen, die lokale Strategien zur Reduzierung des Katastrophenrisikos in Einklang mit den nationalen Strategien zur Katastrophenvorsorge verabschiedet und umgesetzt haben","1-a-1-title":"Anteil der inländisch erwirtschafteten Ressourcen, die von der Regierung direkt für Programme zur Armutsbekämpfung bereitgestellt werden","1-a-2-title":"Anteil der gesamten staatlichen Ausgaben für Grundleistungen (Bildung, Gesundheit und soziale Sicherung)","1-a-3-title":"Summe der gesamten Zuschüsse und nicht schuldenwirksamen Zuflüsse, die direkt Programmen zur Armutsbekämpfung zugewiesen werden, im Verhältnis zum BIP","1-b-1-title":"Anteil der wiederkehrenden staatlichen und Investitionsausgaben für Sektoren, die überdurchschnittlich Frauen, Arme und benachteiligte Gruppen begünstigen","10-1-1-title":"Wachstumsraten der Haushaltsausgaben oder -einkommen pro Kopf der unteren 40 Prozent der Bevölkerung und der Gesamtbevölkerung","10-2-1-title":"Anteil der Bevölkerung, die mit weniger als 50% des Medianeinkommens leben, nach Geschlecht, Alter und Menschen mit Behinderung","10-3-1-title":"Anteil der Bevölkerung, die angibt sich in den vergangenen 12 Monaten persönlich diskriminiert oder belästigt gefühlt zu haben basierend auf einem Diskriminierungsgrund, der nach internationalem Menschenrechtsgesetzen verboten ist","10-4-1-title":"Anteil des Arbeitsnehmerentgelts am BIP, bestehend aus Löhnen, Gehältern und Sozialversicherungsbeiträgen","10-4-2-title":"Umverteilungswirkung der Fiskalpolitik","10-5-1-title":"Financial Soundness Indicators","10-6-1-title":"Anteil der Mitglieder und Stimmrechte der Entwicklungsländer  in internationalen Organisationen","10-7-1-title":"Von Beschäftigten getragene Einstellungskosten als Anteil des Jahreseinkommens des Bestimmungslandes","10-7-2-title":"Anzahl der Staaten mit gut umgesetzter Migrationspolitik","10-7-3-title":"Anzahl der Personen, die während des Migrationsprozesses in Richtung eines internationalen Ziels gestorben oder verschwunden sind","10-7-4-title":"Anteil der Bevölkerung, die Flüchtlinge sind, nach Herkunftsland","10-a-1-title":"Anteil der Zolltarife auf Einfuhren aus den am wenigsten entwickelten Ländern sowie Entwicklungsländer mit Zollfreiheit","10-b-1-title":"Gesamte Kapitalströme für Entwicklung, nach Nehmer- und Geberländern und Art des Zahlungsstroms (z. B. öffentliche Entwicklungszusammenarbeit, ausländische Direktinvestitionen und sonstige Geldströme)","10-c-1-title":"Überweisungskosten  als Anteil am überwiesenen Betrag","11-1-1-title":"Anteil der urbanen Bevölkerung, die in Slums, informellen Siedlungen oder unzureichenden Behausungen lebt","11-2-1-title":"Anteil der Bevölkerung, der einen angemessenen Zugang zu öffentlichen Verkehrsmitteln hat, nach Geschlecht, Alter und Menschen mit Behinderung","11-3-1-title":"Verhältnis der Flächennutzungs- zur Bevölkerungswachstumsrate","11-3-2-title":"Anteil der Städte mit einer direkten Beteiligungsstruktur der Zivilgesellschaft an der Stadtplanung und -verwaltung, die regelmäßig und demokratisch arbeiten","11-4-1-title":"Gesamtausgaben (öffentlich und privat) pro Kopf für die Bewahrung, den Schutz und die Erhaltung des Kultur- und Naturerbes, nach Art des Erbes (Kultur, Natur, gemischt und durch das Welterbezentrum ernannt), Regierungsebene (national, regional und lokal/kommunal), Art der Ausgabe (Betriebsausgabe/Investition) und Art der privaten Finanzierung (Sachspenden, privater gemeinnütziger Sektor und Förderer)","11-5-1-title":"Anzahl der infolge von Katastrophen getöteten, vermissten und direkt betroffenen Personen, je 100.000 Einwohner","11-5-2-title":"Unmittelbarer wirtschaftlicher Schaden im Verhältnis zum globalen BIP, Schäden kritischer Infrastruktur und Anzahl der Ausfälle von Grundversorgungsleistungen infolge von Katastrophen","11-6-1-title":"Anteil der Siedlungsabfälle, die regelmäßig gesammelt und ordnungsgemäß entsorgt werden, an den insgesamt erzeugten Siedlungsabfällen, nach Städten","11-6-2-title":"Jahresmittelwerte für Feinstaub (z. B. PM2,5 und PM10) in Städten (bevölkerungsgewichtet)","11-7-1-title":"Durchschnittlicher Anteil der bebauten Fläche in Städten, die als Freifläche öffentlich zugänglich ist, nach Geschlecht, Alter und Personen mit Behinderungen","11-7-2-title":"Anteil der Personen, die in den vergangenen 12 Monaten Opfer körperlicher oder sexueller Belästigung wurden, nach Geschlecht, Alter, Behinderungsstatus und Ort des Geschehens","11-a-1-title":"Anteil der Bevölkerung in Städten, die Stadt- und Regionalentwicklungspläne unter Berücksichtigung der Bevölkerungsprognosen und des Ressourcenbedarfs umsetzen, nach Größe der Stadt","11-b-1-title":"Anzahl der Staaten, die nationale Strategien zur Reduzierung des Katastrophenrisikos in Einklang mit dem Sendai-Rahmenwerk zur Katastrophenvorsorge 2015-2030 verabschiedet und umgesetzt haben","11-b-2-title":"Anteil der lokalen Regierungen, die lokale Strategien zur Reduzierung des Katastrophenrisikos in Einklang mit den nationalen Strategien zur Katastrophenvorsorge verabschiedet und umgesetzt haben","11-c-1-title":"Anteil der finanziellen Unterstützung, die den am wenigsten entwickelten Ländern für den Umbau zu und Neubau von nachhaltigen, widerstandsfähigen und ressourceneffizienten Gebäuden unter Verwendung lokaler Materialien bereitgestellt wird","12-1-1-title":"Anzahl der Staaten mit nationalen Aktionsplänen zu nachhaltigem Konsum und Produktion (SCP) oder SCP, die als Priorität oder Ziel in nationale Politik aufgenommen wurden","12-2-1-title":"Rohstoff-Fußabdruck, Rohstoff-Fußabdruck pro Kopf und Rohstoff-Fußabdruck pro BIP","12-2-2-title":"Inländische Materialverwendung, inländische Materialverwendung pro Kopf und inländische Materialverwendung pro BIP","12-3-1-title":"Index zu globalen Nahrungsmittelverlusten","12-4-1-title":"Anzahl der Vertragsparteien internationaler multilateraler Umweltabkommen über gefährliche Abfälle und andere Chemikalien, die ihren Bekenntnissen und Verpflichtungen nachkommen, indem sie die gemäß dem jeweiligen Übereinkommen geforderten Informationen übermitteln","12-4-2-title":"Erzeugte gefährliche Abfälle pro Kopf und Anteil der behandelten gefährlichen Abfälle, nach Art der Behandlung","12-5-1-title":"Nationale Recyclingquote, Tonnen an recyceltem Material","12-6-1-title":"Anzahl der Unternehmen, die Nachhaltigkeitsberichte veröffentlichen","12-7-1-title":"Anzahl der Staaten, die nachhaltige öffentliche Beschaffungspolitik und Aktionspläne umsetzen","12-8-1-title":"Umfang, in dem (i) Bildung zu globaler Staatsbürgerschaft und (ii) Bildung für nachhaltige Entwicklung, einschließlich der Geschlechtergleichstellung und der Menschenrechte, auf allen Ebenen in: (a) nationale Bildungspolitik, (b) Lehrpläne, (c) Lehrerausbildung und (d) Schulleistungsuntersuchung berücksichtigt werden","12-a-1-title":"Umfang der Unterstützung für Entwicklungsländer bei Forschung und Entwicklung im Hinblick auf nachhaltigen Konsum und nachhaltige Produktion sowie umweltfreundliche Technologien","12-b-1-title":"Anzahl der Strategien oder Politiken für einen nachhaltigen Tourismus und umgesetzte Aktionspläne mit vereinbarten Kontroll- und Bewertungsinstrumenten","12-c-1-title":"Betrag der Subventionen für fossile Energieträger je Einheit BIP (Produktion und Konsum) und als Anteil an den gesamten nationalen Ausgaben für fossile Energieträger","13-1-1-title":"Anzahl der infolge von Katastrophen getöteten, vermissten und direkt betroffenen Personen, je 100.000 Einwohner","13-1-2-title":"Anzahl der Staaten, die nationale Strategien zur Reduzierung des Katastrophenrisikos in Einklang mit dem Sendai-Rahmenwerk zur Katastrophenvorsorge 2015-2030 verabschiedet und umgesetzt haben","13-1-3-title":"Anteil der lokalen Regierungen, die lokale Strategien zur Reduzierung des Katastrophenrisikos in Einklang mit den nationalen Strategien zur Katastrophenvorsorge verabschiedet und umgesetzt haben","13-2-1-title":"Anzahl der Staaten, die die Ausarbeitung oder Umsetzung einer/s integrierten Politik/Strategie/Plans verkündet haben, welche/r ihre Fähigkeit zur Anpassung an die negativen Auswirkungen des Klimawandels erhöht und die Widerstandsfähigkeit gegenüber Klimaänderungen als auch eine rückläufige Entwicklung der Treibhausgasemissionen fördert ohne die Nahrungsmittelproduktion zu gefährden (einschließlich eines nationalen Anpassungsplans, national festgelegten Beitrags, nationaler Kommunikation, zweijährlichen Aktualisierungsberichts oder anderer)","13-2-2-title":"Gesamte Treibhausgasemissionen pro Jahr","13-3-1-title":"Anzahl der Staaten, die die Minderung, Anpassung, Reduzierung der Auswirkungen und Frühwarnsysteme in den primären, sekundären und tertiären Lehrplänen integriert haben","13-3-2-title":"Anzahl der Staaten, die die Stärkung des institutionellen, systemischen und individuellen Kapazitätsaufbaus zur Umsetzung von Anpassung, Minderung und Technologietransfer und Entwicklungsmaßnahmen verkündet haben","13-a-1-title":"Mobilisierter Betrag an US-Dollar pro Jahr zwischen 2020 und 2025, anrechenbar auf die Zusage von 100 Milliarden US-Dollar","13-b-1-title":"Anzahl der am wenigsten entwickelten Länder und kleinen Inselentwicklungsstaaten, die besondere Unterstützung erhalten und der Betrag der Unterstützung (Finanzmittel, Technologie und capacity-building umfassend) für Mechanismen zum Aufbau von Kapazitäten für eine wirksame klimawandelbezogene Planung und Verwaltung, mit Fokus auf Frauen, Jugendliche und lokale und marginalisierte Gemeinschaften","14-1-1-title":"Index der Eutrophierung der Küsten und Konzentration des schwimmenden Plastikmülls","14-2-1-title":"Anteil der nationalen ausschließlichen Wirtschaftszonen, die mit ökosystembasierten Ansätzen verwaltet werden","14-3-1-title":"Durchschnittliche Versauerung der Meere (pH) gemessen an einer vereinbarten Reihe von repräsentativen Probeentnahmestationen","14-4-1-title":"Anteil der Fischbestände innerhalb des biologisch nachhaltigen Niveaus","14-5-1-title":"Abdeckung durch Schutzgebiete im Vergleich zu Meeresgebieten","14-6-1-title":"Fortschritt der Staaten hinsichtlich des Grades der Umsetzung internationaler Instrumente mit dem Ziel zur Bekämpfung illegaler, nicht gemeldeter und unregulierter Fischerei","14-7-1-title":"Nachhaltige Fischerei als Anteil am BIP in kleinen Inselentwicklungsstaaten, in den am wenigsten entwickelten Ländern und allen Ländern","14-a-1-title":"Anteil am gesamten Forschungsbudget für Forschung im Bereich der Meerestechnik","14-b-1-title":"Fortschritt der Staaten hinsichtlich der Umsetzung von gesetzlichen/ regulatorischen/ politischen/ institutionellen Rahmenwerken, die Zugangsrechte für kleine Fischereien anerkennen und schützen","14-c-1-title":"Anzahl der Staaten, die durch rechtliche, politische und institutionelle Rahmenbedingungen bei der Ratifizierung, Verabschiedung und Umsetzung meeresbezogener Instrumentarien, die internationales Recht zum Schutz und zur nachhaltigen Nutzung der Ozeane und ihrer Ressourcen (wie es dem Seerechtsübereinkommen der Vereinten Nationen entspricht) umsetzen, Fortschritte machen","15-1-1-title":"Waldfläche als Anteil an der gesamten Landfläche","15-1-2-title":"Anteil der bedeutenden Gebiete für Biodiversität an Land und im Süßwasser, die in Schutzgebieten liegen, nach Ökosystemtyp","15-2-1-title":"Fortschritt bei der nachhaltigen Waldbewirtschaftung","15-3-1-title":"Anteil der Fläche, die von Bodendegradation betroffenen ist, an der gesamten Landfläche","15-4-1-title":"Abdeckung der wichtigen Gebiete für Biodiversität in den Bergen durch Schutzgebiete","15-4-2-title":"Index der Grünbedeckung in den Bergen","15-5-1-title":"Rote Liste Index","15-6-1-title":"Anzahl der Staaten, die gesetzliche, administrative und politische Rahmenbedingungen geschaffen haben, um Vorteile gerecht und gleichmäßig zu verteilen","15-7-1-title":"Anteil der gehandelten Wildtiere, die gewildert oder geschmuggelt wurden","15-8-1-title":"Anteil der Staaten, die relevante nationale Rechtsvorschriften verabschiedet haben und Maßnahmen zur Vermeidung oder Bekämpfung von invasiven, gebietsfremden Arten angemessen finanzieren","15-9-1-title":"Fortschritte bei der Erreichung nationaler Ziele, die in Übereinstimmung mit dem Aichi-Biodiversitätsziel 2 des Strategischen Plans zur Biodiversität 2011-2020 beschlossen wurden","15-a-1-title":"Öffentliche Entwicklungszusammenarbeit und öffentliche Ausgaben für den Erhalt und die nachhaltige Nutzung biologischer Vielfalt und der Ökosysteme","15-b-1-title":"Öffentliche Entwicklungszusammenarbeit und öffentliche Ausgaben für den Erhalt und die nachhaltige Nutzung biologischer Vielfalt und der Ökosysteme","15-c-1-title":"Anteil der gehandelten Wildtiere, die gewildert oder geschmuggelt wurden","16-1-1-title":"Anzahl der Opfern vorsätzlicher Tötung je 100.000 Einwohner, nach Geschlecht und Alter","16-1-2-title":"Konfliktbedingte  Todesfälle je 100.000 Einwohner, nach Geschlecht, Alter und Ursache","16-1-3-title":"Anteil der Bevölkerung, die in den vergangenen 12 Monaten (a) körperlicher Gewalt, (b) psychischer Gewalt und (c) sexueller Gewalt ausgesetzt war","16-1-4-title":"Anteil der Bevölkerung, die sich in ihrem Wohngebiet alleine sicher fühlt","16-10-1-title":"Anzahl der bestätigten Fälle von Tötung, Entführung, erzwungenem Verschwinden, willkürlicher Inhaftierung und Folter von Journalisten, zugehörigem Medienpersonal, Gewerkschaftern und Menschenrechtsanwälten in den vergangenen 12 Monaten","16-10-2-title":"Anzahl der Staaten, die verfassungsrechtliche, gesetzliche und/oder politische Garantieren für den öffentlichen Zugang zu Informationen verabschiedet und umgesetzt haben","16-2-1-title":"Anteil der Kinder im Alter von 1-17 Jahren, die im vergangenen Monat eine körperliche Strafe und/oder psychische Aggression durch Betreuungspersonen erfahren haben","16-2-2-title":"Anzahl der Opfer von Menschenhandel je 100.000 Einwohner, nach Geschlecht, Alter und Art der Ausbeutung","16-2-3-title":"Anteil der jungen Frauen und Männer im Alter von 18-29 Jahren, die bis zum Alter von 18 Jahren sexuelle Gewalt erlebt haben","16-3-1-title":"Anteil der Opfer von Gewalttaten in den vergangenen 12 Monaten, die ihre Viktimisierung den zuständigen Behörden oder anderen offiziell anerkannten Stellen der Konfliktaufarbeitung gemeldet haben","16-3-2-title":"Nicht-verurteilte Häftlinge als Anteil an der gesamten Gefangenenpopulation","16-3-3-title":"Anteil der Bevölkerung, die in den letzten zwei Jahren einen Streitfall erlebt haben und einen formellen oder informellen Streitbeilegungsmechanismus in Anspruch genommen haben, nach Art des Mechanismus","16-4-1-title":"Gesamtwert der ein- und ausgehenden illegalen Finanzströme (in aktuellen US-Dollar)","16-4-2-title":"Anteil der beschlagnahmten, aufgegriffenen oder abgegebenen Waffen, deren illegale Herkunft oder Verwendung von einer zuständigen Behörde in Übereinstimmung mit internationalen Methoden nachverfolgt oder festgestellt wurde","16-5-1-title":"Anteil der Personen, die in den vergangenen 12 Monaten mindestens einen Kontakt zu einem öffentlichen Bediensteten hatten und diesem ein Bestechungsgeld gezahlt haben oder von diesen um eine Bestechung gebeten wurden","16-5-2-title":"Anteil der Unternehmen, die in den vergangenen 12 Monaten mindestens einen Kontakt mit einem öffentlichen Bediensteten hatten und diesem ein Bestechungsgeld gezahlt haben oder von diesen um eine Bestechung gebeten wurden","16-6-1-title":"Primärausgaben des Staates als Anteil am ursprünglich genehmigten Budget, nach Sektor (oder nach Haushaltscodes oder Ähnlichem)","16-6-2-title":"Anteil der Bevölkerung, die mit ihrer letzten Erfahrung mit öffentlichen Dienstleistungen zufrieden war","16-7-1-title":"Anteil der Stellen (nach Geschlecht, Alter, Personen mit Behinderungen und Bevölkerungsgruppen) in öffentlichen Institutionen (nationale und lokale Gesetzgebung, öffentlicher Dienst und Judikative) im Vergleich zur nationalen Verteilungen","16-7-2-title":"Anteil der Bevölkerung, die glaubt, dass die Entscheidungsfindung inklusiv und bedarfsgesteuert ist, nach Geschlecht, Alter, Behinderung und Bevölkerungsgruppe","16-8-1-title":"Anteil der Mitglieder und Stimmrechte von Entwicklungsländern in internationalen Organisationen","16-9-1-title":"Anteil der Kinder unter 5 Jahre, deren Geburt von einer Zivilbehörde registriert wurde, nach Alter","16-a-1-title":"Existenz von unabhängigen nationalen Menschenrechtsinstitutionen in Übereinstimmung mit den 'Pariser Grundsätzen","16-b-1-title":"Anteil der Bevölkerung, die angibt sich in den vergangenen 12 Monaten persönlich auf Basis einer Diskriminierung, die nach internationalem Menschenrecht verboten ist, diskriminiert oder belästigt gefühlt zu haben","17-1-1-title":"Gesamte Staatseinnahmen als Anteil am BIP, nach Quelle","17-1-2-title":"Anteil des Haushaltsbudgets, das durch inländische Steuern finanziert wird","17-10-1-title":"Weltweit gewichtete durchschnittliche Zollsätze","17-11-1-title":"Anteil der Entwicklungsländer und der am wenigsten entwickelten Länder an den weltweiten Exporten","17-12-1-title":"Durchschnittliche Zölle für Entwicklungsländer, am wenigsten entwickelte Länder und kleine Inselentwicklungsländer","17-13-1-title":"Makroökonomisches Dashboard","17-14-1-title":"Anzahl der Staaten mit Mechanismen zur Verbesserung der Politikkohärenz bezogen auf nachhaltige Entwicklung","17-15-1-title":"Umfang der Nutzung ländereigener Ergebnisrahmenwerke und Planungsinstrumente durch  Anbieter von Entwicklungszusammenarbeit","17-16-1-title":"Anzahl der Staaten, die Fortschritte bei der Kontrolle der Multi-Stakeholder-Entwicklungswirksamkeit, die das Erreichen der Ziele für nachhaltige Entwicklung unterstützen, berichten","17-17-1-title":"Betrag an US-Dollar, der für (a) öffentlich-private Partnerschaften und (b) zivilgesellschaftliche Partnerschaften zugesagt wurde","17-18-1-title":"Anteil der Nachhaltigkeitsindikatoren, die auf nationaler Ebene vollständig - sofern gemäß dem Unterziel relevant - disaggregiert sind, in Übereinstimmung mit den Grundprinzipien der amtlichen Statistik","17-18-2-title":"Anzahl der Staaten mit einer nationalen statistischen Gesetzgebung im Einklang mit den Grundprinzipien der amtlichen Statistik","17-18-3-title":"Anzahl der Staaten mit einem nationalen statistischen Plan, der vollständig finanziert ist und umgesetzt wird, nach Quelle der Finanzierung","17-19-1-title":"Dollar-Wert aller zur Verfügung gestellten Ressourcen zur Stärkung der statistischen Kapazität in Entwicklungsländern","17-19-2-title":"Anteil der Staaten, die (a) in den letzten 10 Jahren mindestens eine Bevölkerungs- und Wohnungszählung durchgeführt haben und (b) 100% bei der Geburtenregistrierung sowie 80% bei der Registrierung der Sterbefälle erreicht haben","17-2-1-title":"Öffentliche Nettoentwicklungsausgaben, insgesamt und an am wenigsten entwickelte Länder, als Anteil am Bruttonationaleinkommen (BNE) der Geberländer des Ausschusses für Entwicklungshilfe der Organisation für wirtschaftliche Zusammenarbeit und Entwicklung (OECD)","17-3-1-title":"Ausländische Direktinvestitionen, öffentliche Entwicklungszusammenarbeit und Süd-Süd-Kooperationen als Anteil am gesamten Haushaltsbudget","17-3-2-title":"Volumen der (Rück-)Überweisungen (in US-Dollar) als Anteil am gesamten BIP","17-4-1-title":"Schuldendienst als Anteil an Güter- und Dienstleistungsexporten","17-5-1-title":"Anzahl der Staaten, die Investitionsförderprogramme für die am wenigsten entwickelten Länder einführen und umsetzen","17-6-1-title":"Anzahl der Vereinbarungen und Programme über Wissenschafts- und/oder Technologie-Kooperationen zwischen Staaten, nach Art der Kooperation","17-6-2-title":"Internet-Breitband-Verträge je 100 Einwohner, nach Geschwindigkeit","17-7-1-title":"Gesamtbetrag der für Entwicklungsländer genehmigten Mittel zur Förderung der Entwicklung, des Transfers, der öffentlichen Bereitstellung und der Verbreitung umweltfreundlicher Technologien","17-8-1-title":"Anteil der Einzelpersonen, die das Internet nutzen","17-9-1-title":"Dollar-Wert der finanziellen und technischen Zusammenarbeit (einschließlich durch Nord-Süd-, Süd-Süd- und Dreieckskooperationen) mit Entwicklungsländern","2-1-1-title":"Prävalenz von Unterernährung","2-1-2-title":"Prävalenz mittlerer oder schwerer Ernährungsunsicherheit in der Bevölkerung, basierend auf der Erfahrungsskala für Ernährungsunsicherheit (FIES)","2-2-1-title":"Prävalenz von Kleinwuchs (Körpergröße zum Alter < -2 Standardabweichung vom Median des Wachstumsstandards für Kinder der Weltgesundheitsorganisation (WHO)) bei Kindern unter 5 Jahren","2-2-2-title":"Prävalenz von Fehlernährung (Gewicht zur Körpergröße > +2 oder < -2 Standardabweichung vom Median des Wachstumsstandards für Kinder der WHO) bei Kindern unter 5 Jahren, nach der Art (Auszehrung und Übergewicht)","2-2-3-title":"Prävalenz von Anämie bei Frauen im Alter von 15 bis 49 Jahren, nach Schwangerschaftsstatus (in Prozent)","2-3-1-title":"Produktionsvolumen je Arbeitskraft nach Unternehmensgrößenklassen der Betriebsgröße in Land-/Weide-/Forstwirtschaft","2-3-2-title":"Durchschnittliches Einkommen kleiner Nahrungsmittelproduzenten, nach Geschlecht und indigenem Status","2-4-1-title":"Anteil der landwirtschaftlichen Fläche unter produktiver und nachhaltiger Bewirtschaftung","2-5-1-title":"Anzahl der pflanzlichen und tierischen genetischen Ressourcen für Ernährung und Landwirtschaft, die entweder in mittel- oder langfristigen Einrichtungen zu deren Erhalt gesichert sind","2-5-2-title":"Anteil der einheimischen Arten, die als gefährdet oder nicht gefährdet klassifiziert sind oder deren Gefährdungsgrad unbekannt ist","2-a-1-title":"Der Agriculture Orientation Index für staatliche Ausgaben","2-a-2-title":"Öffentliche Leistungen insgesamt (öffentliche Entwicklungszusammenarbeit plus sonstige öffentliche Ausgaben) für den Landwirtschaftssektor","2-b-1-title":"Ausfuhrsubventionen für landwirtschaftliche Güter","2-c-1-title":"Indikator zu Preisschwankungen bei Lebensmittelpreisen","3-1-1-title":"Müttersterblichkeitsrate","3-1-2-title":"Anteil der Geburten unter der Aufsicht von qualifiziertem Gesundheitspersonal","3-2-1-title":"Sterblichkeitsrate von Kindern unter 5 Jahren","3-2-2-title":"Sterblichkeitsrate von Neugeborenen","3-3-1-title":"Anzahl der HIV-Neuinfektionen je 1.000 nicht infizierter Einwohner, nach Geschlecht, Alter und Risikogruppen","3-3-2-title":"Tuberkulose-Inzidenz je 100.000 Einwohner","3-3-3-title":"Malaria-Inzidenz je 1.000 Einwohner","3-3-4-title":"Hepatitis-B-Inzidenz je 100.000 Einwohner","3-3-5-title":"Anzahl der Personen, die Maßnahmen gegen vernachlässigte Tropenkrankheiten benötigen","3-4-1-title":"Sterblichkeitsrate infolge von Herz-Kreislauf-Erkrankungen, Krebs, Diabetes oder chronischen Atemwegserkrankungen","3-4-2-title":"Sterblichkeitsrate bei Suizid","3-5-1-title":"Abdeckung durch Behandlungsmaßnahmen (pharmakologische, psychosoziale und Rehabilitations- und Nachsorgeleistungen) bei Substanzmissbrauch","3-5-2-title":"Schädlicher Alkoholkonsum, definiert gemäß den nationalen Gegebenheiten als Alkoholkonsum pro Kopf (15 Jahre und älter) innerhalb eines Kalenderjahres in Litern reinem Alkohol","3-6-1-title":"Sterblichkeitsrate aufgrund von Straßenverkehrsunfällen","3-7-1-title":"Anteil der Frauen im gebärfähigen Alter (15-49 Jahre), die ihren Anspruch auf Familienplanung durch moderne Methoden umsetzen können","3-7-2-title":"Geburtenrate von Jugendlichen (10-14 Jahre 15-19 Jahre) je 1.000 Frauen derselben Altersgruppe","3-8-1-title":"Abdeckung der grundlegenden Gesundheitsleistungen (definiert als durchschnittliche Abdeckung der grundlegenden Leistungen basierend auf Tracer-Interventionen, einschließlich reproduktiver, Mütter-, Neugeborenen- und Kindergesundheit, infektiöser Krankheiten und nicht übertragbarer Krankheiten sowie Kapazitäten und Zugang zu Serviceleistungen, innerhalb der allgemein und der überwiegend benachteiligten Bevölkerung)","3-8-2-title":"Anteil der Bevölkerung mit hohen Haushaltsausgaben für Gesundheit als Anteil an den gesamten Haushaltsausgaben oder -einkommen","3-9-1-title":"Sterblichkeitsrate infolge von Luftverschmutzung im Haushalt und der Umgebung","3-9-2-title":"Sterblichkeitsrate infolge von Kontakt mit verunreinigtem Wasser, unzureichenden sanitären Verhältnissen und mangelnder Hygiene (Kontakt mit unzureichenden \"Wasser, Sanitäreinrichtungen und Hygiene für alle\"-Leistungen (WASH))","3-9-3-title":"Sterblichkeitsrate infolge von unbeabsichtigtem Vergiften","3-a-1-title":"Altersstandardisierte Prävalenz des aktuellen Tabakkonsums bei Personen im Alter von 15 Jahren und älter","3-b-1-title":"Anteil der Zielbevölkerung, die alle Impfungen laut nationalen Programm besitzt","3-b-2-title":"Gesamte öffentliche Netto-Entwicklungszusammenarbeit für medizinische Forschung und grundlegende Gesundheitsversorgung","3-b-3-title":"Anteil der Gesundheitseinrichtungen, die über einen Kernsatz relevanter und wichtiger Medikamente verfügen, die nachhaltig verfügbar und bezahlbar sind","3-c-1-title":"Dichte und Verteilung von medizinischem Fachpersonal","3-d-1-title":"Kapazitäten für internationale Gesundheitsvorschriften (IGV) und Gesundheitsnotfallvorsorge","3-d-2-title":"Prozentualer Anteil von Infektionen der Blutbahn durch ausgewählte antimikrobiell resistente Organismen","4-1-1-title":"Anteil der Kinder und Jugendlichen, die (a) in Klasse 2/3 (b) am Ende der Grundschule und (c) am Ende der Sekundarstufe I ein Mindestleistungsniveau in (i) Lesen und (ii) Mathematik erreichen, nach Geschlecht","4-1-2-title":"Abschlussquote (Grundschulbildung, Sekundarstufe I, Sekundarstufe II)","4-2-1-title":"Anteil der Kinder unter 5 Jahren mit einer altersgemäßen  Entwicklung hinsichtlich Gesundheit, Lernen und psycho-sozialem Wohlbefinden, nach Geschlecht","4-2-2-title":"Teilnahmequote an frühkindlicher Bildung (ein Jahr vor dem offiziellen Einschulungsalter), nach Geschlecht","4-3-1-title":"Teilnahmequote von Jugendlichen und Erwachsenen an formaler und non-formaler Bildung und Ausbildung in den vergangenen 12 Monaten, nach Geschlecht","4-4-1-title":"Anteil der Jugendlichen und Erwachsenen mit Kompetenzen in Informations- und Kommunikationstechnologie (IKT), nach Art der Kompetenz","4-5-1-title":"Paritäts-Indizes (weiblich/männlich, rural/urban, unterstes/oberstes Vermögensquantil und sonstige, wie z. B. Grad der Behinderung, indigene Bevölkerung und konfliktbetroffen, sobald Daten verfügbar werden) für alle Bildungsindikatoren dieser Liste, die disaggregiert werden können","4-6-1-title":"Anteil der Bevölkerung einer bestimmten Altersgruppe, die über ein festes Mindestniveau an funktionalen (a) Lese- und (b) Rechenfähigkeiten verfügt, nach Geschlecht","4-7-1-title":"Umfang, in dem (i) Bildung zu globaler Staatsbürgerschaft und (ii) Bildung für nachhaltige Entwicklung, einschließlich der Geschlechtergleichstellung und der Menschenrechte, auf allen Ebenen in: (a) nationale Bildungspolitik, (b) Lehrpläne, (c) Lehrerausbildung und (d) Schulleistungsuntersuchung berücksichtigt werden","4-a-1-title":"Anteil der Schulen mit Zugang zu: (a) Strom (b) Internet für Unterrichtszwecke (c) Computern für Unterrichtszwecke (d) angepasste Infrastruktur und Materialien für Schüler mit Behinderungen (e) Trinkwasser (f) geschlechterspezifischen sanitären Anlagen und g) grundlegende Ausstattung zum Händewaschen (gemäß den WASH-Indikator-Definitionen)","4-b-1-title":"Umfang der Ausgaben öffentlicher Entwicklungszusammenarbeit für Stipendien nach Sektor und Art des Studiums","4-c-1-title":"Anteil der Lehrer in: (a) Vorschule (b) Grundschule (c ) Sekundarstufe I und (d) Sekundarstufe II, die vor oder während ihrer Tätigkeit mindestens die geforderte Grundausbildung (z. B. pädagogisches Training) zum Unterrichten für die entsprechende Klassenstufe im jeweiligen Land erhalten haben","5-1-1-title":"Existenz gesetzlicher Rahmenbedingungen, die Gleichstellung und Nicht-Diskriminierung aufgrund des Geschlechts fördern, durchsetzen und überwachen","5-2-1-title":"Anteil der Frauen und Mädchen im Alter von 15 Jahren und älter, die sich in ihrer jetzigen oder früheren Partnerschaft physischer, sexueller oder psychischer Gewalt durch ihren aktuellen oder früheren Intimpartner in den vergangenen 12 Monaten ausgesetzt waren, nach Art der Gewalt und Alter","5-2-2-title":"Anteil der Frauen und Mädchen im Alter von 15 Jahren und älter, die sexueller Gewalt durch andere Personen als einem Intimpartner in den vergangenen 12 Monaten ausgesetzt waren, nach Alter und Ort des Geschehens","5-3-1-title":"Anteil der 20- bis 24-jährigen Frauen, die vor einem Alter von 15 oder 18 Jahren verheiratet oder in einer vergleichbaren Verbindung waren","5-3-2-title":"Anteil der Mädchen und Frauen im Alter von 15-49 Jahren, die weiblicher Genitalverstümmelung unterzogen wurden, nach Alter","5-4-1-title":"Anteil des Zeitaufwands für unbezahlte Haus- und Pflegearbeit, nach Geschlecht, Alter und Ort","5-5-1-title":"Frauenanteil in (a) nationalen Parlamenten und (b) lokalen Regierungen","5-5-2-title":"Frauenanteil an  Führungspositionen","5-6-1-title":"Anteil der Frauen im Alter von 15-49 Jahren, die eigenständig fundierte Entscheidungen über sexuelle Beziehungen, Verhütung und reproduktive Gesundheitsversorgung treffen","5-6-2-title":"Anzahl der Staaten mit Gesetzen und Vorschriften, die einen uneingeschränkten und gleichberechtigten Zugang für Frauen und Männer im Alter von 15 Jahren und älter zu sexuellen und reproduktiven Gesundheitsleistungen, Information und Bildung garantieren","5-a-1-title":"(a) Anteil der gesamten landwirtschaftlichen Bevölkerung mit Eigentum oder sicheren Rechten an landwirtschaftlichen Flächen, nach Geschlecht und (b) Anteil der Frauen an den Eigentümern oder Rechteinhabern landwirtschaftlicher Flächen, nach Art der Besitzverhältnisse","5-a-2-title":"Anteil der Staaten, in denen der Rechtsrahmen (einschließlich Gewohnheitsrecht) Frauen die gleichen Rechte auf Landeigentum und/oder -nutzung garantiert","5-b-1-title":"Anteil der Personen, die ein Mobiltelefon besitzen, nach Geschlecht","5-c-1-title":"Anteil der Staaten mit Systemen zur transparenten Verfolgung und Veröffentlichung von Zuwendungen für Geschlechtergleichstellung und Stärkung der Rolle der Frau","6-1-1-title":"Anteil der Bevölkerung mit Zugang zu einer sicheren Trinkwasserversorgung","6-2-1-title":"Anteil der Bevölkerung mit (a) Zugang zu sicherer Sanitärversorgung und (b) einem Handwaschbecken mit Seife und Wasser","6-3-1-title":"Anteil des sicher behandelten Abwassers","6-3-2-title":"Anteil der Gewässer mit guter Wasserqualität","6-4-1-title":"Veränderung der Wassernutzungseffizienz im Zeitablauf","6-4-2-title":"Grad der Wasserknappheit: Süßwasserentnahme als Anteil an den verfügbaren Süßwasserressourcen","6-5-1-title":"Grad der Umsetzung eines integrierten Wasserressourcenmanagements (0-100)","6-5-2-title":"Anteil der grenzüberschreitenden Flussgebiete mit einer operativen Vereinbarung zur Wasserkooperation","6-6-1-title":"Veränderung des Umfangs wasserbezogener Ökosysteme im Zeitablauf","6-a-1-title":"Betrag der wasser- und sanitärbezogenen öffentlichen Entwicklungszusammenarbeit, die Teil eines geregelten öffentlichen Haushaltsplans ist","6-b-1-title":"Anteil der lokalen Verwaltungseinheiten mit etablierten und operativen Strategien und Verfahren zur Beteiligung der Gemeinden am Wasser- und Abwassermanagement","7-1-1-title":"Anteil der Bevölkerung mit Zugang zu Elektrizität","7-1-2-title":"Anteil der Bevölkerung mit überwiegender Abhängigkeit von sauberen Energieträgern und Technologien","7-2-1-title":"Anteil der erneuerbaren Energien am gesamten Endenergieverbrauch","7-3-1-title":"Energieintensität gemessen als Primärenergie zum BIP","7-a-1-title":"Internationale Finanzströme an Entwicklungsländer zur Förderung von Forschung und Entwicklung im Bereich sauberer Energien sowie erneuerbarer Energieproduktion, einschließlich Hybridsystemen","7-b-1-title":"Investitionen in Energieeffizienz als Anteil am BIP und der Betrag der ausländischen Direktinvestitionen in Form von Finanzmitteln für Infrastruktur und Technologien der Dienstleistungen für nachhaltige Entwicklung","8-1-1-title":"Jährliche Wachstumsrate des realen BIP pro Kopf","8-10-1-title":"(a) Anzahl der Bankfilialen je 100.000 Erwachsener und (b) Anzahl der Geldautomaten je 100.000 Erwachsener","8-10-2-title":"Anteil der Erwachsenen (15 Jahre und älter) mit einem Konto bei einer Bank oder einem anderen Finanzinstitut oder einem mobilen Geldleistungsanbiete","8-2-1-title":"Jährliche Wachstumsrate des realen BIP je Beschäftigten","8-3-1-title":"Anteil der informellen Beschäftigung an allen Beschäftigungsverhältnissen außerhalb der Landwirtschaft, nach Geschlecht","8-4-1-title":"Rohstoff-Fußabdruck, Rohstoff-Fußabdruck pro Kopf und Rohstoff-Fußabdruck pro BIP","8-4-2-title":"Inländische Materialverwendung, inländische Materialverwendung pro Kopf und inländische Materialverwendung pro BIP","8-5-1-title":"Durchschnittlicher Stundenlohn von weiblichen und männlichen Beschäftigten, nach Beruf, Alter und Personen mit Behinderungen","8-5-2-title":"Arbeitslosenquote, nach Geschlecht, Alter und Personen mit Behinderungen","8-6-1-title":"Anteil der Jugendlichen (im Alter von 15-24 Jahren), die nicht in schulischer Ausbildung, in Beschäftigung oder Berufsaus- oder -weiterbildung sind","8-7-1-title":"Anteil und Anzahl der Kinder im Alter von 5-17 Jahren, die Kinderarbeit verrichten, nach Geschlecht und Alter","8-8-1-title":"Häufigkeitsraten von tödlichen und nicht-tödlichen Arbeitsunfällen, nach Geschlecht und Migrationsstatus","8-8-2-title":"Grad der nationalen Einhaltung der Arbeitnehmerrechte (Vereinigungsfreiheit und Tarifverhandlungen) basierend auf Textquellen der Internationalen Arbeitsorganisation (ILO) und nationaler Gesetzesgrundlagen, nach Geschlecht und Migrationsstatus","8-9-1-title":"Direktes BIP des Tourismus als Anteil am gesamten BIP und als Wachstumsrate","8-9-2-title":"Anteil der Arbeitsplätze im nachhaltigen Tourismus an den gesamten Arbeitsplätzen im Tourismusbereich","8-a-1-title":"Aid for Trade-Zusagen und -Auszahlungen","8-b-1-title":"Existenz einer entwickelten und operationalisierten nationalen Strategie zu Jugendbeschäftigung , als eigenständige Strategie oder als Teil einer nationalen Beschäftigungsstrategie","9-1-1-title":"Anteil der ländlichen Bevölkerung, die im Umkreis von 2 km entfernt an einer ganzjährig befahrbaren Straße lebt","9-1-2-title":"Passagiere und Frachtvolumen, nach der Art des Transports","9-2-1-title":"Wertschöpfung des Verarbeitenden Gewerbes als Anteil am BIP und pro Kopf","9-2-2-title":"Beschäftigung im Verarbeitenden Gewerbe als Anteil an der Beschäftigung insgesamt","9-3-1-title":"Anteil der kleiner Unternehmen an der gesamten Wertschöpfung der Industrie","9-3-2-title":"Anteil kleiner Unternehmen mit einem Kredit oder einem Kreditrahmen","9-4-1-title":"CO2-Emissionen pro Wertschöpfungseinheit","9-5-1-title":"Ausgaben für Forschung und Entwicklung als Anteil am BIP","9-5-2-title":"Wissenschaftler (in Vollzeit-Äquivalenten) je eine Million Einwohner","9-a-1-title":"Gesamte öffentliche internationale Unterstützung (öffentliche Entwicklungszusammenarbeit und andere öffentliche Mittel) für Infrastruktu","9-b-1-title":"Anteil der Wertschöpfung der Medium- und High-Tech-Industrie an der Wertschöpfung insgesamt","9-c-1-title":"Anteil der Bevölkerung, die durch ein Mobilfunknetz abgedeckt ist, nach Technologie"},"global_targets":{"1-1-title":"Bis 2030 die extreme Armut - gegenwärtig definiert als der Anteil der Menschen, die mit weniger als 1,25 Dollar pro Tag auskommen müssen - für alle Menschen überall auf der Welt beseitigen","1-2-title":"Bis 2030 den Anteil der Männer, Frauen und Kinder jeden Alters, die in Armut in all ihren Dimensionen nach der jeweiligen nationalen Definition leben, mindestens um die Hälfte senken","1-3-title":"Den nationalen Gegebenheiten entsprechende Sozialschutzsysteme und -maßnahmen für alle umsetzen, einschließlich eines Basisschutzes, und bis 2030 eine breite Versorgung der Armen und Schwachen erreichen","1-4-title":"Bis 2030 sicherstellen, dass alle Männer und Frauen, insbesondere die Armen und Schwachen, die gleichen Rechte auf wirtschaftliche Ressourcen sowie Zugang zu grundlegenden Diensten, Grundeigentum und Verfügungsgewalt über Grund und Boden und sonstigen Vermögensformen, Erbschaften, natürlichen Ressourcen, geeigneten neuen Technologien und Finanzdienstleistungen einschließlich Mikrofinanzierung haben","1-5-title":"Bis 2030 die Widerstandsfähigkeit der Armen und der Menschen in prekären Situationen erhöhen und ihre Exposition und Anfälligkeit gegenüber klimabedingten Extremereignissen und anderen wirtschaftlichen, sozialen und ökologischen Schocks und Katastrophen verringern","1-a-title":"Eine erhebliche Mobilisierung von Ressourcen aus einer Vielzahl von Quellen gewährleisten, einschließlich durch verbesserte Entwicklungszusammenarbeit, um den Entwicklungsländern und insbesondere den am wenigsten entwickelten Ländern ausreichende und berechenbare Mittel für die Umsetzung von Programmen und Politiken zur Beendigung der Armut in all ihren Dimensionen bereitzustellen","1-b-title":"Auf nationaler, regionaler und internationaler Ebene solide politische Rahmen auf der Grundlage armutsorientierter und geschlechtersensibler Entwicklungsstrategien schaffen, um beschleunigte Investitionen in Maßnahmen zur Beseitigung der Armut zu unterstützen","10-1-title":"Bis 2030 nach und nach ein über dem nationalen Durchschnitt liegendes Einkommenswachstum der ärmsten 40 Prozent der Bevölkerung erreichen und aufrechterhalten","10-2-title":"Bis 2030 alle Menschen unabhängig von Alter, Geschlecht, Behinderung, Rasse, Ethnizität, Herkunft, Religion oder wirtschaftlichem oder sonstigem Status zu Selbstbestimmung befähigen und ihre soziale, wirtschaftliche und politische Inklusion fördern","10-3-title":"Chancengleichheit gewährleisten und Ungleichheit der Ergebnisse reduzieren, namentlich durch die Abschaffung diskriminierender Gesetze, Politiken und Praktiken und die Förderung geeigneter gesetzgeberischer, politischer und sonstiger Maßnahmen in dieser Hinsicht","10-4-title":"Politische Maßnahmen beschließen, insbesondere fiskalische, lohnpolitische und den Sozialschutz betreffende Maßnahmen, und schrittweise größere Gleichheit erzielen","10-5-title":"Die Regulierung und Überwachung der globalen Finanzmärkte und -institutionen verbessern und die Anwendung der einschlägigen Vorschriften verstärken","10-6-title":"Eine bessere Vertretung und verstärkte Mitsprache der Entwicklungsländer bei der Entscheidungsfindung in den globalen internationalen Wirtschafts- und Finanzinstitutionen sicherstellen, um die Wirksamkeit, Glaubwürdigkeit, Rechenschaftslegung und Legitimation dieser Institutionen zu erhöhen","10-7-title":"Eine geordnete, sichere, reguläre und verantwortungsvolle Migration und Mobilität von Menschen erleichtern, unter anderem durch die Anwendung einer planvollen und gut gesteuerten Migrationspolitik","10-a-title":"Den Grundsatz der besonderen und differenzierten Behandlung der Entwicklungsländer, insbesondere der am wenigsten entwickelten Länder, im Einklang mit den Übereinkünften der Welthandelsorganisation anwenden","10-b-title":"Öffentliche Entwicklungshilfe und Finanzströme einschließlich ausländischer Direktinvestitionen in die Staaten fördern, in denen der Bedarf am größten ist, insbesondere in die am wenigsten entwickelten Länder, die afrikanischen Länder, die kleinen Inselentwicklungsländer und die Binnenentwicklungsländer, im Einklang mit ihren jeweiligen nationalen Plänen und Programmen","10-c-title":"Bis 2030 die Transaktionskosten für Heimatüberweisungen von Migranten auf weniger als 3 Prozent senken und Überweisungskorridore mit Kosten von über 5 Prozent beseitigen","11-1-title":"Bis 2030 den Zugang zu angemessenem, sicherem und bezahlbarem Wohnraum und zur Grundversorgung für alle sicherstellen und Slums sanieren","11-2-title":"Bis 2030 den Zugang zu sicheren, bezahlbaren, zugänglichen und nachhaltigen Verkehrssystemen für alle ermöglichen und die Sicherheit im Straßenverkehr verbessern, insbesondere durch den Ausbau des öffentlichen Verkehrs, mit besonderem Augenmerk auf den Bedürfnissen von Menschen in prekären Situationen, Frauen, Kindern, Menschen mit Behinderungen und älteren Menschen","11-3-title":"Bis 2030 die Verstädterung inklusiver und nachhaltiger gestalten und die Kapazitäten für eine partizipatorische, integrierte und nachhaltige Siedlungsplanung und -steuerung in allen Ländern verstärken","11-4-title":"Die Anstrengungen zum Schutz und zur Wahrung des Weltkultur- und -naturerbes verstärken","11-5-title":"Bis 2030 die Zahl der durch Katastrophen, einschließlich Wasserkatastrophen, bedingten Todesfälle und der davon betroffenen Menschen deutlich reduzieren und die dadurch verursachten unmittelbaren wirtschaftlichen Verluste im Verhältnis zum globalen Bruttoinlandsprodukt wesentlich verringern, mit Schwerpunkt auf dem Schutz der Armen und von Menschen in prekären Situationen","11-6-title":"Bis 2030 die von den Städten ausgehende Umweltbelastung pro Kopf senken, unter anderem mit besonderer Aufmerksamkeit auf der Luftqualität und der kommunalen und sonstigen Abfallbehandlung","11-7-title":"Bis 2030 den allgemeinen Zugang zu sicheren, inklusiven und zugänglichen Grünflächen und öffentlichen Räumen gewährleisten, insbesondere für Frauen und Kinder, ältere Menschen und Menschen mit Behinderungen","11-a-title":"Durch eine verstärkte nationale und regionale Entwicklungsplanung positive wirtschaftliche, soziale und ökologische Verbindungen zwischen städtischen, stadtnahen und ländlichen Gebieten unterstützen","11-b-title":"Bis 2020 die Zahl der Städte und Siedlungen, die integrierte Politiken und Pläne zur Förderung der Inklusion, der Ressourceneffizienz, der Abschwächung des Klimawandels, der Klimaanpassung und der Widerstandsfähigkeit gegenüber Katastrophen beschließen und umsetzen, wesentlich erhöhen und gemäß dem Sendai-Rahmen für Katastrophenvorsorge 2015-2030 ein ganzheitliches Katastrophenrisikomanagement auf allen Ebenen entwickeln und umsetzen","11-c-title":"Die am wenigsten entwickelten Länder unter anderem durch finanzielle und technische Hilfe beim Bau nachhaltiger und widerstandsfähiger Gebäude unter Nutzung einheimischer Materialien unterstützen","12-1-title":"Den Zehnjahres-Programmrahmen für nachhaltige Konsum- und Produktionsmuster umsetzen, wobei alle Länder, an der Spitze die entwickelten Länder, Maßnahmen ergreifen, unter Berücksichtigung des Entwicklungsstands und der Kapazitäten der Entwicklungsländer","12-2-title":"Bis 2030 die nachhaltige Bewirtschaftung und effiziente Nutzung der natürlichen Ressourcen erreichen","12-3-title":"Bis 2030 die weltweite Nahrungsmittelverschwendung pro Kopf auf Einzelhandels und Verbraucherebene halbieren und die entlang der Produktions- und Lieferkette entstehenden Nahrungsmittelverluste einschließlich Nachernteverlusten verringern","12-4-title":"Bis 2020 einen umweltverträglichen Umgang mit Chemikalien und allen Abfällen während ihres gesamten Lebenszyklus in Übereinstimmung mit den vereinbarten internationalen Rahmenregelungen erreichen und ihre Freisetzung in Luft, Wasser und Boden erheblich verringern, um ihre nachteiligen Auswirkungen auf die menschliche Gesundheit und die Umwelt auf ein Mindestmaß zu beschränken","12-5-title":"Bis 2030 das Abfallaufkommen durch Vermeidung, Verminderung, Wiederverwertung und Wiederverwendung deutlich verringern","12-6-title":"Die Unternehmen, insbesondere große und transnationale Unternehmen, dazu ermutigen, nachhaltige Verfahren einzuführen und in ihre Berichterstattung Nachhaltigkeitsinformationen aufzunehmen","12-7-title":"In der öffentlichen Beschaffung nachhaltige Verfahren fördern, im Einklang mit den nationalen Politiken und Prioritäten","12-8-title":"Bis 2030 sicherstellen, dass die Menschen überall über einschlägige Informationen und das Bewusstsein für nachhaltige Entwicklung und eine Lebensweise in Harmonie mit der Natur verfügen","12-a-title":"Die Entwicklungsländer bei der Stärkung ihrer wissenschaftlichen und technologischen Kapazitäten im Hinblick auf den Übergang zu nachhaltigeren Konsum- und Produktionsmustern unterstützen","12-b-title":"Instrumente zur Beobachtung der Auswirkungen eines nachhaltigen Tourismus, der Arbeitsplätze schafft und die lokale Kultur und lokale Produkte fördert, auf die nachhaltige Entwicklung entwickeln und anwenden","12-c-title":"Die ineffiziente Subventionierung fossiler Brennstoffe, die zu verschwenderischem Verbrauch verleitet, durch Beseitigung von Marktverzerrungen entsprechend den nationalen Gegebenheiten rationalisieren, unter anderem durch eine Umstrukturierung der Besteuerung und die allmähliche Abschaffung dieser schädlichen Subventionen, um ihren Umweltauswirkungen Rechnung zu tragen, wobei die besonderen Bedürfnisse und Gegebenheiten der Entwicklungsländer in vollem Umfang berücksichtigt und die möglichen nachteiligen Auswirkungen auf ihre Entwicklung in einer die Armen und die betroffenen Gemeinwesen schützenden Weise so gering wie möglich gehalten werden","13-1-title":"Die Widerstandskraft und die Anpassungsfähigkeit gegenüber klimabedingten Gefahren und Naturkatastrophen in allen Ländern stärken","13-2-title":"Klimaschutzmaßnahmen in die nationalen Politiken, Strategien und Planungen einbeziehen","13-3-title":"Die Aufklärung und Sensibilisierung sowie die personellen und institutionellen Kapazitäten im Bereich der Abschwächung des Klimawandels, der Klimaanpassung, der Reduzierung der Klimaauswirkungen sowie der Frühwarnung verbessern","13-a-title":"Die Verpflichtung erfüllen, die von den Vertragsparteien des Rahmenübereinkommens der Vereinten Nationen über Klimaänderungen, die entwickelte Länder sind, übernommen wurde, bis 2020 gemeinsam jährlich 100 Milliarden Dollar aus allen Quellen aufzubringen, um den Bedürfnissen der Entwicklungsländer im Kontext sinnvoller Klimaschutzmaßnahmen und einer transparenten Umsetzung zu entsprechen, und den Grünen Klimafonds vollständig zu operationalisieren, indem er schnellstmöglich mit den erforderlichen Finanzmitteln ausgestattet wird","13-b-title":"Mechanismen zum Ausbau effektiver Planungs- und Managementkapazitäten im Bereich des Klimawandels in den am wenigsten entwickelten Ländern und kleinen Inselentwicklungsländern fördern, unter anderem mit gezielter Ausrichtung auf Frauen, junge Menschen sowie lokale und marginalisierte Gemeinwesen","14-1-title":"Bis 2025 alle Arten der Meeresverschmutzung, insbesondere durch vom Lande ausgehende Tätigkeiten und namentlich Meeresmüll und Nährstoffbelastung, verhüten und erheblich verringern","14-2-title":"Bis 2020 die Meeres- und Küstenökosysteme nachhaltig bewirtschaften und schützen, um unter anderem durch Stärkung ihrer Resilienz erhebliche nachteilige Auswirkungen zu vermeiden, und Maßnahmen zu ihrer Wiederherstellung ergreifen, damit die Meere wieder gesund und produktiv werden","14-3-title":"Die Versauerung der Ozeane auf ein Mindestmaß reduzieren und ihre Auswirkungen bekämpfen, unter anderem durch eine verstärkte wissenschaftliche Zusammenarbeit auf allen Ebenen","14-4-title":"Bis 2020 die Fangtätigkeit wirksam regeln und die Überfischung, die illegale, ungemeldete und unregulierte Fischerei und zerstörerische Fangpraktiken beenden und wissenschaftlich fundierte Bewirtschaftungspläne umsetzen, um die Fischbestände in kürzestmöglicher Zeit mindestens auf einen Stand zurückzuführen, der den höchstmöglichen Dauerertrag unter Berücksichtigung ihrer biologischen Merkmale sichert","14-5-title":"Bis 2020 mindestens 10 Prozent der Küsten- und Meeresgebiete im Einklang mit dem nationalen Recht und dem Völkerrecht und auf der Grundlage der besten verfügbaren wissenschaftlichen Informationen erhalten","14-6-title":"Bis 2020 bestimmte Formen der Fischereisubventionen untersagen, die zu Überkapazitäten und Überfischung beitragen, Subventionen abschaffen, die zu illegaler, ungemeldeter und unregulierter Fischerei beitragen, und keine neuen derartigen Subventionen einführen, in Anerkennung dessen, dass eine geeignete und wirksame besondere und differenzierte Behandlung der Entwicklungsländer und der am wenigsten entwickelten Länder einen untrennbaren Bestandteil der im Rahmen der Welthandelsorganisation geführten Verhandlungen über Fischereisubventionen bilden sollte","14-7-title":"Bis 2030 die sich aus der nachhaltigen Nutzung der Meeresressourcen ergebenden wirtschaftlichen Vorteile für die kleinen Inselentwicklungsländer und die am wenigsten entwickelten Länder erhöhen, namentlich durch nachhaltiges Management der Fischerei, der Aquakultur und des Tourismus","14-a-title":"Die wissenschaftlichen Kenntnisse vertiefen, die Forschungskapazitäten ausbauen und Meerestechnologien weitergeben, unter Berücksichtigung der Kriterien und Leitlinien der Zwischenstaatlichen Ozeanographischen Kommission für die Weitergabe von Meerestechnologie, um die Gesundheit der Ozeane zu verbessern und den Beitrag der biologischen Vielfalt der Meere zur Entwicklung der Entwicklungsländer, insbesondere der kleinen Inselentwicklungsländer und der am wenigsten entwickelten Länder, zu verstärken","14-b-title":"Den Zugang der handwerklichen Kleinfischer zu den Meeresressourcen und Märkten gewährleisten","14-c-title":"Die Erhaltung und nachhaltige Nutzung der Ozeane und ihrer Ressourcen verbessern und zu diesem Zweck das Völkerrecht umsetzen, wie es im Seerechtsübereinkommen der Vereinten Nationen niedergelegt ist, das den rechtlichen Rahmen für die Erhaltung und nachhaltige Nutzung der Ozeane und ihrer Ressourcen vorgibt, worauf in Ziffer 158 des Dokuments Die Zukunft, die wir wollen hingewiesen wird","15-1-title":"Bis 2020 im Einklang mit den Verpflichtungen aus internationalen Übereinkünften die Erhaltung, Wiederherstellung und nachhaltige Nutzung der Land- und Binnensüßwasser- Ökosysteme und ihrer Dienstleistungen, insbesondere der Wälder, der Feuchtgebiete, der Berge und der Trockengebiete, gewährleisten","15-2-title":"Bis 2020 die nachhaltige Bewirtschaftung aller Waldarten fördern, die Entwaldung beenden, geschädigte Wälder wiederherstellen und die Aufforstung und Wiederaufforstung weltweit beträchtlich erhöhen","15-3-title":"Bis 2030 die Wüstenbildung bekämpfen, die geschädigten Flächen und Böden einschließlich der von Wüstenbildung, Dürre und Überschwemmungen betroffenen Flächen sanieren und eine Welt anstreben, in der die Landverödung neutralisiert wird","15-4-title":"Bis 2030 die Erhaltung der Bergökosysteme einschließlich ihrer biologischen Vielfalt sicherstellen, um ihre Fähigkeit zur Erbringung wesentlichen Nutzens für die nachhaltige Entwicklung zu stärken","15-5-title":"Umgehende und bedeutende Maßnahmen ergreifen, um die Verschlechterung der natürlichen Lebensräume zu verringern, dem Verlust der biologischen Vielfalt ein Ende zu setzen und bis 2020 die bedrohten Arten zu schützen und ihr Aussterben zu verhindern","15-6-title":"Die ausgewogene und gerechte Aufteilung der sich aus der Nutzung der genetischen Ressourcen ergebenden Vorteile und den angemessenen Zugang zu diesen Ressourcen fördern, wie auf internationaler Ebene vereinbart","15-7-title":"Dringend Maßnahmen ergreifen, um der Wilderei und dem Handel mit geschützten Pflanzen- und Tierarten ein Ende zu setzen und dem Problem des Angebots illegaler Produkte aus wildlebenden Pflanzen und Tieren und der Nachfrage danach zu begegnen","15-8-title":"Bis 2020 Maßnahmen einführen, um das Einbringen invasiver gebietsfremder Arten zu verhindern, ihre Auswirkungen auf die Land- und Wasserökosysteme deutlich zu reduzieren und die prioritären Arten zu kontrollieren oder zu beseitigen","15-9-title":"Bis 2020 Ökosystem- und Biodiversitätswerte in die nationalen und lokalen Planungen, Entwicklungsprozesse, Armutsbekämpfungsstrategien und Gesamtrechnungssysteme einbeziehen","15-a-title":"Finanzielle Mittel aus allen Quellen für die Erhaltung und nachhaltige Nutzung der biologischen Vielfalt und der Ökosysteme aufbringen und deutlich erhöhen","15-b-title":"Erhebliche Mittel aus allen Quellen und auf allen Ebenen für die Finanzierung einer nachhaltigen Bewirtschaftung der Wälder aufbringen und den Entwicklungsländern geeignete Anreize für den vermehrten Einsatz dieser Bewirtschaftungsform bieten, namentlich zum Zweck der Walderhaltung und Wiederaufforstung","15-c-title":"Die weltweite Unterstützung von Maßnahmen zur Bekämpfung der Wilderei und des Handels mit geschützten Arten verstärken, unter anderem durch die Stärkung der Fähigkeit lokaler Gemeinwesen, Möglichkeiten einer nachhaltigen Existenzsicherung zu nutzen","16-1-title":"Alle Formen der Gewalt und die gewaltbedingte Sterblichkeit überall deutlich verringern","16-10-title":"Den öffentlichen Zugang zu Informationen gewährleisten und die Grundfreiheiten schützen, im Einklang mit den nationalen Rechtsvorschriften und völkerrechtlichen Übereinkünften","16-2-title":"Missbrauch und Ausbeutung von Kindern, den Kinderhandel, Folter und alle Formen von Gewalt gegen Kinder beenden","16-3-title":"Die Rechtsstaatlichkeit auf nationaler und internationaler Ebene fördern und den gleichberechtigten Zugang aller zur Justiz gewährleisten","16-4-title":"Bis 2030 illegale Finanz- und Waffenströme deutlich verringern, die Wiedererlangung und Rückgabe gestohlener Vermögenswerte verstärken und alle Formen der organisierten Kriminalität bekämpfen","16-5-title":"Korruption und Bestechung in allen ihren Formen erheblich reduzieren","16-6-title":"Leistungsfähige, rechenschaftspflichtige und transparente Institutionen auf allen Ebenen aufbauen","16-7-title":"Dafür sorgen, dass die Entscheidungsfindung auf allen Ebenen bedarfsorientiert, inklusiv, partizipatorisch und repräsentativ ist","16-8-title":"Die Teilhabe der Entwicklungsländer an den globalen Lenkungsinstitutionen erweitern und verstärken","16-9-title":"Bis 2030 insbesondere durch die Registrierung der Geburten dafür sorgen, dass alle Menschen eine rechtliche Identität haben","16-a-title":"Die zuständigen nationalen Institutionen namentlich durch internationale Zusammenarbeit beim Kapazitätsaufbau auf allen Ebenen zur Verhütung von Gewalt und zur Bekämpfung von Terrorismus und Kriminalität unterstützen, insbesondere in den Entwicklungsländern","16-b-title":"Nichtdiskriminierende Rechtsvorschriften und Politiken zugunsten einer nachhaltigen Entwicklung fördern und durchsetzen","17-1-title":"Die Mobilisierung einheimischer Ressourcen verstärken, einschließlich durch internationale Unterstützung für die Entwicklungsländer, um die nationalen Kapazitäten zur Erhebung von Steuern und anderen Abgaben zu verbessern","17-10-title":"Ein universales, regelgestütztes, offenes, nichtdiskriminierendes und gerechtes multilaterales Handelssystem unter dem Dach der Welthandelsorganisation fördern, insbesondere durch den Abschluss der Verhandlungen im Rahmen ihrer Entwicklungsagenda von Doha","17-11-title":"Die Exporte der Entwicklungsländer deutlich erhöhen, insbesondere mit Blick darauf, den Anteil der am wenigsten entwickelten Länder an den weltweiten Exporten bis 2020 zu verdoppeln","17-12-title":"Die rasche Umsetzung des zoll- und kontingentfreien Marktzugangs auf dauerhafter Grundlage für alle am wenigsten entwickelten Länder im Einklang mit den Beschlüssen der Welthandelsorganisation erreichen, unter anderem indem sichergestellt wird, dass die für Importe aus den am wenigsten entwickelten Ländern geltenden präferenziellen Ursprungsregeln transparent und einfach sind und zur Erleichterung des Marktzugangs beitragen","17-13-title":"Die globale makroökonomische Stabilität verbessern, namentlich durch Politikkoordinierung und Politikkohärenz","17-14-title":"Die Politikkohärenz zugunsten nachhaltiger Entwicklung verbessern","17-15-title":"Den politischen Spielraum und die Führungsrolle jedes Landes bei der Festlegung und Umsetzung von Politiken zur Armutsbeseitigung und für nachhaltige Entwicklung respektieren","17-16-title":"Die Globale Partnerschaft für nachhaltige Entwicklung ausbauen, ergänzt durch Multi-Akteur-Partnerschaften zur Mobilisierung und zum Austausch von Wissen, Fachkenntnissen, Technologie und finanziellen Ressourcen, um die Erreichung der Ziele für nachhaltige Entwicklung in allen Ländern und insbesondere in den Entwicklungsländern zu unterstützen","17-17-title":"Die Bildung wirksamer öffentlicher, öffentlich-privater und zivilgesellschaftlicher Partnerschaften aufbauend auf den Erfahrungen und Mittelbeschaffungsstrategien bestehender Partnerschaften unterstützen und fördern","17-18-title":"Bis 2020 die Unterstützung des Kapazitätsaufbaus für die Entwicklungsländer und namentlich die am wenigsten entwickelten Länder und die kleinen Inselentwicklungsländer erhöhen, mit dem Ziel, über erheblich mehr hochwertige, aktuelle und verlässliche Daten zu verfügen, die nach Einkommen, Geschlecht, Alter, Rasse, Ethnizität, Migrationsstatus, Behinderung, geografischer Lage und sonstigen im nationalen Kontext relevanten Merkmalen aufgeschlüsselt sind","17-19-title":"Bis 2030 auf den bestehenden Initiativen aufbauen, um Fortschrittsmaße für nachhaltige Entwicklung zu erarbeiten, die das Bruttoinlandsprodukt ergänzen, und den Aufbau der statistischen Kapazitäten der Entwicklungsländer unterstützen","17-2-title":"Sicherstellen, dass die entwickelten Länder ihre Zusagen im Bereich der öffentlichen Entwicklungshilfe voll einhalten, einschließlich der von vielen entwickelten Ländern eingegangenen Verpflichtung, die Zielvorgabe von 0,7 Prozent ihres Bruttonationaleinkommens für öffentliche Entwicklungshilfe zugunsten der Entwicklungsländer und 0,15 bis 0,20 Prozent zugunsten der am wenigsten entwickelten Länder zu erreichen; den Gebern öffentlicher Entwicklungshilfe wird nahegelegt, die Bereitstellung von mindestens 0,20 Prozent ihres Bruttonationaleinkommens zugunsten der am wenigsten entwickelten Länder als Zielsetzung zu erwägen","17-3-title":"Zusätzliche finanzielle Mittel aus verschiedenen Quellen für die Entwicklungsländer mobilisieren","17-4-title":"Den Entwicklungsländern dabei behilflich sein, durch eine koordinierte Politik zur Förderung der Schuldenfinanzierung, der Entschuldung beziehungsweise der Umschuldung die langfristige Tragfähigkeit der Verschuldung zu erreichen, und das Problem der Auslandsverschuldung hochverschuldeter armer Länder angehen, um die Überschuldung zu verringern","17-5-title":"Investitionsförderungssysteme für die am wenigsten entwickelten Länder beschließen und umsetzen","17-6-title":"Die regionale und internationale Nord-Süd- und Süd-Süd-Zusammenarbeit und Dreieckskooperation im Bereich Wissenschaft, Technologie und Innovation und den Zugang dazu verbessern und den Austausch von Wissen zu einvernehmlich festgelegten Bedingungen verstärken, unter anderem durch eine bessere Abstimmung zwischen den vorhandenen Mechanismen, insbesondere auf Ebene der Vereinten Nationen, und durch einen globalen Mechanismus zur Technologieförderung","17-7-title":"Die Entwicklung, den Transfer, die Verbreitung und die Diffusion von umweltverträglichen Technologien an die Entwicklungsländer zu gegenseitig vereinbarten günstigen Bedingungen, einschließlich Konzessions- und Vorzugsbedingungen, fördern","17-8-title":"Die Technologiebank und den Mechanismus zum Kapazitätsaufbau für Wissenschaft, Technologie und Innovation für die am wenigsten entwickelten Länder bis 2017 vollständig operationalisieren und die Nutzung von Grundlagentechnologien, insbesondere der Informations- und Kommunikationstechnologien, verbessern","17-9-title":"Die internationale Unterstützung für die Durchführung eines effektiven und gezielten Kapazitätsaufbaus in den Entwicklungsländern verstärken, um die nationalen Pläne zur Umsetzung aller Ziele für nachhaltige Entwicklung zu unterstützen, namentlich im Rahmen der Nord-Süd- und Süd-Süd-Zusammenarbeit und der Dreieckskooperation","2-1-title":"Bis 2030 den Hunger beenden und sicherstellen, dass alle Menschen, insbesondere die Armen und Menschen in prekären Situationen, einschließlich Kleinkindern, ganzjährig Zugang zu sicheren, nährstoffreichen und ausreichenden Nahrungsmitteln haben","2-2-title":"Bis 2030 alle Formen der Mangelernährung beenden, einschließlich durch Erreichung der international vereinbarten Zielvorgaben in Bezug auf Wachstumshemmung und Auszehrung bei Kindern unter 5 Jahren bis 2025, und den Ernährungsbedürfnissen von heranwachsenden Mädchen, schwangeren und stillenden Frauen und älteren Menschen Rechnung tragen","2-3-title":"Bis 2030 die landwirtschaftliche Produktivität und die Einkommen von kleinen Nahrungsmittel-produzenten, insbesondere von Frauen, Angehörigen indigener Völker, landwirtschaftlichen Familienbetrieben, Weidetierhaltern und Fischern, verdoppeln, unter anderem durch den sicheren und gleichberechtigten Zugang zu Grund und Boden, anderen Produktionsressourcen und Betriebsmitteln, Wissen, Finanzdienstleistungen, Märkten sowie Möglichkeiten für Wertschöpfung und außerlandwirtschaftliche Beschäftigung","2-4-title":"Bis 2030 die Nachhaltigkeit der Systeme der Nahrungsmittelproduktion sicherstellen und  resiliente landwirtschaftliche Methoden anwenden, die die Produktivität und den Ertrag steigern, zur Erhaltung der Ökosysteme beitragen, die Anpassungsfähigkeit an Klimaänderungen, extreme Wetterereignisse, Dürren, Überschwemmungen und andere Katastrophen erhöhen und die Flächen- und Bodenqualität schrittweise verbessern","2-5-title":"Bis 2020 die genetische Vielfalt von Saatgut, Kulturpflanzen sowie Nutz- und Haustieren und ihren wildlebenden Artverwandten bewahren, unter anderem durch gut verwaltete und diversifizierte Saatgut- und Pflanzenbanken auf nationaler, regionaler und internationaler Ebene, und den Zugang zu den Vorteilen aus der Nutzung der genetischen Ressourcen und des damit verbundenen traditionellen Wissens sowie die ausgewogene und gerechte Aufteilung dieser Vorteile fördern, wie auf internationaler Ebene vereinbart","2-a-title":"Die Investitionen in die ländliche Infrastruktur, die Agrarforschung und landwirtschaftliche Beratungsdienste, die Technologieentwicklung sowie Genbanken für Pflanzen und Nutztiere erhöhen, unter anderem durch verstärkte internationale Zusammenarbeit, um die landwirtschaftliche Produktionskapazität in den Entwicklungsländern und insbesondere den am wenigsten entwickelten Ländern zu verbessern","2-b-title":"Handelsbeschränkungen und -verzerrungen auf den globalen Agrarmärkten korrigieren und verhindern, unter anderem durch die parallele Abschaffung aller Formen von Agrarexportsubventionen und aller Exportmaßnahmen mit gleicher Wirkung im Einklang mit dem Mandat der Doha-Entwicklungsrunde","2-c-title":"Maßnahmen zur Gewährleistung des reibungslosen Funktionierens der Märkte für Nahrungsmittelrohstoffe und ihre Derivate ergreifen und den raschen Zugang zu Marktinformationen, unter anderem über Nahrungsmittelreserven, erleichtern, um zur Begrenzung der extremen Schwankungen der Nahrungsmittelpreise beizutragen","3-1-title":"Bis 2030 die weltweite Müttersterblichkeit auf unter 70 je 100.000 Lebendgeburten senken","3-2-title":"Bis 2030 den vermeidbaren Todesfällen bei Neugeborenen und Kindern unter 5 Jahren ein Ende setzen, mit dem von allen Ländern zu verfolgenden Ziel, die Sterblichkeit bei Neugeborenen mindestens auf 12 je 1.000 Lebendgeburten und bei Kindern unter 5 Jahren mindestens auf 25 je 1.000 Lebendgeburten zu senken","3-3-title":"Bis 2030 die Aids-, Tuberkulose- und Malariaepidemien und die vernachlässigten Tropenkrankheiten beseitigen und Hepatitis, durch Wasser übertragene Krankheiten und andere übertragbare Krankheiten bekämpfen","3-4-title":"Bis 2030 die Frühsterblichkeit aufgrund von nichtübertragbaren Krankheiten durch Prävention und Behandlung um ein Drittel senken und die psychische Gesundheit und das Wohlergehen fördern","3-5-title":"Die Prävention und Behandlung des Substanzmissbrauchs, namentlich des Suchtstoffmissbrauchs und des schädlichen Gebrauchs von Alkohol, verstärken","3-6-title":"Bis 2020 die Zahl der Todesfälle und Verletzungen infolge von Verkehrsunfällen weltweit halbieren","3-7-title":"Bis 2030 den allgemeinen Zugang zu sexual- und reproduktionsmedizinischer Versorgung, einschließlich Familienplanung, Information und Aufklärung, und die Einbeziehung der reproduktiven Gesundheit in nationale Strategien und Programme gewährleisten","3-8-title":"Die allgemeine Gesundheitsversorgung, einschließlich der Absicherung gegen finanzielle Risiken, den Zugang zu hochwertigen grundlegenden Gesundheitsdiensten und den Zugang zu sicheren, wirksamen, hochwertigen und bezahlbaren unentbehrlichen Arzneimitteln und Impfstoffen für alle erreichen","3-9-title":"Bis 2030 die Zahl der Todesfälle und Erkrankungen aufgrund gefährlicher Chemikalien und der Verschmutzung und Verunreinigung von Luft, Wasser und Boden erheblich verringern","3-a-title":"Die Durchführung des Rahmenübereinkommens der Weltgesundheitsorganisation zur Eindämmung des Tabakgebrauchs in allen Ländern nach Bedarf stärken","3-b-title":"Forschung und Entwicklung zu Impfstoffen und Medikamenten für übertragbare und nichtübertragbare Krankheiten, von denen hauptsächlich Entwicklungsländer betroffen sind, unterstützen, den Zugang zu bezahlbaren unentbehrlichen Arzneimitteln und Impfstoffen gewährleisten, im Einklang mit der Erklärung von Doha über das TRIPS-Übereinkommen und die öffentliche Gesundheit, die das Recht der Entwicklungsländer bekräftigt, die Bestimmungen in dem Übereinkommen über handelsbezogene Aspekte der Rechte des geistigen Eigentums über Flexibilitäten zum Schutz der öffentlichen Gesundheit voll auszuschöpfen, und insbesondere den Zugang zu Medikamenten für alle zu gewährleisten","3-c-title":"Die Gesundheitsfinanzierung und die Rekrutierung, Aus- und Weiterbildung und Bindung von Gesundheitsfachkräften in den Entwicklungsländern und insbesondere in den am wenigsten entwickelten Ländern und den kleinen Inselentwicklungsländern deutlich erhöhen","3-d-title":"Die Kapazitäten aller Länder, insbesondere der Entwicklungsländer, in den Bereichen Frühwarnung, Risikominderung und Management nationaler und globaler Gesundheitsrisiken stärken","4-1-title":"Bis 2030 sicherstellen, dass alle Mädchen und Jungen gleichberechtigt eine kostenlose und hochwertige Grund- und Sekundarschulbildung abschließen, die zu brauchbaren und effektiven Lernergebnissen führt","4-2-title":"Bis 2030 sicherstellen, dass alle Mädchen und Jungen Zugang zu hochwertiger frühkindlicher Erziehung, Betreuung und Vorschulbildung erhalten, damit sie auf die Grundschule vorbereitet sind","4-3-title":"Bis 2030 den gleichberechtigten Zugang aller Frauen und Männer zu einer erschwinglichen und hochwertigen fachlichen, beruflichen und tertiären Bildung einschließlich universitärer Bildung gewährleisten","4-4-title":"Bis 2030 die Zahl der Jugendlichen und Erwachsenen wesentlich erhöhen, die über die entsprechenden Qualifikationen einschließlich fachlicher und beruflicher Qualifikationen für eine Beschäftigung, eine menschenwürdige Arbeit und Unternehmertum verfügen","4-5-title":"Bis 2030 geschlechtsspezifische Disparitäten in der Bildung beseitigen und den gleichberechtigen Zugang der Schwachen in der Gesellschaft, namentlich von Menschen mit Behinderungen, Angehörigen indigener Völker und Kindern in prekären Situationen, zu allen Bildungs- und Ausbildungsebenen gewährleisten","4-6-title":"Bis 2030 sicherstellen, dass alle Jugendlichen und ein erheblicher Anteil der männlichen und weiblichen Erwachsenen lesen, schreiben und rechnen lernen","4-7-title":"Bis 2030 sicherstellen, dass alle Lernenden die notwendigen Kenntnisse und Qualifikationen zur Förderung nachhaltiger Entwicklung erwerben, unter anderem durch Bildung für nachhaltige Entwicklung und nachhaltige Lebensweisen, Menschenrechte, Geschlechtergleichstellung, eine Kultur des Friedens und der Gewaltlosigkeit, Weltbürgerschaft und die Wertschätzung kultureller Vielfalt und des Beitrags der Kultur zu nachhaltiger Entwicklung","4-a-title":"Bildungseinrichtungen bauen und ausbauen, die kinder-, behinderten- und geschlechtergerecht sind und eine sichere, gewaltfreie, inklusive und effektive Lernumgebung für alle bieten","4-b-title":"Bis 2020 weltweit die Zahl der verfügbaren Stipendien für Entwicklungsländer, insbesondere für die am wenigsten entwickelten Länder, die kleinen Inselentwicklungsländer und die afrikanischen Länder, zum Besuch einer Hochschule, einschließlich zur Berufsbildung und zu Informations- und Kommunikationstechnik-, Technik-, Ingenieurs- und Wissenschaftsprogrammen, in entwickelten Ländern und in anderen Entwicklungsländern wesentlich erhöhen","4-c-title":"Bis 2030 das Angebot an qualifizierten Lehrkräften unter anderem durch internationale Zusammenarbeit im Bereich der Lehrerausbildung in den Entwicklungsländern und insbesondere in den am wenigsten entwickelten Ländern und kleinen Inselentwicklungsländern wesentlich erhöhen","5-1-title":"Alle Formen der Diskriminierung von Frauen und Mädchen überall auf der Welt beenden","5-2-title":"Alle Formen von Gewalt gegen alle Frauen und Mädchen im öffentlichen und im privaten Bereich einschließlich des Menschenhandels und sexueller und anderer Formen der Ausbeutung beseitigen","5-3-title":"Alle schädlichen Praktiken wie Kinderheirat, Frühverheiratung und Zwangsheirat sowie die Genitalverstümmelung bei Frauen und Mädchen beseitigen","5-4-title":"Unbezahlte Pflege- und Hausarbeit durch die Bereitstellung öffentlicher Dienstleistungen und Infrastrukturen, Sozialschutzmaßnahmen und die Förderung geteilter Verantwortung innerhalb des Haushalts und der Familie entsprechend den nationalen Gegebenheiten anerkennen und wertschätzen","5-5-title":"Die volle und wirksame Teilhabe von Frauen und ihre Chancengleichheit bei der Übernahme von Führungsrollen auf allen Ebenen der Entscheidungsfindung im politischen, wirtschaftlichen und öffentlichen Leben sicherstellen","5-6-title":"Den allgemeinen Zugang zu sexueller und reproduktiver Gesundheit und reproduktiven Rechten gewährleisten, wie im Einklang mit dem Aktionsprogramm der Internationalen Konferenz über Bevölkerung und Entwicklung, der Aktionsplattform von Beijing und den Ergebnisdokumenten ihrer Überprüfungskonferenzen vereinbart","5-a-title":"Reformen durchführen, um Frauen die gleichen Rechte auf wirtschaftliche Ressourcen sowie Zugang zu Grundeigentum und zur Verfügungsgewalt über Grund und Boden und sonstige Vermögensformen, zu Finanzdienstleistungen, Erbschaften und natürlichen Ressourcen zu verschaffen, im Einklang mit den nationalen Rechtsvorschriften","5-b-title":"Die Nutzung von Grundlagentechnologien, insbesondere der Informations- und Kommunikationstechnologien, verbessern, um die Selbstbestimmung der Frauen zu fördern","5-c-title":"Eine solide Politik und durchsetzbare Rechtsvorschriften zur Förderung der Gleichstellung der Geschlechter und der Selbstbestimmung aller Frauen und Mädchen auf allen Ebenen beschließen und verstärken","6-1-title":"Bis 2030 den allgemeinen und gerechten Zugang zu einwandfreiem und bezahlbarem Trinkwasser für alle erreichen","6-2-title":"Bis 2030 den Zugang zu einer angemessenen und gerechten Sanitärversorgung und Hygiene für alle erreichen und der Notdurftverrichtung im Freien ein Ende setzen, unter besonderer Beachtung der Bedürfnisse von Frauen und Mädchen und von Menschen in prekären Situationen","6-3-title":"Bis 2030 die Wasserqualität durch Verringerung der Verschmutzung, Beendigung des Einbringens und Minimierung der Freisetzung gefährlicher Chemikalien und Stoffe, Halbierung des Anteils unbehandelten Abwassers und eine beträchtliche Steigerung der Wiederaufbereitung und gefahrlosen Wiederverwendung weltweit verbessern","6-4-title":"Bis 2030 die Effizienz der Wassernutzung in allen Sektoren wesentlich steigern und eine nachhaltige Entnahme und Bereitstellung von Süßwasser gewährleisten, um der Wasserknappheit zu begegnen und die Zahl der unter Wasserknappheit leidenden Menschen erheblich zu verringern","6-5-title":"Bis 2030 auf allen Ebenen eine integrierte Bewirtschaftung der Wasserressourcen umsetzen, gegebenenfalls auch mittels grenzüberschreitender Zusammenarbeit","6-6-title":"Bis 2020 wasserverbundene Ökosysteme schützen und wiederherstellen, darunter Berge, Wälder, Feuchtgebiete, Flüsse, Grundwasserleiter und Seen","6-a-title":"Bis 2030 die internationale Zusammenarbeit und die Unterstützung der Entwicklungsländer beim Kapazitätsaufbau für Aktivitäten und Programme im Bereich der Wasser- und Sanitärversorgung ausbauen, einschließlich der Wassersammlung und -speicherung, Entsalzung, effizienten Wassernutzung, Abwasserbehandlung, Wiederaufbereitungs- und Wiederverwendungstechnologien","6-b-title":"Die Mitwirkung lokaler Gemeinwesen an der Verbesserung der Wasserbewirtschaftung und der Sanitärversorgung unterstützen und verstärken","7-1-title":"Bis 2030 den allgemeinen Zugang zu bezahlbaren, verlässlichen und modernen Energiedienstleistungen sichern","7-2-title":"Bis 2030 den Anteil erneuerbarer Energie am globalen Energiemix deutlich erhöhen","7-3-title":"Bis 2030 die weltweite Steigerungsrate der Energieeffizienz verdoppeln","7-a-title":"Bis 2030 die internationale Zusammenarbeit verstärken, um den Zugang zur Forschung und Technologie im Bereich saubere Energie, namentlich erneuerbare Energie, Energieeffizienz sowie fortschrittliche und saubere Technologien für fossile Brennstoffe, zu erleichtern, und Investitionen in die Energieinfrastruktur und saubere Energietechnologien fördern","7-b-title":"Bis 2030 die Infrastruktur ausbauen und die Technologie modernisieren, um in den Entwicklungsländern und insbesondere in den am wenigsten entwickelten Ländern, den kleinen Inselentwicklungsländern und den Binnenentwicklungsländern im Einklang mit ihren jeweiligen Unterstützungsprogrammen moderne und nachhaltige Energiedienstleistungen für alle bereitzustellen","8-1-title":"Ein Pro-Kopf-Wirtschaftswachstum entsprechend den nationalen Gegebenheiten und insbesondere ein jährliches Wachstum des Bruttoinlandsprodukts von mindestens 7 Prozent in den am wenigsten entwickelten Ländern aufrechterhalten","8-10-title":"Die Kapazitäten der nationalen Finanzinstitutionen stärken, um den Zugang zu Bank-, Versicherungs- und Finanzdienstleistungen für alle zu begünstigen und zu erweitern","8-2-title":"Eine höhere wirtschaftliche Produktivität durch Diversifizierung, technologische Modernisierung und Innovation erreichen, einschließlich durch Konzentration auf mit hoher Wertschöpfung verbundene und arbeitsintensive Sektoren","8-3-title":"Entwicklungsorientierte Politiken fördern, die produktive Tätigkeiten, die Schaffung menschenwürdiger Arbeitsplätze, Unternehmertum, Kreativität und Innovation unterstützen, und die Formalisierung und das Wachstum von Kleinst-, Klein- und Mittelunternehmen unter anderem durch den Zugang zu Finanzdienstleistungen begünstigen","8-4-title":"Bis 2030 die weltweite Ressourceneffizienz in Konsum und Produktion Schritt für Schritt verbessern und die Entkopplung von Wirtschaftswachstum und Umweltzerstörung anstreben, im Einklang mit dem Zehnjahres-Programmrahmen für nachhaltige Konsum- und Produktionsmuster, wobei die entwickelten Länder die Führung übernehmen","8-5-title":"Bis 2030 produktive Vollbeschäftigung und menschenwürdige Arbeit für alle Frauen und Männer, einschließlich junger Menschen und Menschen mit Behinderungen, sowie gleiches Entgelt für gleichwertige Arbeit erreichen","8-6-title":"Bis 2020 den Anteil junger Menschen, die ohne Beschäftigung sind und keine Schul- oder Berufsausbildung durchlaufen, erheblich verringern","8-7-title":"Sofortige und wirksame Maßnahmen ergreifen, um Zwangsarbeit abzuschaffen, moderne Sklaverei und Menschenhandel zu beenden und das Verbot und die Beseitigung der schlimmsten Formen der Kinderarbeit, einschließlich der Einziehung und des Einsatzes von Kindersoldaten, sicherstellen und bis 2025 jeder Form von Kinderarbeit ein Ende setzen","8-8-title":"Die Arbeitsrechte schützen und sichere Arbeitsumgebungen für alle Arbeitnehmer, einschließlich der Wanderarbeitnehmer, insbesondere der Wanderarbeitnehmerinnen, und der Menschen in prekären Beschäftigungsverhältnissen, fördern","8-9-title":"Bis 2030 Politiken zur Förderung eines nachhaltigen Tourismus erarbeiten und umsetzen, der Arbeitsplätze schafft und die lokale Kultur und lokale Produkte fördert","8-a-title":"Die im Rahmen der Handelshilfe gewährte Unterstützung für die Entwicklungsländer und insbesondere die am wenigsten entwickelten Länder erhöhen, unter anderem durch den Erweiterten integrierten Rahmenplan für handelsbezogene technische Hilfe für die am wenigsten entwickelten Länder","8-b-title":"Bis 2020 eine globale Strategie für Jugendbeschäftigung erarbeiten und auf den Weg bringen und den Globalen Beschäftigungspakt der Internationalen Arbeitsorganisation umsetzen","9-1-title":"Eine hochwertige, verlässliche, nachhaltige und widerstandsfähige Infrastruktur aufbauen, einschließlich regionaler und grenzüberschreitender Infrastruktur, um die wirtschaftliche Entwicklung und das menschliche Wohlergehen zu unterstützen, und dabei den Schwerpunkt auf einen erschwinglichen und gleichberechtigten Zugang für alle legen","9-2-title":"Eine breitenwirksame und nachhaltige Industrialisierung fördern und bis 2030 den Anteil der Industrie an der Beschäftigung und am Bruttoinlandsprodukt entsprechend den nationalen Gegebenheiten erheblich steigern und den Anteil in den am wenigsten entwickelten Ländern verdoppeln","9-3-title":"Insbesondere in den Entwicklungsländern den Zugang kleiner Industrie- und anderer Unternehmen zu Finanzdienstleistungen, einschließlich bezahlbaren Krediten, und ihre Einbindung in Wertschöpfungsketten und Märkte erhöhen","9-4-title":"Bis 2030 die Infrastruktur modernisieren und die Industrien nachrüsten, um sie nachhaltig zu machen, mit effizienterem Ressourceneinsatz und unter vermehrter Nutzung sauberer und umweltverträglicher Technologien und Industrieprozesse, wobei alle Länder Maßnahmen entsprechend ihren jeweiligen Kapazitäten ergreifen","9-5-title":"Die wissenschaftliche Forschung verbessern und die technologischen Kapazitäten der Industriesektoren in allen Ländern und insbesondere in den Entwicklungsländern ausbauen und zu diesem Zweck bis 2030 unter anderem Innovationen fördern und die Anzahl der im Bereich Forschung und Entwicklung tätigen Personen je 1 Million Menschen sowie die öffentlichen und privaten Ausgaben für Forschung und Entwicklung beträchtlich erhöhen","9-a-title":"Die Entwicklung einer nachhaltigen und widerstandsfähigen Infrastruktur in den Entwicklungsländern durch eine verstärkte finanzielle, technologische und technische Unterstützung der afrikanischen Länder, der am wenigsten entwickelten Länder, der Binnenentwicklungsländer und der kleinen Inselentwicklungsländer erleichtern","9-b-title":"Die einheimische Technologieentwicklung, Forschung und Innovation in den Entwicklungsländern unterstützen, einschließlich durch Sicherstellung eines förderlichen politischen Umfelds, unter anderem für industrielle Diversifizierung und Wertschöpfung im Rohstoffbereich","9-c-title":"Den Zugang zur Informations- und Kommunikationstechnologie erheblich erweitern sowie anstreben, in den am wenigsten entwickelten Ländern bis 2020 einen allgemeinen und erschwinglichen Zugang zum Internet bereitzustellen"},"goal":{"description":"Klicken Sie auf das jeweilige Ziel, um Statistiken für die globalen Indikatoren des Sustainable Development Goal zu sehen.","indicators_for_goal":"Ziele und Indikatoren für Ziel anzeigen","next":"Nächstes Ziel","previous":"Vorheriges Ziel"},"header":{"alpha":"Alpha-Version","default_contrast":"Standard kontrast","disable_high_contrast":"Hoher Kontrast deaktivieren","disclaimer":"Diese Seite befindet sich im Entwicklungsstadium.Wir freuen uns über Ihre <a href=\"mailto:%email_contacts.suggestions\">Kommentare</a>.","enable_high_contrast":"Aktivieren Sie hohen Kontrast","hide_menu":"Navigationsmenü ausblenden","high_contrast":"Hoher kontrast","internet_explorer_message":"Wir haben festgestellt, dass Sie den Internet Explorer verwenden, um diese Website zu besuchen. Der Internet Explorer wird von Microsoft nicht mehr unterstützt. Aus diesem Grund hat diese Website ebenfalls die Unterstützung für alle Versionen des Internet Explorers eingestellt, einige Bereiche auf dieser Website werden daher nicht oder nur eingeschränkt funktionieren. Bitte verwenden Sie einen modernen Browser wie Edge, Chrome, Firefox oder Safari. Wenn Sie Schwierigkeiten haben, einen anderen Browser zu installieren oder darauf zuzugreifen, wenden Sie sich bitte an Ihr IT-Supportteam.","internet_explorer_message_title":"Der Internet-Browser wird nicht mehr unterstützt","logo_title":"Zur Homepage gehen","show_menu":"Navigationsmenü anzeigen","skip_link":"Zum Hauptinhalt springen","tag_line":"17 Ziele, um unsere Welt zu verändern","toggle_menu":"Menü umschalten. Klicken Sie darauf, um das Menü zu erweitern oder zu reduzieren.","toggle_search":"Umschalten der Suche. Klicken Sie darauf, um die Suchleiste ein- oder auszublenden."},"indicator":{"annotation_2030_target":"2030 Ziel","announce_data_added":"Diagramm und Tabelle wurden aktualisiert, um die Daten einzubeziehen.","announce_data_not_available":"Diagramm und Tabelle zeigen keine Daten.","announce_data_removed":"Diagramm und Tabelle aktualisiert, um Daten auszuschließen.","apply":"Bewerbung","cancel":"Abbrechen","change_breakdowns":"Aufschlüsselungen ändern","chart":"Grafik","chart_annotation":"Diagramm-Anmerkung","clear_all":"Auswahl aufheben","clear_selections":"Auswahl aufheben","data_keyboard_navigation":"Drücken Sie die Eingabetaste, um mit den Pfeiltasten nach links und rechts durch die Datenpunkte zu blättern.","data_not_available":"Diese Daten sind nicht verfügbar. Bitte wählen Sie alternative Daten aus, die angezeigt werden sollen.","data_tabular_alternative":"Für tabellarische Daten alternativ siehe Registerkarte Tabelle.","dataset_size_warning":"Zu viele Zeitreihen ausgewählt um diese in einer Grafik darzustellen. Es können nicht alle Zeitreihen dargestellt werden.","download_chart":"Grafik im CSV-Format speichern","download_chart_image":"Grafik herunterladen","download_chart_image_title":"Grafik als Bild herunterladen","download_csv":"im CSV-Format speichern","download_csv_title":"im CSV-Format speichern","download_geojson":"im GeoJSON-Format speichern","download_geojson_title":"im GeoJSON-Format speichern","download_headline":"Speichern der Headline im CSV-Format","download_headline_title":"Speichern der Headline im CSV-Format","download_source":"Daten im CSV-Format speichern","download_source_for_disaggregations":"Quell-CSV für Disaggregationen herunterladen","download_source_sdmx":"Daten im SDMX-Format speichern","download_source_sdmx_title":"Daten im SDMX-Format speichern","download_source_title":"Daten im CSV-Format speichern","download_table":"Tabelle im CSV-Format speichern","edit":"Bearbeiten","edit_configuration":"Konfiguration bearbeiten","edit_data":"Daten bearbeiten","edit_metadata":"Metadaten bearbeiten","empty_metadata_placeholder":"Für diesen Indikator nicht verfügbar","empty_metadata_placeholder_sources":"Für diese Quelle nicht verfügbar","footnote":"Fußnote","geographical_area":"Geographische Abdeckung","global_metadata":"Globale Metadaten","global_metadata_blurb":"Diese Übersicht stellt Informationen zu den globalen Metadaten des jeweiligen SDG-Indikators bereit. Die <a href=\"https://unstats.un.org/sdgs/metadata/\">globalen Metadaten</a> werden durch die Statistische Division der Vereinten Nationen bereitgestellt.","headline_data":"Schlagzeilendaten","legend_help":"Klicken Sie auf die Legende um Zeitreihen aus der Grafik zu entfernen.","loading":"Laden","loading_map":"Karte wird geladen","map":"Karte","map_fullscreen":"Karte im Vollbildmodus anzeigen","map_fullscreen_exit":"Karte im Vollbildmodus beenden","map_search":"Suche","map_search_cancel":"Übersichtliche Kartensuche","map_search_hide":"Suche ausblenden","map_search_show":"Suche anzeigen","map_slider_back":"Ansicht der Kartendaten für den vorherigen Zeitraum","map_slider_forward":"Ansicht der Kartendaten für den nächsten Zeitabschnitt","map_slider_keyboard":"Ansicht der Kartendaten über den gesamten Zeitraum mit den Pfeiltasten links und rechts","map_slider_mouse":"Navigieren in Kartendaten nach Zeiträumen","map_year_slider":"Jahr-Schieberegler","map_zoom_home":"Zurücksetzen auf den Standardkartenzoom","map_zoom_in":"Vergrößern der Karte","map_zoom_out":"Karte verkleinern","national_metadata":"Nationale Metadaten","national_metadata_blurb":"Im Folgenden werden Metadaten zu den national verfügbaren Zeitreihen für %country.name zum jeweiligen globalen SDG-Indikator bereitgestellt. Die angegebene Datenreihe ist die vergleichbarste, national verfügbare Zeitreihe. Entspricht die angezeigte Datenreihe voll den globalen Metadaten, so ist dennoch auf diese nationalen Metadaten für methodische sowie weitere länderspezifische Informationen hinzuweisen.","next":"Nächster Indikator","no_data_hint":"Aufgrund der bereits getroffenen Auswahl sind keine weiteren Auswahlmöglichkeiten verfügbar.","no_headline_data":"Keine Headline-Daten verfügbar","plot_legend_description":"Plot-Legende: Liste der im Diagramm enthaltenen Linien","previous":"Vorheriger Indikator","proxy":"Vollmacht","proxy_description":"Dieser Indikator enthält einige alternative Daten zu den von den Vereinten Nationen (UN) angegebenen. Dieser Indikator ist die beste Übereinstimmung, die derzeit verfügbar ist.","select_all":"Alle auswählen","series":"Reihe","series_help":"Wählen Sie Disaggregationsdimensionen aus, damit die verfügbaren Disaggregationskategorien angezeigt werden. Manche werden erst angezeigt, sobald eine Überkategorie ausgewählt wird.","source":"Datenquelle","sources":"Datenquellen","status":"Status des Indikators","sub_categories":"Disaggregationsdimensionen","sub_categories_show":"Unterkategorien anzeigen:","table":"Tabelle","table_column_sort":"Klicken Sie auf , um nach dieser Spalte zu sortieren","tags":"Tags","total":"Insgesamt","unit":"Einheit","unit_of_measurement":"Einheit","units_type":"Einheit","variable_hint":"Verfügbar","view_indicator_list":"Zeigt die Indikatorenliste zum SDG-Ziel an"},"languages":{"ar":"العربية","ca":"Català","cs":"Ćeština","de":"Deutsch","en":"English","es":"Español","fo":"Føroyskt","fr":"Français","hy":"ՀԱՅԵՐԵՆ","it":"Italiano","kk":"Қазақ","km":"ភាសាខ្មែរ","lo":"ພາສາລາວ","my":"မြန်မာ","nb_NO":"Bokmål","ne":"नेपाली","ru":"Pусский","tg":"Тоҷикӣ","tk":"Türkmençe","tr":"Türk","uk":"Українська","zh-Hans":"中文"},"menu":{"about":"Über uns","contact_us":"Kontakt","cookies":"Cookies","faq":"FAQ","guidance":"Technische Hinweise","menu":"Menü","publications":"Veröffentlichungen","reporting_status":"Berichtsstatus","updates":"Aktualisierungen"},"metadata_fields":{"ADJUSTMENT":"Anpassungen","CLASS_SYSTEM":"Klassifizierung","COLL_METHOD":"Methode der Datenerfassung","COMPARABILITY":"Vergleichbarkeit/Abweichung von internationalen Normen","COMPILING_ORG":"Datenkompilierer","CONTACT":"Daten-Reporter","CONTACT_EMAIL":"Kontakt-E-Mail","CONTACT_FUNCT":"Ansprechpartnerfunktion","CONTACT_MAIL":"Kontakt-Email","CONTACT_NAME":"Kontaktperson(en)","CONTACT_ORGANISATION":"Organisation","CONTACT_PHONE":"Kontakt-Telefonnummer","COVERAGE":"Datenverfügbarkeit und Disaggregation","DATA_COMP":"Berechnungsmethode","DATA_SOURCE":"Daten-Provider","DATA_VALIDATION":"Validierung","DOC_METHOD":"Den Ländern zur Verfügung stehende Methoden und Anleitungen für die Zusammenstellung der Daten auf nationaler Ebene","FREQ_COLL":"Kalender für die Datenerfassung","IMPUTATION":"Behandlung von fehlenden Werten (i) auf Länderebene und (ii) auf regionaler Ebene","IND_DEF_CON_CLASS":"Definition, Konzepte und Klassifizierungen","INST_MANDATE":"Institutioneller Auftrag","META_LAST_UPDATE":"Metadaten-Update","ORGANISATION_UNIT":"Kontakt Organisationseinheit","OTHER_DOC":"Referenzen und Dokumentation","OTHER_METHOD":"Andere methodische Überlegungen","QUALITY_ASSMNT":"Bewertung der Qualität","QUALITY_ASSURE":"Qualitätssicherung","QUALITY_MGMNT":"Qualitätsmanagement","RATIONALE":"Begründung","REC_USE_LIM":"Kommentare und Einschränkungen","REG_AGG":"Regionale Aggregate","REL_CAL_POLICY":"Kalender der Datenfreigabe","SDG_CUSTODIAN_AGENCIES":"Internationale Organisation(en), die für die globale Überwachung zuständig sind","SDG_GOAL":"Ziel","SDG_INDICATOR":"Indikator","SDG_INDICATOR_INFO":"Informationen zum Indikator","SDG_RELATED_INDICATORS":"Zugehörige Indikatoren","SDG_SERIES_DESCR":"Serie","SDG_TARGET":"Ziel","SOURCE_TYPE":"Datenquellen","SRC_TYPE_COLL_METHOD":"Datenquellentyp und Erfassungsmethode","STAT_CONC_DEF":"Definition und Konzepte","UNIT_MEASURE":"Maßeinheit","comments_limitations":"Kommentare und Einschränkungen","computation_calculations":"Methodik","computation_definitions":"Definitionen","computation_units":"Einheit","copyright":"Urheberrechte","goal_meta_link":"Link zu den globalen Metadaten","indicator":"Indikatorennummerierung","indicator_definition":"Globale Indikatorenbeschreibung","indicator_name":"Indikatorenbezeichnung","indicator_sort_order":"Indikatorenreihenfolge (in der Zielübersicht)","international_comparability":"Vergleichbarkeit mit internationalen Daten / Standards","national_data_update_url":"Daten zuletzt aktualisiert am","national_geographical_coverage":"Geographische Abdeckung","national_indicator_available":"Verfügbare Datenreihenbezeichnung","national_indicator_description":"Indikatorenbeschreibung","national_metadata_update_url":"Metadaten zuletzt aktualisiert am","other_info":"Weitere Informationen","quality_assurance":"Qualitätssicherung","rational_interpretation":"Vernunft und Interpretation","rationale_interpretation":"Vernunft und Interpretation","source_contact_1":"Kontaktinformationen","source_contact_2":"Kontaktinformationen","source_contact_3":"Kontaktinformationen","source_contact_4":"Kontaktinformationen","source_contact_5":"Kontaktinformationen","source_contact_6":"Kontaktinformationen","source_earliest_available_1":"Daten verfügbar seit","source_earliest_available_2":"Daten verfügbar seit","source_earliest_available_3":"Daten verfügbar seit","source_earliest_available_4":"Daten verfügbar seit","source_earliest_available_5":"Daten verfügbar seit","source_earliest_available_6":"Daten verfügbar seit","source_geographical_coverage_1":"Geographische Abdeckung","source_geographical_coverage_2":"Geographische Abdeckung","source_geographical_coverage_3":"Geographische Abdeckung","source_geographical_coverage_4":"Geographische Abdeckung","source_geographical_coverage_5":"Geographische Abdeckung","source_geographical_coverage_6":"Geographische Abdeckung","source_next_release_1":"Nächste Veröffentlichung am","source_next_release_2":"Nächste Veröffentlichung am","source_next_release_3":"Nächste Veröffentlichung am","source_next_release_4":"Nächste Veröffentlichung am","source_next_release_5":"Nächste Veröffentlichung am","source_next_release_6":"Nächste Veröffentlichung am","source_organisation_1":"Organisation","source_organisation_2":"Organisation","source_organisation_3":"Organisation","source_organisation_4":"Organisation","source_organisation_5":"Organisation","source_organisation_6":"Organisation","source_other_info_1":"Weitere Informationen","source_other_info_2":"Weitere Informationen","source_other_info_3":"Weitere Informationen","source_other_info_4":"Weitere Informationen","source_other_info_5":"Weitere Informationen","source_other_info_6":"Weitere Informationen","source_periodicity_1":"Periodizität","source_periodicity_2":"Periodizität","source_periodicity_3":"Periodizität","source_periodicity_4":"Periodizität","source_periodicity_5":"Periodizität","source_periodicity_6":"Periodizität","source_release_date_1":"Veröffentlichungsdatum","source_release_date_2":"Veröffentlichungsdatum","source_release_date_3":"Veröffentlichungsdatum","source_release_date_4":"Veröffentlichungsdatum","source_release_date_5":"Veröffentlichungsdatum","source_release_date_6":"Veröffentlichungsdatum","source_statistical_classification_1":"Statistische Klassifizierung","source_statistical_classification_2":"Statistische Klassifizierung","source_statistical_classification_3":"Statistische Klassifizierung","source_statistical_classification_4":"Statistische Klassifizierung","source_statistical_classification_5":"Statistische Klassifizierung","source_statistical_classification_6":"Statistische Klassifizierung","source_url_1":"Link zur Datenquelle","source_url_2":"Link zur Datenquelle","source_url_3":"Link zur Datenquelle","source_url_4":"Link zur Datenquelle","source_url_5":"Link zur Datenquelle","source_url_6":"Link zur Datenquelle","target":"Unterziel","target_id":"Unterzielnummerierung","un_custodian_agency":"VN Custodian Agency","un_designated_tier":"VN Tier Klassifikation"},"post":{"posts_by_category":"Beiträge geordnet nach Kategorien","view_all_in_category":"Alle Beiträge in der Kategorie „%category_name“ anzeigen"},"search":{"adjust_your_search":"Versuchen Sie, Ihre Suche anzupassen, um das zu finden, was Sie suchen.","did_you_mean":"meintest du","found_in":"gefunden unter","indicator_search":"Indikatorensuche","keywords":"Schlagworte","no_results":"Keine Ergebnisse","results_found":"Ergebnisse gefunden","search":"Suche","search_results_for":"Ergebnisse zu","site_search":"Suche vor Ort"},"status":{"description":"Der Berichtsstatus gibt einen Überblick darüber, wie viele Daten zu den Sustainable Development Goals (SDGs) %country.name meldet.","disaggregation_status":"Status der Disaggregation","disaggregation_status_by_field":"Disaggregation nach %Feld","disaggregation_status_complete":"Vollständig disaggregiert","disaggregation_status_inprogress":"Teilweise disaggregiert","disaggregation_status_notapplicable":"Außerhalb des Bereichs","disaggregation_status_notstarted":"Nicht disaggregiert","disaggregation_status_overall":"Gesamter Disaggregationsstatus","exploring_data_sources":"Datenquellenanalyse","no_data_available":"Keine Daten verfügbar","not_applicable":"Nicht zutreffend","not_specified":"Nicht angegeben","overall_reporting_status":"Gesamtstatus der Berichterstattung","progress_approaching_target":"Annäherung an das Ziel","progress_challenges_remain":"Herausforderungen bleiben bestehen","progress_help":"Wie weit sind wir mit dem Ziel für 2030?","progress_not_available":"Nicht verfügbar","progress_status":"Status des Fortschritts","progress_target_achieved":"Ziel erreicht","reported":"Gemeldet","reported_online":"Daten verfügbar","reporting_status":"Berichtsstatus","statistics_in_progress":"in Bearbeitung","status_by_field":"Status von %field","status_by_goal":"Status nach Ziel"}};
+
+    // Dynamic filtering functionality.
+    var configSearch = document.getElementById('config-search');
+    var configSearchButton = document.getElementById('config-search-button');
+    var configResetButton = document.getElementById('config-reset-button');
+    var resultsStatus = document.getElementById('results-status');
+    var itemSelector = 'div[data-schemapath="root"] > .well > div > div > .row';
+    configSearchButton.addEventListener('click', performSearch);
+    configSearch.addEventListener('keyup', function(e) {
+      if (e.key === "Enter") {
+        performSearch();
+      }
+    });
+    configResetButton.addEventListener('click', resetSearch);
+    function performSearch() {
+      var keywords = configSearch.value.toLowerCase();
+      var numResults = 0;
+      if (keywords.length > 0) {
+        var noMatches = true;
+        $(itemSelector).each(function(item) {
+          var title = $(this).find('label').first().text().toLowerCase();
+          if (title.includes(keywords)) {
+            noMatches = false;
+            $(this).show();
+            numResults += 1;
+          }
+          else {
+            $(this).hide();
+          }
+        });
+        if (noMatches) {
+          $(resultsStatus).text('There are no settings that match those keywords.');
+        }
+        else {
+          var settingsText = (numResults > 1) ? 'settings' : 'setting';
+          $(resultsStatus).text(numResults + ' matching ' + settingsText + ' found.');
+        }
+      }
+      else {
+        resetSearch();
+      }
+    };
+    function resetSearch() {
+      configSearch.value = '';
+      $(resultsStatus).text('');
+      $(itemSelector).show();
+    }
+
+    
+    
+    var schema = {"type":"object","title":"Open SDG indicator configuration","description":"This form will produce an indicator's configuration for your Open SDG implementation.","properties":{"composite_breakdown_label":{"type":"string","title":"Composite breakdown label","description":"Used as a label for the COMPOSITE_BREAKDOWN column, if it appears in the indicator data.","links":[{"rel":"More information on the composite breakdown label setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#composite-breakdown-label"}]},"computation_units":{"type":"string","title":"Unit of measurement","description":"Unit of measurement which displays below the indicator chart.","links":[{"rel":"More information on the units of measurement setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#recommended-special-fields"}]},"copyright":{"type":"string","title":"Copyright","description":"Copyright which displays below the indicator chart.","links":[{"rel":"More information on the copyright setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#footer"}]},"data_footnote":{"type":"string","format":"markdown","title":"Footnote","description":"Footnote which displays below the indicator chart.","links":[{"rel":"More information on the footnote setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#footer"}]},"data_non_statistical":{"title":"Non-statistical data","type":"boolean","description":"Whether the indicator is statistical (can be charted/graphed) or not.","format":"checkbox","links":[{"rel":"More information the non-statistical setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#mandatory-fields"}]},"data_notice_class":{"title":"Data notice - class","type":"string","description":"A CSS class to apply to the data notice for this indicator.","links":[{"rel":"More information on the data notice setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#data-notice"}]},"data_notice_heading":{"title":"Data notice - heading","type":"string","description":"A title to display above the data notice for this indicator.","links":[{"rel":"More information on the data notice heading setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#data-notice"}]},"data_notice_text":{"title":"Data notice - text","type":"string","format":"markdown","description":"Text to display as a data notice for this indicator, intended to contain very important information which site viewers must keep in mind when using the data provided.","links":[{"rel":"More information on the data notice text setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#data-notice"}]},"data_show_map":{"title":"Show map","type":"boolean","description":"Whether the indicator should display a Map tab.","format":"checkbox","links":[{"rel":"More information on the map setting","href":"https://open-sdg.readthedocs.io/en/latest/maps/#metadata-field-data_show_map"}]},"data_start_values":{"options":{"collapsed":true},"type":"array","title":"Starting values","description":"Disaggregation values for a an indicator to start with already selected","items":{"type":"object","title":"Starting value","properties":{"field":{"type":"string","minLength":1,"title":"Field","description":"The field (column) name."},"value":{"type":"string","minLength":1,"title":"Value","description":"The value in that field to pre-select."}}},"links":[{"rel":"More information on the starting values setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#starting-values"}]},"embedded_feature_footer":{"type":"string","format":"markdown","title":"Embedded feature - Footer","description":"A footer that displays below the embedded feature. Only used with either embedded_feature_url or embedded_feature_html.","links":[{"rel":"More information on the embed footer setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#embedded-feature-metadata"}]},"embedded_feature_html":{"type":"string","format":"textarea","title":"Embedded feature - HTML","description":"Any HTML to display in another tab, after Chart/Table/etc.","links":[{"rel":"More information on the embed HTML setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#embedded-feature-metadata"}]},"embedded_feature_tab_title":{"type":"string","title":"Embedded feature - Tab Title","description":"A title for the embedded feature tab (ie, Chart/Table/[this]). Only used with either embedded_feature_url or embedded_feature_html.","links":[{"rel":"More information on the embed tab title setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#embedded-feature-metadata"}]},"embedded_feature_title":{"type":"string","title":"Embedded feature - Title","description":"A title that displays above the embedded feature. Only used with either embedded_feature_url or embedded_feature_html.","links":[{"rel":"More information on the embed title setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#embedded-feature-metadata"}]},"embedded_feature_url":{"type":"string","format":"url","title":"Embedded feature - URL","description":"Any URL to display as an iframe in another tab, after Chart/Table/etc.","links":[{"rel":"More information on the embed URL setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#embedded-feature-metadata"}]},"expected_disaggregations":{"options":{"collapsed":true},"type":"array","title":"Expected disaggregations","description":"An optional list of disaggregations (ie, data column names) to use when calculating the disaggregation status statistics.","items":{"type":"string","title":"Expected disaggregation"},"links":[{"rel":"More information on the expected disaggregation setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#recommended-special-fields"}]},"footer_fields":{"options":{"collapsed":true},"type":"array","title":"Footer fields","description":"Additional arbitrary information to display beneath the graph/table.","items":{"type":"object","title":"Footer field","allOf":[{"$ref":"#/definitions/series_unit_constraint"},{"properties":{"label":{"type":"string","title":"Label","description":"The label for the field"},"value":{"type":"string","title":"Value","description":"The value/content for the field"}}}]}},"graph_annotations":{"options":{"collapsed":true},"type":"array","title":"Graph annotations","description":"This can be used to add line annotations to the graph, such as target lines to show the progress towards the 2030 goal for an indicator.","items":{"type":"object","title":"Graph annotation","allOf":[{"$ref":"#/definitions/series_unit_constraint"},{"properties":{"value":{"type":"number","minimum":0,"title":"Value","description":"The value at which to draw the line. For horizontal lines, this number corresponds to your actual data. For vertical lines, this number should be between 0 (the left side of the chart) and the number of years minus 1 (the right side of the chart)."},"endValue":{"type":"number","title":"End value","description":"Optionally add a different ending value for the line."},"description":{"type":"string","title":"Description","description":"A description of the annotation to be read by screenreaders."},"mode":{"type":"string","title":"Mode","description":"Whether the line will be vertical or horizontal.","enum":["horizontal","vertical"]},"borderColor":{"type":"string","format":"color","title":"Line color","default":"#949494","description":"The color of the line.","links":[{"rel":"More information on the border color setting","href":"https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md"}]},"borderDash":{"type":"array","title":"Line dash type","description":"The type of line dash.","default":[10,5],"items":{"type":"number"},"minItems":2,"links":[{"rel":"More information on the line dash setting","href":"https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md"}]},"label":{"type":"object","title":"Label","description":"A text label for the annotation.","properties":{"position":{"type":"string","title":"Position","description":"Placement of the label along the line.","enum":["top","bottom","left","right","center"]},"content":{"type":"string","minLength":1,"title":"Content","description":"Text of the line label."},"fontColor":{"type":"string","format":"color","title":"Label color","description":"Color for the label text.","default":"#000000"},"backgroundColor":{"type":"string","format":"color","default":"#ffffff","title":"Background color","description":"Background color for the label text."}}},"highContrast":{"type":"object","title":"High contrast options","description":"High-contrast overrides of certain color.","properties":{"borderColor":{"type":"string","format":"color","default":"#ffffff","title":"High-contrast line color","description":"The color of the line in high-contrast mode."},"label":{"type":"object","title":"High contrast label","description":"High-contrast version of the label.","properties":{"fontColor":{"type":"string","format":"color","default":"#ffffff","title":"High-contrast label color","description":"Color for the label text in high-contrast mode."},"backgroundColor":{"type":"string","format":"color","default":"#000000","title":"High-contrast background color","description":"Background color for the label text in high-contrast mode."}}}}}}}]},"links":[{"rel":"More information on the graph annotations setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#graph-metadata"}]},"graph_limits":{"options":{"collapsed":true},"type":"array","title":"Graph limits","description":"A list of min/max limits controlling the lowest/highest values to be shown on the y-axis.","items":{"type":"object","title":"Graph limit","allOf":[{"$ref":"#/definitions/series_unit_constraint"},{"properties":{"minimum":{"type":"number","minimum":0,"title":"Minimum","description":"Minimum value for the y axis."},"maximum":{"type":"number","minimum":0,"title":"Maximum","description":"Maximum value for the y axis."}}}]},"links":[{"rel":"More information on the graph limits setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#graph-metadata"}]},"graph_series_breaks":{"options":{"collapsed":true},"type":"array","title":"Graph series breaks","description":"A list of series break (ie, a gap among the years) lines to display on the graph.","items":{"type":"object","title":"Series break","allOf":[{"$ref":"#/definitions/series_unit_constraint"},{"properties":{"label_content":{"type":"string","title":"Label content","default":"indicator.annotation_series_break","description":"The text to display for this series break."},"value":{"type":"number","title":"Value","description":"The numeric value at which to place the series break. This number should be between 0 (the left side of the chart) and the number of years minus 1 (the right side of the chart)."}}}]},"links":[{"rel":"More information on the graph target lines setting","href":"https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#graph_series_breaks"}]},"graph_stacked_disaggregation":{"type":"string","title":"Stacked disaggregation","description":"This can be used with the bar graph type to place a certain disaggregation into the same stacked bars.","links":[{"rel":"More information on the stacked disaggregation setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#recommended-special-fields"}]},"graph_target_lines":{"options":{"collapsed":true},"type":"array","title":"Graph target lines","description":"A list of target lines to display on the graph.","items":{"type":"object","title":"Target line","allOf":[{"$ref":"#/definitions/series_unit_constraint"},{"properties":{"label_content":{"type":"string","title":"Label content","default":"indicator.annotation_2030_target","description":"The text to display for this target line."},"value":{"type":"number","title":"Value","description":"The numeric value at which to place the target line."}}}]},"links":[{"rel":"More information on the graph target lines setting","href":"https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#graph_target_lines"}]},"graph_title":{"type":"string","title":"Graph title","description":"The title that displays above the graph/chart.","links":[{"rel":"More information on the graph title setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#mandatory-for-statistical-indicators"}]},"graph_titles":{"options":{"collapsed":true},"type":"array","title":"Graph titles","description":"As an alternative to `graph_title`, this can be used to set specific titles for particular units and/or series.","items":{"type":"object","title":"Graph title","allOf":[{"$ref":"#/definitions/series_unit_constraint"},{"properties":{"title":{"type":"string","minLength":1,"title":"Title","description":"The graph title."}}}]}},"graph_type":{"type":"string","title":"Graph type","description":"What type of graph to use for the indicator.","enum":["line","bar","binary"],"links":[{"rel":"More information on the graph titles setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#mandatory-for-statistical-indicators"}]},"indicator_available":{"type":"string","title":"Indicator available","description":"An optional sub-title for the indicator, which displays below the indicator name. Intended for cases where the available data is slightly different than the indicator name.","links":[{"rel":"More information on the indicator available setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#recommended-special-fields"}]},"indicator_name":{"type":"string","title":"Indicator name","description":"The name for the indicator, which displays at the top of the indicator page.","links":[{"rel":"More information on the indicator name setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#mandatory-fields"}]},"indicator_number":{"type":"string","title":"Indicator number","description":"The number (or 'id') for the indicator.","links":[{"rel":"More information on the indicator number setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#mandatory-fields"}]},"indicator_tabs":{"options":{"collapsed":true},"type":"object","title":"Indicator tabs","description":"Assign content for the indicator tabs, if the override box is checked. Otherwise this indicator will use the assignments set in your site configuration.","properties":{"override":{"type":"boolean","title":"Override site configuration","description":"If checked, the site-wide indicator tab configuration will be ignored for this indicator.","format":"checkbox"},"tab_1":{"type":"string","title":"Tab 1","description":"What to display in the first tab","$ref":"#/definitions/indicator_tabs_options"},"tab_2":{"type":"string","title":"Tab 2","description":"What to display in the second tab","$ref":"#/definitions/indicator_tabs_options"},"tab_3":{"type":"string","title":"Tab 3","description":"What to display in the third tab","$ref":"#/definitions/indicator_tabs_options"},"tab_4":{"type":"string","title":"Tab 4","description":"What to display in the fourth tab","$ref":"#/definitions/indicator_tabs_options"}}},"national_geographical_coverage":{"type":"string","title":"National geographical coverage","description":"A label used in the absence of any disaggregation.","links":[{"rel":"More information on the geographical coverage setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#mandatory-for-statistical-indicators"}]},"page_content":{"type":"string","format":"markdown","title":"Page content","description":"Content which displays in the main content area of the indicator page."},"permalink":{"type":"string","title":"Permalink","description":"Overrides the normal path of the indicator page. Not recommended, execpt for 'standalone' indicators.","links":[{"rel":"More information the permalink setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#standalone-indicators"}]},"placeholder":{"title":"Placeholder indicator","type":"string","description":"Entering text here identifies this as a 'placeholder' indicator. The text will be displayed on the goal page, in place of a link to the indicator page.","format":"textarea","links":[{"rel":"More information the placeholder setting","href":"https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#placeholder"}]},"precision":{"options":{"collapsed":true},"type":"array","title":"Precision rules","description":"Control the number of decimal places for data in this indicator.","items":{"type":"object","title":"Precision rule","allOf":[{"$ref":"#/definitions/series_unit_constraint"},{"properties":{"decimals":{"type":"number","title":"Decimals","description":"The number of decimal places"}}}]}},"progress_status":{"type":"string","title":"Progress status","enum":["not_available","challenges_remain","approaching_target","target_achieved"],"description":"The progress status of the indicator.","links":[{"rel":"More information on the progress status setting","href":"https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#progress-status"}]},"proxy":{"title":"Proxy indicator","type":"string","description":"Whether the indicator is a 'proxy' (meaning that it is somehow different than the globally-defined SDG indicator).","enum":["","proxy","both"],"options":{"enum_titles":["Not a proxy indicator (default)","Proxy indicator","Both (contains both a proxy series and a non-proxy series)"]},"links":[{"rel":"More information the proxy setting","href":"https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#proxy"}]},"proxy_series":{"options":{"collapsed":true},"type":"array","title":"Proxy indicator - per series","description":"A list of each series within this indicator that should be considered a proxy (meaning that it is different somehow from the globally-defined series). Only needed if you chose 'Mixed series' above.","items":{"type":"string","title":"Series"},"links":[{"rel":"More information on the proxy_series setting","href":"https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#proxy_series"}]},"publications":{"options":{"collapsed":true},"type":"array","title":"Publications","description":"This setting controls the content of the 'Related publications' tab. It can contain any number of publications. You may have much of this information in the indicator metadata, but this configuration is available to supplement the metadata with a more structured way to list multiple publications.","items":{"type":"object","title":"Publication","properties":{"title":{"type":"string","title":"Title"},"link":{"type":"string","title":"Link"},"description":{"type":"string","title":"description","format":"markdown"},"date":{"type":"string","title":"Date"}}},"links":[{"rel":"More information on the publications setting","href":"https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#publications"}]},"related_indicators":{"options":{"collapsed":true},"type":"array","title":"Related indicators","description":"This setting controls the 'Related indicators' tab. Specify indicators by using their indicator numbers, such as: 1.1.1","items":{"type":"string","title":"Related indicator"},"links":[{"rel":"More information on the related_indicators setting","href":"https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#related_indicators"}]},"reporting_status":{"type":"string","title":"Reporting status","enum":["complete","inprogress","notstarted","notapplicable"],"description":"The reporting status of the indicator.","links":[{"rel":"More information on the reporting status setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#mandatory-fields"}]},"sort":{"type":"string","title":"Sort order","description":"Override the default order in which this indicator is displayed in lists. This can be left blank, and it will be automatically determined.","links":[{"rel":"More information on the sort setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#sorting-in-lists"}]},"sources":{"options":{"collapsed":true},"type":"array","title":"Sources","description":"This setting controls the content of the 'Sources' tab. It can contain any number sources. You may have much of this information in the metadata, but this configuration is available to supplement the metadata with a more structured way to list multiple sources.","items":{"type":"object","title":"Source","properties":{"organisation":{"type":"string","title":"Organisation"},"periodicity":{"type":"string","title":"Periodicity"},"earliest_available":{"type":"string","title":"Earliest available data"},"geographical_coverage":{"type":"string","title":"Geographical coverage"},"url":{"type":"string","title":"URL"},"url_text":{"type":"string","title":"URL text"},"release_date":{"type":"string","title":"Release date"},"next_release":{"type":"string","title":"Next release"},"statistical_classification":{"type":"string","title":"Statistical classification"},"contact":{"type":"string","title":"Contact"},"other_info":{"type":"string","title":"Other information","format":"markdown"},"logo":{"type":"string","title":"Path to logo image"}}},"links":[{"rel":"More information on the sources setting","href":"https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#sources"}]},"standalone":{"title":"Standalone indicator","type":"boolean","description":"Whether the indicator is standalone (separate from the SDGs) or not.","format":"checkbox","links":[{"rel":"More information the standalone setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#standalone-indicators"}]},"tags":{"options":{"collapsed":true},"type":"array","title":"Tags","description":"An optional list of 'tags' to display under an indicator when it is listed on its goal page.","items":{"type":"string","title":"Tag"},"links":[{"rel":"More information on the tags setting","href":"https://open-sdg.readthedocs.io/en/latest/metadata-format/#recommended-special-fields"}]},"x_axis_label":{"type":"string","title":"X axis label","description":"A label beneath the X axis on charts. This overrides the same site configuration setting.","links":[{"rel":"More information on the X axis label setting","href":"https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#x_axis_label"}]}},"additionalProperties":true,"definitions":{"series_unit_constraint":{"type":"object","properties":{"series":{"type":"string","title":"Series","description":"Limit to this particular series"},"unit":{"type":"string","title":"Unit","description":"Limit to this particular unit"}}},"indicator_tabs_options":{"enum":["","chart","table","map","embed","hide"],"options":{"enum_titles":["","Chart","Table","Map","Embed","Hide this tab"]}}}};
+    
+      
+        
+      
+    
+
+    function normalizeCurrentValue(key, value) {
+      // This space for backwards-compat fixes.
+      return value;
+    }
+
+    // Change the theme to create div instead of H3 elements for headers.
+    JSONEditor.defaults.themes.bootstrap3.prototype.getHeader = function(text) {
+      var el = document.createElement('div')
+      if (typeof text === 'string') {
+        el.textContent = text;
+      } else {
+        el.appendChild(text);
+      }
+      el.classList.add('je-header');
+      return el;
+    }
+
+    var editor = new JSONEditor(document.getElementById('editor_holder'), {
+      theme: 'bootstrap3',
+      iconlib: 'fontawesome4',
+      disable_array_delete_all_rows: true,
+      disable_array_delete_last_row: true,
+      disable_array_reorder: true,
+      disable_edit_json: true,
+      disable_properties: true,
+      required_by_default: true,
+
+      // The schema for the editor
+      schema: schema
+    });
+
+    function collapseButtonClick() {
+      var title = this.getAttribute('title');
+      this.setAttribute('aria-expanded', title === 'Collapse');
+      var ariaLabel = this.getAttribute('aria-label');
+      if (title === 'Collapse') {
+        ariaLabel = ariaLabel.replace('Expand', 'Collapse');
+      }
+      else {
+        ariaLabel = ariaLabel.replace('Collapse', 'Expand');
+      }
+      this.setAttribute('aria-label', ariaLabel);
+    }
+
+    function propertyEditorTranslationLinks(propertyEditor) {
+      try {
+        if (typeof propertyEditor.value === 'undefined') {
+          return;
+        }
+        switch (propertyEditor.schema.type) {
+          case 'string':
+            if (isTranslationKey(propertyEditor.value)) {
+              addTranslationLink(propertyEditor);
+            }
+            break;
+          case 'array':
+          case 'object':
+            if (typeof propertyEditor.editors !== 'undefined') {
+              var editorKeys = Object.keys(propertyEditor.editors);
+              for (var i = 0; i < editorKeys.length; i++) {
+                var editorKey = editorKeys[i];
+                propertyEditorTranslationLinks(propertyEditor.editors[editorKey]);
+              }
+            }
+            if (typeof propertyEditor.rows !== 'undefined') {
+              for (var i = 0; i < propertyEditor.rows.length; i++) {
+                propertyEditorTranslationLinks(propertyEditor.rows[i]);
+              }
+            }
+            break;
+        }
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to add translation links: ' + propertyEditor.formname);
+      }
+    }
+
+    function propertyEditorAccessibilityFixes(propertyEditor) {
+      try {
+        // Variety of accessibility fixes.
+        switch (propertyEditor.schema.type) {
+          case 'string':
+          case 'integer':
+          case 'boolean':
+          case 'number':
+            propertyEditor.input.setAttribute('id', propertyEditor.formname);
+            propertyEditor.label.setAttribute('for', propertyEditor.formname);
+            if (typeof propertyEditor.description !== 'undefined') {
+              var descriptionId = propertyEditor.formname + '-description';
+              propertyEditor.description.setAttribute('id', descriptionId);
+              propertyEditor.input.setAttribute('aria-describedby', descriptionId);
+            }
+            break;
+          case 'array':
+          case 'object':
+            var toggleButton = (propertyEditor.schema.type === 'array') ? propertyEditor.toggle_button : propertyEditor.collapse_control;
+            var headerId = propertyEditor.formname + '-header';
+            propertyEditor.header.setAttribute('id', headerId);
+            var headerText = propertyEditor.header.innerHTML;
+            if (typeof propertyEditor.description !== 'undefined') {
+              var descriptionId = propertyEditor.formname + '-description';
+              propertyEditor.description.setAttribute('id', descriptionId);
+            }
+            if (typeof toggleButton !== 'undefined') {
+              toggleButton.setAttribute('aria-label', 'Activate to Collapse the ' + headerText + ' section.')
+              collapseButtonClick.call(toggleButton);
+              toggleButton.addEventListener('click', collapseButtonClick);
+              if (typeof propertyEditor.description !== 'undefined') {
+                toggleButton.setAttribute('aria-describedby', descriptionId);
+              }
+            }
+            if (typeof propertyEditor.editors !== 'undefined') {
+              var editorKeys = Object.keys(propertyEditor.editors);
+              for (var i = 0; i < editorKeys.length; i++) {
+                var editorKey = editorKeys[i];
+                propertyEditorAccessibilityFixes(propertyEditor.editors[editorKey]);
+              }
+            }
+            if (typeof propertyEditor.rows !== 'undefined') {
+              for (var i = 0; i < propertyEditor.rows.length; i++) {
+                propertyEditorAccessibilityFixes(propertyEditor.rows[i]);
+              }
+            }
+            break;
+        }
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to do accessibility fixes: ' + propertyEditor.formname);
+      }
+    }
+
+    // Set values according to this site's configuration.
+    
+      try {
+        var currentValue = normalizeCurrentValue('composite_breakdown_label', "");
+        var propertyEditor = editor.getEditor('root.composite_breakdown_label');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: composite_breakdown_label');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.composite_breakdown_label'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('computation_units', "");
+        var propertyEditor = editor.getEditor('root.computation_units');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: computation_units');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.computation_units'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('copyright', "");
+        var propertyEditor = editor.getEditor('root.copyright');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: copyright');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.copyright'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('data_footnote', "");
+        var propertyEditor = editor.getEditor('root.data_footnote');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: data_footnote');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.data_footnote'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.data_non_statistical'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('data_notice_class', "");
+        var propertyEditor = editor.getEditor('root.data_notice_class');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: data_notice_class');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.data_notice_class'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('data_notice_heading', "");
+        var propertyEditor = editor.getEditor('root.data_notice_heading');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: data_notice_heading');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.data_notice_heading'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('data_notice_text', "");
+        var propertyEditor = editor.getEditor('root.data_notice_text');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: data_notice_text');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.data_notice_text'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.data_show_map'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('data_start_values', []);
+        var propertyEditor = editor.getEditor('root.data_start_values');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: data_start_values');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.data_start_values'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('embedded_feature_footer', "");
+        var propertyEditor = editor.getEditor('root.embedded_feature_footer');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: embedded_feature_footer');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.embedded_feature_footer'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('embedded_feature_html', "");
+        var propertyEditor = editor.getEditor('root.embedded_feature_html');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: embedded_feature_html');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.embedded_feature_html'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('embedded_feature_tab_title', "");
+        var propertyEditor = editor.getEditor('root.embedded_feature_tab_title');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: embedded_feature_tab_title');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.embedded_feature_tab_title'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('embedded_feature_title', "");
+        var propertyEditor = editor.getEditor('root.embedded_feature_title');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: embedded_feature_title');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.embedded_feature_title'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('embedded_feature_url', "");
+        var propertyEditor = editor.getEditor('root.embedded_feature_url');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: embedded_feature_url');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.embedded_feature_url'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('expected_disaggregations', []);
+        var propertyEditor = editor.getEditor('root.expected_disaggregations');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: expected_disaggregations');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.expected_disaggregations'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.footer_fields'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('graph_annotations', []);
+        var propertyEditor = editor.getEditor('root.graph_annotations');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: graph_annotations');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.graph_annotations'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('graph_limits', []);
+        var propertyEditor = editor.getEditor('root.graph_limits');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: graph_limits');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.graph_limits'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.graph_series_breaks'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('graph_stacked_disaggregation', "");
+        var propertyEditor = editor.getEditor('root.graph_stacked_disaggregation');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: graph_stacked_disaggregation');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.graph_stacked_disaggregation'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.graph_target_lines'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('graph_title', "global_indicators.6-4-1-title");
+        var propertyEditor = editor.getEditor('root.graph_title');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: graph_title');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.graph_title'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('graph_titles', []);
+        var propertyEditor = editor.getEditor('root.graph_titles');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: graph_titles');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.graph_titles'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('graph_type', "line");
+        var propertyEditor = editor.getEditor('root.graph_type');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: graph_type');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.graph_type'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.indicator_available'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('indicator_name', "global_indicators.6-4-1-title");
+        var propertyEditor = editor.getEditor('root.indicator_name');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: indicator_name');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.indicator_name'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('indicator_number', "6.4.1");
+        var propertyEditor = editor.getEditor('root.indicator_number');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: indicator_number');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.indicator_number'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.indicator_tabs'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('national_geographical_coverage', "");
+        var propertyEditor = editor.getEditor('root.national_geographical_coverage');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: national_geographical_coverage');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.national_geographical_coverage'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('page_content', "");
+        var propertyEditor = editor.getEditor('root.page_content');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: page_content');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.page_content'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('permalink', "");
+        var propertyEditor = editor.getEditor('root.permalink');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: permalink');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.permalink'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.placeholder'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('precision', []);
+        var propertyEditor = editor.getEditor('root.precision');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: precision');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.precision'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.progress_status'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.proxy'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.proxy_series'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.publications'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.related_indicators'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('reporting_status', "notstarted");
+        var propertyEditor = editor.getEditor('root.reporting_status');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: reporting_status');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.reporting_status'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('sort', "");
+        var propertyEditor = editor.getEditor('root.sort');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: sort');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.sort'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.sources'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.standalone'));
+
+    
+      try {
+        var currentValue = normalizeCurrentValue('tags', []);
+        var propertyEditor = editor.getEditor('root.tags');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: tags');
+      }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.tags'));
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.x_axis_label'));
+
+    
+
+    function isTranslationKey(text) {
+      var parts = text.split('.');
+      if (parts.length !== 2) {
+        return false;
+      }
+      if (typeof allTranslations[parts[0]] === 'undefined') {
+        return false;
+      }
+      if (typeof allTranslations[parts[0]][parts[1]] === 'undefined') {
+        return false;
+      }
+      return true;
+    }
+
+    function addTranslationLink(propertyEditor) {
+      var parts = propertyEditor.value.split('.');
+      var translationLink = '';
+      translationLink = translationLink.replace('[id]', '6-4-1');
+      translationLink = translationLink.replace('[group]', parts[0]);
+      translationLink = translationLink.replace('[key]', parts[1]);
+      translationLink = translationLink.replace('[language]', 'de');
+      var element = document.createElement('a');
+      element.setAttribute('target', '_blank');
+      element.setAttribute('href', translationLink);
+      element.setAttribute('class', 'translation-link');
+      element.innerHTML = 'Go to translation for ' + propertyEditor.key;
+      propertyEditor.addLink(element);
+    }
+
+    function SaveAsFile(t,f,m) {
+      try {
+        var b = new Blob([t],{type:m});
+        saveAs(b, f);
+      } catch (e) {
+        window.open("data:"+m+"," + encodeURIComponent(t), '_blank','');
+      }
+    }
+
+    document.getElementById('export').addEventListener('click', function() {
+      var errors = editor.validate();
+      if (errors.length) {
+        var alertText = 'Please correct the errors listed below';
+        var fieldNames = []
+        for (i = 0; i < errors.length; i++) {
+          var error = errors[i];
+          fieldNames.push(error.path.replace('root.', ''));
+        }
+        alert(alertText + ' (' + fieldNames.join(', ') + ').');
+      }
+      else {
+        var config = editor.getValue();
+        var yaml = jsyaml.safeDump(config);
+        SaveAsFile(yaml, '6-4-1.yml', 'text/plain;charset=utf-8');
+      }
+    });
+
+    function addNewTabMessage(link) {
+      if (!link.querySelector('.sr-only')) {
+        link.insertAdjacentHTML('beforeend', ' <span>(opens in a new tab)</span>');
+      }
+    }
+
+    document.querySelectorAll('a[target="_blank"]').forEach(function(link) {
+      addNewTabMessage(link);
+    });
+  </script>
+</div>
+<footer role="contentinfo">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div id="footerLinks">
+                    <ul>
+                        <li>
+                            <a href="https://open-sdg.org">Erstellt mit Open SDG</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/seite/de/contact-us">Kontakt</a>
+                            
+                        </li>
+                        <li>
+                            
+                            <a href="https://twitter.com/MyTwitterAccount" target="_blank">Twitter</a>
+                            
+                        </li>
+                        <li>
+                            
+                            <a href="https://facebook.com/MyFacebookAccount" target="_blank">Facebook</a>
+                            
+                        </li>
+                        <li>
+                            <a href="/seite/de/about/cookies-and-privacy/">Cookies</a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="/seite/de/config">Configuration</a>
+                        </li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+<script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.3/dist/html2canvas.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js"></script>
+
+
+
+
+
+
+
+<script>translations['general'] = translations['general'] || {};
+    translations['general']['hide'] = 'ausblenden';</script>
+
+<script>translations['search'] = translations['search'] || {};
+    translations['search']['search'] = 'Suche';</script>
+
+<script src='/seite/assets/js/sdg.js?v=20230720101216'></script>
+
+
+    
+    
+    <script src="/seite/assets/js/custom.js?v=20230720101216"></script><script>
+    new indicatorInit();
+    new accessibilitySwitcher();
+</script>
+
+
+</body>
+</html>

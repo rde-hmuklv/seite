@@ -141,7 +141,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20230720100000">
+        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20230720101216">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -241,6 +241,10 @@ layout-config-builder
       English
     </button>
     <ul class="dropdown-menu"><li>
+            <a class="dropdown-item" href="/seite/de/14-6-1/metadata/">
+              Deutsch
+            </a>
+          </li><li>
             <a class="dropdown-item" href="/seite/es/14-6-1/metadata/">
               Español
             </a>
@@ -252,7 +256,15 @@ layout-config-builder
 
                     <span class="no-js-language-toggle"><div class="language-toggle-container d-flex">
     <i class="fa fa-globe language-toggle-globe-links"></i>
-    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-es list-inline-item">
+    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-en list-inline-item">
+            <span class="language-toggle-active-language">
+                English
+            </span>
+        </li><li class="language-option-de list-inline-item">
+            <a class="language-toggle-link" href="/seite/de/14-6-1/metadata/">
+                Deutsch
+            </a>
+        </li><li class="language-option-es list-inline-item">
             <a class="language-toggle-link" href="/seite/es/14-6-1/metadata/">
                 Español
             </a>
@@ -786,12 +798,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/seite/assets/js/sdg.js?v=20230720100000'></script>
+<script src='/seite/assets/js/sdg.js?v=20230720101216'></script>
 
 
     
     
-    <script src="/seite/assets/js/custom.js?v=20230720100000"></script><script>
+    <script src="/seite/assets/js/custom.js?v=20230720101216"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

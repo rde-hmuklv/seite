@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="de" class="no-js">
     <head>
         <meta charset="utf-8">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
@@ -11,7 +11,7 @@
 var opensdg = {
 
   // A base URL for asynchronous calls to SDG data.
-  remoteDataBaseUrl: 'https://rde-hmuklv.github.io/daten/en',
+  remoteDataBaseUrl: 'https://rde-hmuklv.github.io/daten/de',
 
   chartConfigAlterations: [],
   // A hook which can be used to modify the configuration for Chart.js.
@@ -42,7 +42,7 @@ var opensdg = {
   // Disaggregations which should be ignored on indicator pages.
   ignoredDisaggregations: null,
 
-  language: 'en',
+  language: 'de',
 
   mapColors: {
     "default": [
@@ -117,7 +117,7 @@ var translations = {
         ================================================== -->
 
         
-    <title>About - Indicators For The Sustainable Development Goals</title>
+    <title>About - Indikatoren für die nachhaltigen Entwicklungsziele</title>
 
 
 
@@ -141,7 +141,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20230720100000">
+        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20230720101216">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -162,25 +162,25 @@ var translations = {
         
 
     </head>
-<body class="language-en
+<body class="language-de
 layout-page
 ">
 <!-- <div class="container"> -->
 
-<script>translations['header'] = {"alpha":"Alpha","default_contrast":"Default contrast","disable_high_contrast":"Disable high contrast","disclaimer":"This is a development website. We welcome your <a href=\"mailto:%email_contacts.suggestions\">feedback</a>.","enable_high_contrast":"Enable high contrast","hide_menu":"Hide navigation menu","high_contrast":"High contrast","internet_explorer_message":"We have detected that you are using Internet Explorer to visit this website. Internet Explorer is now being phased out by Microsoft. As a result, this website no longer supports any version of Internet Explorer. Some features on this site will not work. You should use a modern browser such as Edge, Chrome, Firefox, or Safari. If you have difficulty installing or accessing a different browser, please contact your IT support team.","internet_explorer_message_title":"This internet browser is no longer supported","logo_title":"Go to homepage","show_menu":"Show navigation menu","skip_link":"Skip to main content","tag_line":"17 Goals to Transform our World","toggle_menu":"Menu toggle. Click to expand or collapse the menu.","toggle_search":"Search toggle. Click to expand or collapse the search bar."};</script>
+<script>translations['header'] = {"alpha":"Alpha-Version","default_contrast":"Standard kontrast","disable_high_contrast":"Hoher Kontrast deaktivieren","disclaimer":"Diese Seite befindet sich im Entwicklungsstadium.Wir freuen uns über Ihre <a href=\"mailto:%email_contacts.suggestions\">Kommentare</a>.","enable_high_contrast":"Aktivieren Sie hohen Kontrast","hide_menu":"Navigationsmenü ausblenden","high_contrast":"Hoher kontrast","internet_explorer_message":"Wir haben festgestellt, dass Sie den Internet Explorer verwenden, um diese Website zu besuchen. Der Internet Explorer wird von Microsoft nicht mehr unterstützt. Aus diesem Grund hat diese Website ebenfalls die Unterstützung für alle Versionen des Internet Explorers eingestellt, einige Bereiche auf dieser Website werden daher nicht oder nur eingeschränkt funktionieren. Bitte verwenden Sie einen modernen Browser wie Edge, Chrome, Firefox oder Safari. Wenn Sie Schwierigkeiten haben, einen anderen Browser zu installieren oder darauf zuzugreifen, wenden Sie sich bitte an Ihr IT-Supportteam.","internet_explorer_message_title":"Der Internet-Browser wird nicht mehr unterstützt","logo_title":"Zur Homepage gehen","show_menu":"Navigationsmenü anzeigen","skip_link":"Zum Hauptinhalt springen","tag_line":"17 Ziele, um unsere Welt zu verändern","toggle_menu":"Menü umschalten. Klicken Sie darauf, um das Menü zu erweitern oder zu reduzieren.","toggle_search":"Umschalten der Suche. Klicken Sie darauf, um die Suchleiste ein- oder auszublenden."};</script>
 
-<a class="sr-only-focusable" id="skiplink" href="#main-content" tabindex="0">Skip to main content</a>
+<a class="sr-only-focusable" id="skiplink" href="#main-content" tabindex="0">Zum Hauptinhalt springen</a>
 <div class="container internet-explorer-message">
-    <h2 class="internet-explorer-message-title">This internet browser is no longer supported</h2>
-    <p class="internet-explorer-message-body">We have detected that you are using Internet Explorer to visit this website. Internet Explorer is now being phased out by Microsoft. As a result, this website no longer supports any version of Internet Explorer. Some features on this site will not work. You should use a modern browser such as Edge, Chrome, Firefox, or Safari. If you have difficulty installing or accessing a different browser, please contact your IT support team.</p>
+    <h2 class="internet-explorer-message-title">Der Internet-Browser wird nicht mehr unterstützt</h2>
+    <p class="internet-explorer-message-body">Wir haben festgestellt, dass Sie den Internet Explorer verwenden, um diese Website zu besuchen. Der Internet Explorer wird von Microsoft nicht mehr unterstützt. Aus diesem Grund hat diese Website ebenfalls die Unterstützung für alle Versionen des Internet Explorers eingestellt, einige Bereiche auf dieser Website werden daher nicht oder nur eingeschränkt funktionieren. Bitte verwenden Sie einen modernen Browser wie Edge, Chrome, Firefox oder Safari. Wenn Sie Schwierigkeiten haben, einen anderen Browser zu installieren oder darauf zuzugreifen, wenden Sie sich bitte an Ihr IT-Supportteam.</p>
 </div>
 <div id="disclaimer">
     
 <div class="container">
   <div class="disclaimer-alert">
-    <strong class="phase-tag">Alpha</strong>
+    <strong class="phase-tag">Alpha-Version</strong>
     
-    This is a development website. We welcome your <a href="mailto:test@example.com">feedback</a>.
+    Diese Seite befindet sich im Entwicklungsstadium.Wir freuen uns über Ihre <a href="mailto:test@example.com">Kommentare</a>.
     
   </div>
 </div>
@@ -190,36 +190,36 @@ layout-page
 <header role="banner" class="">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light flex-wrap align-items-start">
-            <a class="navbar-brand" href="/seite/" id="home" aria-label="Go to homepage" title="Go to homepage">
-    <img src="/seite/assets/img/SDG_logo.png" alt="Sustainable Development Goals - 17 Goals to Transform our World" />
+            <a class="navbar-brand" href="/seite/de/" id="home" aria-label="Zur Homepage gehen" title="Zur Homepage gehen">
+    <img src="/seite/assets/img/SDG_logo.png" alt="Ziele für Nachhaltige Entwicklung - 17 Ziele, um unsere Welt zu verändern" />
 </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Show navigation menu">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Navigationsmenü anzeigen">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="d-flex flex-wrap w-100 justify-content-between">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav" id="menu"><li class="nav-item ">
-    <a class="nav-link" href="/seite/">Home</a>
+    <a class="nav-link" href="/seite/de/">Startseite</a>
 </li><li class="nav-item ">
-    <a class="nav-link" href="/seite/goals">Goals</a>
+    <a class="nav-link" href="/seite/de/goals">Ziele</a>
 </li><li class="nav-item ">
-    <a class="nav-link" href="/seite/reporting-status">Reporting Status</a>
+    <a class="nav-link" href="/seite/de/reporting-status">Berichtsstatus</a>
 </li><li class="nav-item ">
-    <a class="nav-link" href="/seite/news">Updates</a>
+    <a class="nav-link" href="/seite/de/news">Aktualisierungen</a>
 </li><li class="nav-item ">
-    <a class="nav-link" href="/seite/faq">FAQ</a>
+    <a class="nav-link" href="/seite/de/faq">FAQ</a>
 </li><li class="nav-item ">
-    <a class="nav-link" href="/seite/about">About</a>
+    <a class="nav-link" href="/seite/de/about">Über uns</a>
 </li></ul>
     
                 </div>
                 <div class="header-search-bar">
-                    <form class="align-self-lg-end" id="search" action="/seite/search/">
+                    <form class="align-self-lg-end" id="search" action="/seite/de/search/">
     <div class="input-group">
-        <label class="visually-hidden" for="indicator_search">Search</label>
-        <input class="form-control" type="search" name="q" id="indicator_search" title="Search">
+        <label class="visually-hidden" for="indicator_search">Suche</label>
+        <input class="form-control" type="search" name="q" id="indicator_search" title="Suche">
         <span class="input-group-append">
-            <button class="btn btn-outline-secondary ms-n5" aria-label="Site search" id="search-btn" type="submit">
+            <button class="btn btn-outline-secondary ms-n5" aria-label="Suche vor Ort" id="search-btn" type="submit">
                 <i class="fa fa-search"></i>
             </button>
         </span>
@@ -238,10 +238,14 @@ layout-page
   <div class="btn-group language-toggle-dropdown  dropdown">
     <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="fa fa-globe"></i>
-      English
+      Deutsch
     </button>
     <ul class="dropdown-menu"><li>
-            <a class="dropdown-item" href="/seite/es/de/about/">
+            <a class="dropdown-item" href="/seite/about/">
+              English
+            </a>
+          </li><li>
+            <a class="dropdown-item" href="/seite/es/about/">
               Español
             </a>
           </li></ul>
@@ -252,12 +256,20 @@ layout-page
 
                     <span class="no-js-language-toggle"><div class="language-toggle-container d-flex">
     <i class="fa fa-globe language-toggle-globe-links"></i>
-    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-es list-inline-item">
-            <a class="language-toggle-link" href="/seite/es/de/about/">
+    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-en list-inline-item">
+            <a class="language-toggle-link" href="/seite/about/">
+                English
+            </a>
+        </li><li class="language-option-de list-inline-item">
+            <span class="language-toggle-active-language">
+                Deutsch
+            </span>
+        </li><li class="language-option-es list-inline-item">
+            <a class="language-toggle-link" href="/seite/es/about/">
                 Español
             </a>
         </li></ul>
-</div></span><a title="Enable high contrast" aria-label="Enable high contrast"
+</div></span><a title="Aktivieren Sie hohen Kontrast" aria-label="Aktivieren Sie hohen Kontrast"
     data-contrast-switch-to="" href="javascript:void(0)" data-on="click"
 data-event-category="Accessibility"
 data-event-action="Change contrast setting"
@@ -275,7 +287,7 @@ data-event-label="high"
     <nav>
     <ol aria-label="breadcrumb" class="breadcrumb" style="--bs-breadcrumb-divider: '&rsaquo;';">
         <li class="breadcrumb-item" >
-            <a href="/seite/">Home</a>
+            <a href="/seite/de/">Startseite</a>
         </li>
         <li class="breadcrumb-item active">About</li>
     </ol>
@@ -336,11 +348,11 @@ data-event-label="high"
                 <div id="footerLinks">
                     <ul>
                         <li>
-                            <a href="https://open-sdg.org">Built using Open SDG</a>
+                            <a href="https://open-sdg.org">Erstellt mit Open SDG</a>
                         </li>
                         
                         <li>
-                            <a href="/seite/contact-us">Contact us</a>
+                            <a href="/seite/de/contact-us">Kontakt</a>
                             
                         </li>
                         <li>
@@ -354,14 +366,14 @@ data-event-label="high"
                             
                         </li>
                         <li>
-                            <a href="/seite/about/cookies-and-privacy/">Cookies</a>
+                            <a href="/seite/de/about/cookies-and-privacy/">Cookies</a>
                             
                         </li>
                         
                         
                         
                         <li>
-                            <a href="/seite/config">Configuration</a>
+                            <a href="/seite/de/config">Configuration</a>
                         </li>
                         </ul>
                 </div>
@@ -392,17 +404,17 @@ data-event-label="high"
 
 
 <script>translations['general'] = translations['general'] || {};
-    translations['general']['hide'] = 'hide';</script>
+    translations['general']['hide'] = 'ausblenden';</script>
 
 <script>translations['search'] = translations['search'] || {};
-    translations['search']['search'] = 'Search';</script>
+    translations['search']['search'] = 'Suche';</script>
 
-<script src='/seite/assets/js/sdg.js?v=20230720100000'></script>
+<script src='/seite/assets/js/sdg.js?v=20230720101216'></script>
 
 
     
     
-    <script src="/seite/assets/js/custom.js?v=20230720100000"></script><script>
+    <script src="/seite/assets/js/custom.js?v=20230720101216"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
