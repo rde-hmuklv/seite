@@ -1334,6 +1334,14 @@
       "indicators": [
         
         {
+          "id": "12-1",
+          "title": "global_indicators.12-1-title",
+          "description": "",
+          "keywords": "",
+          "href": "/seite/es/12-1/",
+          "status": "complete"
+        },
+        {
           "id": "12-1-1",
           "title": "Número de países que elaboran, adoptan o aplican instrumentos de política destinados a apoyar la transición hacia modalidades de consumo y producción sostenibles",
           "description": "",
