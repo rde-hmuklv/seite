@@ -25,11 +25,11 @@ country:
   name: Hessen
   adjective: Hessische
 create_goals:
-  previous_next_links: false
+  previous_next_links: true
   goal_content_heading: ''
   goals: []
 create_indicators:
-  previous_next_links: false
+  previous_next_links: true
 create_pages:
   - filename: ''
     folder: /goals
@@ -57,8 +57,8 @@ disclaimer:
   hidden: false
 email_contacts:
   questions: robert.deusser@umwelt.hessen.de
-  suggestions: test@example.com
-  functional: test@example.com
+  suggestions: robert.deusser@umwelt.hessen.de
+  functional: robert.deusser@umwelt.hessen.de
 empty_metadata_placeholder: ''
 empty_metadata_placeholder_sources: ''
 environment: staging
@@ -78,22 +78,6 @@ frontpage_cards:
     include: components/download-all-data.html
     button_label: ''
     button_link: ''
-    rule_color: ''
-  - title: Lorem ipsum
-    content: |
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis
-      cursus est sed dapibus.
-    include: ''
-    button_label: Read more
-    button_link: 'https://example.com'
-    rule_color: ''
-  - title: Nam vestibulum
-    content: |
-      Nam vestibulum, purus quis porttitor imperdiet, nisl sem mollis nisl, a
-      interdum risus enim vitae tortor. Donec feugiat accumsan rutrum.
-    include: ''
-    button_label: Read more
-    button_link: 'https://example.com'
     rule_color: ''
 frontpage_goals_grid:
   title: frontpage.heading_short
