@@ -1335,7 +1335,7 @@
         
         {
           "id": "12-1-1",
-          "title": "Anzahl der Staaten mit nationalen Aktionsplänen zu nachhaltigem Konsum und Produktion (SCP) oder SCP, die als Priorität oder Ziel in nationale Politik aufgenommen wurden",
+          "title": "Endenergieverbrauch der privaten Haushalte (Zielindikator)",
           "description": "",
           "keywords": "",
           "href": "/seite/de/12-1-1/",
@@ -1439,7 +1439,7 @@
         },
         {
           "id": "12-1",
-          "title": "Endenergieverbrauch der privaten Haushalte (Zielindikator)",
+          "title": "global_indicators.12-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/12-1/",
