@@ -121,7 +121,7 @@ var translations = {
         
         Indicador 12.1.1 -
         
-        Número de países que elaboran, adoptan o aplican instrumentos de política destinados a apoyar la transición hacia modalidades de consumo y producción sostenibles - Indicadores para los Objetivos de Desarrollo Sostenible
+        12.1.1 Endenergieverbrauch der privaten Haushalte (Zielindikator) - Indicadores para los Objetivos de Desarrollo Sostenible
     </title>
 
 
@@ -146,7 +146,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20231106094713">
+        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20231106100534">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -437,7 +437,7 @@ data-event-label="high"
                         
                         Indicador 12.1.1
                         
-                        <span class="lead-copy">Número de países que elaboran, adoptan o aplican instrumentos de política destinados a apoyar la transición hacia modalidades de consumo y producción sostenibles</span>
+                        <span class="lead-copy">12.1.1 Endenergieverbrauch der privaten Haushalte (Zielindikator)</span>
                     </h1>
                 </div>
             </div>
@@ -467,9 +467,9 @@ data-event-label="high"
   data-country="Hessen"
   data-charttitle="Número de países que elaboran, adoptan o aplican instrumentos de política destinados a apoyar la transición hacia modalidades de consumo y producción sostenibles"
   data-charttitles="[]"
-  data-measurementunit=""
+  data-measurementunit="GJ je Einwohner"
   data-xaxislabel=""
-  data-showdata="false"
+  data-showdata="true"
   data-graphtype="line"
   data-graphtypes="null"
   data-geocoderegex=""
@@ -488,7 +488,267 @@ data-event-label="high"
   data-proxyseries="null"
 >
   
-  <div id="indicator-main" class="indicator-main col-md-12">
+  <span role="status" class="visually-hidden" id="indicator-data-view-status"></span>
+  <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
+    <div id="serieses"></div>
+<div id="units"></div>
+<div id="toolbar">
+  <span id="series-help">
+    <h4>Subcategorías</h4>
+    <p>Elija categorías de las listas desplegables a continuación para ver diferentes desgloses de los datos. Algunos no estarán disponibles hasta que se elija un nivel superior.</p>
+  </span>
+  <div id="fields">
+    <p class="async-loading" data-img="/seite/assets/img/loading-small.gif"></p>
+  </div>
+</div>
+
+  </div>
+  <div id="indicator-main" class="indicator-main col-md-9">
+    
+
+
+
+
+<div id="headlineTable">
+
+  <div id="datatables">
+
+    
+    <a href="https://rde-hmuklv.github.io/daten/es/data/12-1-1.csv" class="btn btn-primary btn-download" download='indicator_12-1-1.csv' tabindex='0' role='button'>Descargar datos de origen (.csv)</a>
+
+    <p class="no-js-disaggregation-hint">Descargar los datos de origen para los desgloses (.csv)</p>
+
+    
+    <h3>No hay datos principales disponibles</h3>
+    
+  </div>
+
+  
+
+</div>
+
+
+<section>
+
+  <p class="async-loading" data-img="/seite/assets/img/loading-small.gif"></p>
+
+  <div class="async-loaded mt-4" style="display:none;">
+
+    <div style="display: none;">
+    <span id="table-alternative">Para la alternativa de datos en forma de tabla, véase la pestaña Tabla.</span>
+  </div>
+  <ul class="nav nav-tabs non-stacking-tabs data-view" role="tablist">
+    
+    <li role="presentation"
+      class="
+        nav-item
+        
+        
+      ">
+      <button
+        class="nav-link active"
+        data-bs-toggle="tab"
+        role="tab"
+        type="button"
+        
+          id="tab-chartview"
+          data-bs-target="#chartview"
+          aria-controls="chartview"
+          aria-describedby="table-alternative"
+          data-on="click"
+data-event-category="Tab change"
+data-event-action="Change data view"
+data-event-label="Change to Chart tab"
+
+        
+      >Gráfico</button>
+    </li>
+    
+    <li role="presentation"
+      class="
+        nav-item
+        
+        
+      ">
+      <button
+        class="nav-link "
+        data-bs-toggle="tab"
+        role="tab"
+        type="button"
+        
+          id="tab-tableview"
+          data-bs-target="#tableview"
+          aria-controls="tableview"
+          data-on="click"
+data-event-category="Tab change"
+data-event-action="Change data view"
+data-event-label="Change to Table tab"
+
+        
+      >Tabla</button>
+    </li>
+    
+  </ul>
+  
+    <div class="tab-content data-view">
+    
+      
+        <div role="tabpanel" class="tab-pane active" id="chartview">
+          
+
+    <div id="dataset-size-warning" style="display:none" role="alert">
+      <i class="fa fa-bolt"><span class="sr-only">Advertencia:</span></i>
+      Hay demasiados conjuntos de datos para mostrar en el gráfico. No todo se mostrará hasta que elimine algunas selecciones.
+    </div>
+
+    
+    <div id="selectionsChart">
+      <figure role="group">
+        <div id="chart-canvas">
+          <h4 id="chart-heading" class="chart-title">
+            Número de países que elaboran, adoptan o aplican instrumentos de política destinados a apoyar la transición hacia modalidades de consumo y producción sostenibles
+          </h4>
+          <div id="chart" class="plot-container">
+            <canvas
+    role="img"
+    aria-labelledby="chart-heading"
+    aria-describedby="table-alternative chart-annotations"
+    tabindex="0"
+ ></canvas>
+
+          </div>
+          <div id="plotLegend"></div>
+          
+
+
+
+<div id="selectionChartFooter" class="table-footer-text">
+  <h5 class="sr-only">Chart details</h5>
+    <dl>
+        
+        <dt>Fuente:</dt>
+        <dd>Arbeitskreis Umweltökonomische Gesamtrechnungen der Länder, Arbeitsgemeinschaft Energiebilanzen.</dd>
+        
+
+        
+
+        <dt class="data-controlled-footer-field unit-from-data">Unidad de medida:</dt>
+        <dd class="data-controlled-footer-field unit-from-data"></dd>
+
+        
+
+        
+
+        
+
+        
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        >Nota:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        >Datos actualizados por última vez:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        ></dd>
+        
+        
+    </dl>
+</div>
+
+        </div>
+      </figure>
+      <div id="chartSelectionDownload" class="clearfix">
+        <button
+          id="btnSave"
+          title="Descargar la imagen del gráfico como PNG"
+          aria-label="Descargar la imagen del gráfico como PNG"
+          class='btn btn-primary btn-download'>
+          Descargar la imagen del gráfico (.png)
+        </button><!--
+   --></div>
+    </div>
+
+
+
+        </div>
+      
+    
+      
+        <div role="tabpanel" class="tab-pane " id="tableview">
+          <div style="display: none;">
+            <span id="column-sort-info">Pulse para ordenar por esta columna</span>
+          </div>
+          <div id="selectionsTable"></div>
+<dl id="tableTargetLines" class="clearfix"></dl>
+
+
+
+
+<div id="selectionTableFooter" class="table-footer-text">
+  <h5 class="sr-only">Chart details</h5>
+    <dl>
+        
+        <dt>Fuente:</dt>
+        <dd>Arbeitskreis Umweltökonomische Gesamtrechnungen der Länder, Arbeitsgemeinschaft Energiebilanzen.</dd>
+        
+
+        
+
+        <dt class="data-controlled-footer-field unit-from-data">Unidad de medida:</dt>
+        <dd class="data-controlled-footer-field unit-from-data"></dd>
+
+        
+
+        
+
+        
+
+        
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        >Nota:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        >Datos actualizados por última vez:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        ></dd>
+        
+        
+    </dl>
+</div>
+
+<div id="tableSelectionDownload" class="clearfix"></div>
+
+        </div>
+      
+    
+  </div>
+  
+
+  </div>
+
+</section>
+
   
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
@@ -593,206 +853,928 @@ data-event-label="Change to indicator.sources tab"
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Información del indicador </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Objetivo </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Meta </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Indicador </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Series </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Actualización de metadatos </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Indicadores relacionados </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Reportero de datos </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Organización </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Persona(s) de contacto </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Unidad de organización de contactos </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Función de la persona de contacto </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Teléfono de contacto </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Correo electrónico de contacto </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Correo electrónico de contacto </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Definición, conceptos y clasificaciones </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Definición y conceptos </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Unidad de medida </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Clasificaciones </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Tipo de fuente de datos y método de recogida </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Fuentes de datos </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Método de recogida de datos </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Calendario de recopilación de datos </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Calendario de publicación de datos </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Proveedores de datos </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Compiladores de datos </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Mandato institucional </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Otras consideraciones metodológicas </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Justificación </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Comentarios y limitaciones </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Método de cálculo </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Validación </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Métodos y orientaciones a disposición de los países para la recopilación de los datos a nivel nacional </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Gestión de la calidad </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Seguro de calidad </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Evaluación de la calidad </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Disponibilidad y desglose de datos </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Comparabilidad/desviación de las normas internacionales </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
       
       
       
         
           
-      
-      
-      
-        
           
-      
-      
-      
-        
           
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Referencias y documentación </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+      
+      <tr>
+        <th scope="row">Datos actualizados por última vez </th>
+        <td>
+          
+            Nov 05, 2023
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+      
+      <tr>
+        <th scope="row">Metadatos actualizados por última vez </th>
+        <td>
+          
+            Nov 06, 2023
+          
+        </td>
+        </tr>
+        
+      
+  
   
   
   
@@ -1089,6 +2071,24 @@ data-event-label="Change to indicator.sources tab"
       
         
           
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Nivel designado por la ONU </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para este indicador</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
   </tbody>
 </table>
 
@@ -1110,6 +2110,372 @@ data-event-label="Change to indicator.sources tab"
 
 
 
+
+  <div class="row">
+  
+    
+    
+    <div class="col-md-6">
+      
+      <table class="table metadata-content">
+  <tbody>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <tr>
+        <th scope="row">Organización </th>
+        <td>
+          
+            <p>Arbeitskreis Umweltökonomische Gesamtrechnungen der Länder, Arbeitsgemeinschaft Energiebilanzen.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+        
+          
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Periodicidad </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para esta fuente</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+        
+          
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Los datos disponibles más antiguos </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para esta fuente</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+        
+          
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Cobertura geográfica </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para esta fuente</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+        
+          
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Enlace a la fuente de datos </th>
+        <td>
+          
+            
+            
+            
+            
+            
+              <span class="empty-metadata-placeholder">No disponible para esta fuente</span>
+            
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+        
+          
+          
+          
+          
+        
+      
+      
+      
+  
+      
+      
+      
+        
+          
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Fecha de lanzamiento </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para esta fuente</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+        
+          
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Siguiente lanzamiento </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para esta fuente</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+        
+          
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Clasificación estadística </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para esta fuente</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+        
+          
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Detalles de contacto </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para esta fuente</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+        
+          
+          
+          
+          
+        
+      
+      
+      <tr>
+        <th scope="row">Otra información </th>
+        <td>
+          
+            <p><span class="empty-metadata-placeholder">No disponible para esta fuente</span></p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </tbody>
+</table>
+
+    </div>
+    
+  </div>
 
 
             </article>
@@ -1220,12 +2586,12 @@ data-event-label="Change to indicator.sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Buscar';</script>
 
-<script src='/seite/assets/js/sdg.js?v=20231106094713'></script>
+<script src='/seite/assets/js/sdg.js?v=20231106100534'></script>
 
 
     
     
-    <script src="/seite/assets/js/custom.js?v=20231106094713"></script><script>
+    <script src="/seite/assets/js/custom.js?v=20231106100534"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
