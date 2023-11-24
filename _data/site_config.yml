@@ -25,11 +25,11 @@ country:
   name: Hessen
   adjective: Hessische
 create_goals:
-  previous_next_links: true
+  previous_next_links: false
   goal_content_heading: ''
   goals: []
 create_indicators:
-  previous_next_links: true
+  previous_next_links: false
 create_pages:
   - filename: ''
     folder: /goals
