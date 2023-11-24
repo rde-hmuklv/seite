@@ -146,7 +146,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20231124140156">
+        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20231124144630">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -374,29 +374,84 @@ data-event-label="high"
 <script>translations['data'] = {"Year":"Jahr"};</script>
 
 
+<div class="heading goal-banner indicator goal-10">
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-4 col-md-3 col-lg-2 goal-icon goal-tiles">
+        <a href="/seite/de/10/" title="Zeigt die Indikatorenliste zum SDG-Ziel an">
+          <img src="https://open-sdg.org/sdg-translations/assets/img/goals/de/10.png"
+              alt="Weniger Ungleichheiten - Ziel 10"
+              id="goal-10"
+              class="goal-icon-image goal-icon-image-" />
+        </a>
+      </div>
+      <div class="col-8 col-md-9 col-lg-10 indicator-details">
+      
+        <div>
+          <h1>
+            
+              <h1 class="titles goal-10" title=": ">
+                 – <i title=": "></i>
+              </h1>
+              <h2 class="titles goal-10">Indikator : Von Beschäftigten getragene Einstellungskosten als Anteil des Jahreseinkommens des Bestimmungslandes</h2>
+            
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="container">
   
 <nav>
     <ol aria-label="breadcrumb" class="breadcrumb" style="--bs-breadcrumb-divider: '&rsaquo;';">
         
-        <li class="breadcrumb-item">
-            <a href="/seite/de/">Startseite</a>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="/seite/de/goals">Ziele</a>
-        </li>
-        
-        <li class="breadcrumb-item">
-            <a href="/seite/de/10/"
-               title="Ziel 10 - Weniger Ungleichheiten"
-               aria-label="Ziel  - ">
-               Ziel 10
-            </a>
-        </li>
-        
+          <li class="breadcrumb-item">
+                <a href="/seite/de/">Startseite</a>
+            </li>
+          <li class="breadcrumb-item">
+                <a href="/seite/de/goals">Ziele</a>
+            </li>
+          
+          <li class="breadcrumb-item">
+              <a href="/seite/de/10/" title="Ungleichheit in und zwischen Ländern verringern">Ziel 10</a>
+          </li>
+          
     </ol>
 </nav>
 
+
+  
+
+
+
+<!---Indicator page-->
+<!---3 Btns if there is a corresponding Indicator-->
+
+<div class="container">
+  <div class="row justify-content-around">
+    
+      <div class="col-sm-6 d-grid gap-2">
+    
+      <a href="https://nachhaltige-entwicklung-deutschland.github.io/open-sdg-site-starter//" class="btn btn-primary btn-block goal-10 navigation-btn text-nowrap" role="button">
+        <b class="d-sm-none d-lg-block"><i class="fa fa-chevron-left" aria-hidden="true"></i> </b><b class="d-none d-sm-block d-lg-none"><i class="fa fa-chevron-left" aria-hidden="true"></i></b>
+      </a>
+    </div>
+
+    
+
+    
+      <div class="col-sm-6 d-grid gap-2">
+    
+      <a href="https://nachhaltige-entwicklung-deutschland.github.io/open-sdg-site-starter/" class="btn btn-primary btn-block goal-10 navigation-btn text-nowrap" role="button">
+        <b class="btn-label d-sm-none d-lg-block"> <i class="fa fa-chevron-right" aria-hidden="true"></i></b><b class="d-none d-sm-block d-lg-none"><i class="fa fa-chevron-right" aria-hidden="true"></i></b>
+      </a>
+    </div>
+  </div>
+</div>
 
   
     
@@ -418,32 +473,7 @@ data-event-label="high"
 
   
 </div>
-<div class="heading goal-banner indicator goal-10">
-    <div class="container">
-        <div class="row">
-            
-            <div class="col-4 col-md-3 col-lg-2 goal-icon goal-tiles">
-                <a href="/seite/de/10/" aria-label="Ziele und Indikatoren für Ziel anzeigen 10" title="Ziele und Indikatoren für Ziel anzeigen 10">
-                    <img src="https://open-sdg.org/sdg-translations/assets/img/goals/de/10.png"
-                        alt="Weniger Ungleichheiten - Ziel 10"
-                        id="goal-10"
-                        class="goal-icon-image goal-icon-image-" />
-                </a>
-            </div>
-            <div class="col-8 col-md-9 col-lg-10 indicator-details">
-            
-                <div>
-                    <h1>
-                        
-                        Indikator 10.7.1
-                        
-                        <span class="lead-copy">Von Beschäftigten getragene Einstellungskosten als Anteil des Jahreseinkommens des Bestimmungslandes</span>
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <div id="main-content" class="container goal-10" role="main">
   
 
@@ -453,178 +483,12 @@ data-event-label="high"
 
   
 
-  LALA
   
 
 
-  JAJA
-  <ul class="nav nav-tabs non-stacking-tabs data-view" role="tablist">
   
-  <li role="presentation"
-    class="nav-item">
-    <button
-      class="nav-link active"
-      data-bs-toggle="tab"
-      role="tab"
-      type="button"
-      
-        id="tab-chartview"
-        data-bs-target="#chartview"
-        aria-controls="chartview"
-        aria-describedby="table-alternative"
-        data-on="click"
-data-event-category="Tab change"
-data-event-action="Change data view"
-data-event-label="Change to Chart tab"
-
-        ><i class="fa fa-line-chart" aria-hidden="true"></i>
-      
-    <span class="hidden-xs" style="color:black">Grafik</span></button>
-  </li>
-  
-  <li role="presentation"
-    class="
-      nav-item
-      
-      
-    ">
-    <button
-      class="nav-link "
-      data-bs-toggle="tab"
-      role="tab"
-      type="button"
-      
-        id="tab-tableview"
-        data-bs-target="#tableview"
-        aria-controls="tableview"
-        data-on="click"
-data-event-category="Tab change"
-data-event-action="Change data view"
-data-event-label="Change to Table tab"
-
-        ><i class="fa fa-table" aria-hidden="true"></i>
-      
-    <span class="hidden-xs" style="color:black">Tabelle</span></button>
-  </li>
-  
-  <li role="presentation"
-    class="
-      nav-item
-      
-      embedded-map
-    ">
-    <button
-      class="nav-link "
-      data-bs-toggle="tab"
-      role="tab"
-      type="button"
-      
-        id="tab-embeddedmapview"
-        data-bs-target="#embeddedmapview"
-        aria-controls="embeddedmapview"
-        data-no-disagg="true"
-        data-on="click"
-data-event-category="Tab change"
-data-event-action="Change data view"
-data-event-label="Change to embedded item tab"
-
-        ><i class="fa fa-plus-square" aria-hidden="true"></i>
-      
-    <span class="hidden-xs" style="color:black">Weitere Informationen</span></button>
-  </li>
-  
-</ul>
-
-    <div class="tab-content data-view">
-    Data-view
-      { page.indicator.SDG_INDICATOR_INFO }
-        <div role="tabpanel" class="tab-pane active" id="chartview">
-          Chartview
-
-    <div id="dataset-size-warning" style="display:none" role="alert">
-      <i class="fa fa-bolt"><span class="sr-only"></span></i>
-      Zu viele Zeitreihen ausgewählt, um diese in einer Grafik darzustellen. Es können nicht alle Zeitreihen dargestellt werden.
-    </div>
-
-    
-    
-    <div id="selectionsChart">
-      <figure role="group">
-        <div id="chart-canvas">
-          <h4 id="chart-heading" class="chart-title">Marktanteil von Produkten mit staatlichen Umweltzeichen</h4>
-          <h6 id="chart-heading" class="chart-subtitle"></h6>
-          <div id="chart" class="plot-container">
-            <canvas
-    role="img"
-    aria-labelledby="chart-heading"
-    aria-describedby="table-alternative chart-annotations"
-    tabindex="0"
- ></canvas>
-selectionsChart
-          </div>
-          <div id="plotLegend"></div>
-          
 
 
-
-
-
-
-<div id="selectionChartFooter" class="table-footer-text">
-  selectionChartFooter
-  <h5 class="sr-only">Chart details</h5>
-    <dl>
-        
-          <dt><u>Datenquelle</u>:</dt>
-          <dd><a href="https://www.umweltbundesamt.de/" target="_blank" onclick="return confirm_alert('des Umweltbundesamts', 'De')">Umweltbundesamt</a></dd>
-        
-
-        
-          <dt><u>Geographische Abdeckung</u>:</dt>
-          <dd>Deutschland</dd>
-        
-
-        <dt class="data-controlled-footer-field unit-from-data"><u>Einheit</u>:</dt>
-        <dd class="data-controlled-footer-field unit-from-data"></dd>
-
-        
-          <dt><u>Anmerkung</u>:</dt>
-          <dd>Teilweise korrigierte Daten.</dd>
-        
-
-        
-
-        
-
-        
-        
-        <dt
-          class="data-controlled-footer-field"
-          data-ts-attribute="COMMENT_TS"
-        ><u>Anmerkung</u>:</dt>
-        <dd
-          class="data-controlled-footer-field"
-          data-ts-attribute="COMMENT_TS"
-        ></dd>
-        
-        <dt
-          class="data-controlled-footer-field"
-          data-ts-attribute="DATA_LAST_UPDATE"
-        ><u>Letzte Änderung der Daten</u>:</dt>
-        <dd
-          class="data-controlled-footer-field"
-          data-ts-attribute="DATA_LAST_UPDATE"
-        ></dd>
-        
-        
-
-        
-        <dt><u>Copyright</u>:</dt>
-        <dd>&copy; Statistisches Bundesamt (Destatis), 2023</dd>
-        
-    </dl>
-</div>
-  
 
 
 
@@ -635,9 +499,12 @@ selectionsChart
   data-country="Hessen"
   data-charttitle="Von Beschäftigten getragene Einstellungskosten als Anteil des Jahreseinkommens des Bestimmungslandes"
   data-charttitles="[]"
+  data-chartsubtitle=""
+  data-chartsubtitles="null"
   data-measurementunit=""
   data-xaxislabel=""
   data-showdata="false"
+  data-showinfo="false"
   data-graphtype="line"
   data-graphtypes="null"
   data-geocoderegex=""
@@ -645,18 +512,25 @@ selectionsChart
   data-startvalues="[]"
   data-graphlimits="[]"
   data-stackeddisaggregation=""
+  data-showline=""
+  data-spangaps=""
   data-graphannotations="[]"
   data-graphtargetlines="null"
+  data-graphtargetpoints="null"
+  data-graphtargetlabels="null"
   data-graphseriesbreaks="null"
+  data-grapherrorbars="null"
   data-indicatordownloads="null"
   data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Jahr&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
   data-compositebreakdownlabel=""
   data-precision="[]"
+  data-graphstepsize="null"
   data-proxy=""
   data-proxyseries="null"
 >
   
   <div id="indicator-main" class="indicator-main col-md-12">
+    
   
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
@@ -734,1311 +608,1473 @@ data-event-label="Change to indicator.sources tab"
 </ul>
 
 <div class="tab-content">
+  
     
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <div role="tabpanel" class="tab-pane active" id="national">
-            <article>
-                <p>Im Folgenden werden Metadaten zu den national verfügbaren Zeitreihen für Hessen zum jeweiligen globalen SDG-Indikator bereitgestellt. Die angegebene Datenreihe ist die vergleichbarste, national verfügbare Zeitreihe. Entspricht die angezeigte Datenreihe voll den globalen Metadaten, so ist dennoch auf diese nationalen Metadaten für methodische sowie weitere länderspezifische Informationen hinzuweisen.</p>
+    
+    
+    
+    
+    <div role="tabpanel" class="tab-pane active" id="national">
+      <article>
+        <p>Im Folgenden werden Metadaten zu den national verfügbaren Zeitreihen für Hessen zum jeweiligen globalen SDG-Indikator bereitgestellt. Die angegebene Datenreihe ist die vergleichbarste, national verfügbare Zeitreihe. Entspricht die angezeigte Datenreihe voll den globalen Metadaten, so ist dennoch auf diese nationalen Metadaten für methodische sowie weitere länderspezifische Informationen hinzuweisen.</p>
 
-                <table class="table metadata-content">
-  <tbody>
-  
-  
-  
-  
-  
-  
-      
-      
-      
         
-          
-          
-          
-          
-        
+<table class="table" style="width:100%; table-layout: fixed;">
+  
+  
+  
+  
+  
+  
       
-      
-      <tr>
-        <th scope="row">Informationen zum Indikator </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
 
-          
-        </td>
-        </tr>
-        
-      
-  
       
       
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Ziel </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
 
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Ziel </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
 
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Indikator </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Serie </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Metadaten-Update </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Zugehörige Indikatoren </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Daten-Reporter </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Organisation </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Kontaktperson(en) </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Kontakt Organisationseinheit </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Ansprechpartnerfunktion </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Kontakt-Telefonnummer </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Kontakt-Email </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Kontakt-E-Mail </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Definition, Konzepte und Klassifizierungen </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Definition und Konzepte </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Maßeinheit </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Klassifizierung </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Datenquellentyp und Erfassungsmethode </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Datenquellen </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Methode der Datenerfassung </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Kalender für die Datenerfassung </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Kalender der Datenfreigabe </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Daten-Provider </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
       
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Datenkompilierer </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Institutioneller Auftrag </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Andere methodische Überlegungen </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Begründung </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Kommentare und Einschränkungen </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Berechnungsmethode </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Validierung </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Den Ländern zur Verfügung stehende Methoden und Anleitungen für die Zusammenstellung der Daten auf nationaler Ebene </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Qualitätsmanagement </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Qualitätssicherung </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Bewertung der Qualität </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Datenverfügbarkeit und Disaggregation </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Vergleichbarkeit/Abweichung von internationalen Normen </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Referenzen und Dokumentation </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Daten zuletzt aktualisiert am </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">Metadaten zuletzt aktualisiert am </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  </tbody>
-</table>
-
-            </article>
-        </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <div role="tabpanel" class="tab-pane " id="global">
-            <article>
-                <p>Diese Übersicht stellt Informationen zu den globalen Metadaten des jeweiligen SDG-Indikators bereit. Die <a href="https://unstats.un.org/sdgs/metadata/">globalen Metadaten</a> werden durch die Statistische Division der Vereinten Nationen bereitgestellt.</p>
-
-                <table class="table metadata-content">
-  <tbody>
-  
-      
-      
-      
-      
-      <tr>
-        <th scope="row">Indikator </th>
-        <td>
-          
-            <p>Indicator 10.7.1: Recruitment cost borne by employee as a proportion of monthly income earned in country of destination</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-      
-      <tr>
-        <th scope="row">Ziel </th>
-        <td>
-          
-            <p>Target 10.7: Facilitate orderly, safe, regular and responsible migration and mobility of people, including through the implementation of planned and well-managed migration policies</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-      
-      <tr>
-        <th scope="row">Metadaten-Update </th>
-        <td>
-          
-            <p>2022-05-18</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-      
-      <tr>
-        <th scope="row">Internationale Organisation(en), die für die globale Überwachung zuständig sind </th>
-        <td>
-          
-            <p>International Labour Organization (ILO) and World Bank (WB)</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-      
-      
-      
-      
-      <tr>
-        <th scope="row">Zugehörige Indikatoren </th>
-        <td>
-          
-            <p>Not applicable</p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
-      
-        
-          
-          
-          
-          
-        
-      
-      
-      <tr>
-        <th scope="row">VN Tier Klassifikation </th>
-        <td>
-          
-            <p><span class="empty-metadata-placeholder">Für diesen Indikator nicht verfügbar</span></p>
-
-          
-        </td>
-        </tr>
-        
-      
-  
-  </tbody>
-</table>
-
-            </article>
-        </div>
-        
-        
-        
-        
-        
-        
-        
-        
         
-        <div role="tabpanel" class="tab-pane " id="sources">
-            <article>
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Informationen zum Indikator </th>
+            <td>
+              
                 
-                <!-- Count the non-empty sources (up to 5) -->
 
-
-
-
-
-            </article>
-        </div>
+              
+            </td>
+          </tr>
         
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Ziel </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Ziel </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Indikator </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Serie </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Metadaten-Update </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Zugehörige Indikatoren </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Daten-Reporter </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Organisation </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Kontaktperson(en) </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Kontakt Organisationseinheit </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Ansprechpartnerfunktion </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Kontakt-Telefonnummer </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Kontakt-Email </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Kontakt-E-Mail </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Definition, Konzepte und Klassifizierungen </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Definition und Konzepte </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Maßeinheit </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Klassifizierung </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Datenquellentyp und Erfassungsmethode </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Datenquellen </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Methode der Datenerfassung </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Kalender für die Datenerfassung </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Kalender der Datenfreigabe </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Daten-Provider </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Datenkompilierer </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Institutioneller Auftrag </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Andere methodische Überlegungen </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Begründung </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Kommentare und Einschränkungen </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Berechnungsmethode </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Validierung </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Den Ländern zur Verfügung stehende Methoden und Anleitungen für die Zusammenstellung der Daten auf nationaler Ebene </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Qualitätsmanagement </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Qualitätssicherung </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Bewertung der Qualität </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Datenverfügbarkeit und Disaggregation </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Vergleichbarkeit/Abweichung von internationalen Normen </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Referenzen und Dokumentation </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Daten zuletzt aktualisiert am </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Metadaten zuletzt aktualisiert am </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</table>
+
+      </article>
+    </div>
     
     
-        <div role="tabpanel" class="tab-pane" id="edit">
-            <div class="edit-container">
+    
+    
+    
+    <div role="tabpanel" class="tab-pane " id="global">
+      <article>
+        <p>Diese Übersicht stellt Informationen zu den globalen Metadaten des jeweiligen SDG-Indikators bereit. Die <a href="https://unstats.un.org/sdgs/metadata/">globalen Metadaten</a> werden durch die Statistische Division der Vereinten Nationen bereitgestellt.</p>
+
+        
+<table class="table" style="width:100%; table-layout: fixed;">
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Indikator </th>
+            <td>
+              
+                <p>Indicator 10.7.1: Recruitment cost borne by employee as a proportion of monthly income earned in country of destination</p>
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Ziel </th>
+            <td>
+              
+                <p>Target 10.7: Facilitate orderly, safe, regular and responsible migration and mobility of people, including through the implementation of planned and well-managed migration policies</p>
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Metadaten-Update </th>
+            <td>
+              
+                <p>2022-05-18</p>
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Internationale Organisation(en), die für die globale Überwachung zuständig sind </th>
+            <td>
+              
+                <p>International Labour Organization (ILO) and World Bank (WB)</p>
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">Zugehörige Indikatoren </th>
+            <td>
+              
+                <p>Not applicable</p>
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+
+      
+      
+
+
+      
+        
+          <tr id="everythingElse">
+            <th scope="row" style="text-align: left; width: 130px;">VN Tier Klassifikation </th>
+            <td>
+              
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+</table>
+
+      </article>
+    </div>
+    
+    
+    
+    
+    
+    <div role="tabpanel" class="tab-pane " id="sources">
+      <article>
+        
+        <!-- Count the non-empty sources (up to 5) -->
+
+
+
+
+
+      </article>
+    </div>
+    
+  
+  
+    <div role="tabpanel" class="tab-pane" id="edit">
+      <div class="edit-container">
   
   
 
@@ -2059,17 +2095,17 @@ data-event-label="Change to indicator.sources tab"
 
 </div>
 
-        </div>
-    
+    </div>
+  
 </div>
 
 </div>
   </div>
 </div>
 
-  BLABLA
   <a href="#top">Zurück nach oben</a>
 </div>
+
 
 <footer role="contentinfo">
     <div class="container">
@@ -2141,12 +2177,12 @@ data-event-label="Change to indicator.sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Suche';</script>
 
-<script src='/seite/assets/js/sdg.js?v=20231124140156'></script>
+<script src='/seite/assets/js/sdg.js?v=20231124144630'></script>
 
 
     
     
-    <script src="/seite/assets/js/custom.js?v=20231124140156"></script><script>
+    <script src="/seite/assets/js/custom.js?v=20231124144630"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
