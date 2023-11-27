@@ -2801,15 +2801,12 @@ function getTimeSeriesAttributes(rows) {
   this.shortIndicatorId = options.shortIndicatorId;
   this.chartTitle = options.chartTitle,
   this.chartTitles = options.chartTitles;
-  this.chartSubtitle = options.chartSubtitle;
-  this.chartSubtitles = options.chartSubtitles;
   this.graphType = options.graphType;
   this.graphTypes = options.graphTypes;
   this.measurementUnit = options.measurementUnit;
   this.xAxisLabel = options.xAxisLabel;
   this.startValues = options.startValues;
   this.showData = options.showData;
-  this.showInfo = options.showInfo;
   this.selectedFields = [];
   this.allowedFields = [];
   this.selectedUnit = undefined;
@@ -2824,19 +2821,13 @@ function getTimeSeriesAttributes(rows) {
   this.showMap = options.showMap;
   this.graphLimits = options.graphLimits;
   this.stackedDisaggregation = options.stackedDisaggregation;
-  this.showLine = options.showLine; // ? options.showLine : true;
-  this.spanGaps = options.spanGaps;
   this.graphAnnotations = options.graphAnnotations;
   this.graphTargetLines = options.graphTargetLines;
   this.graphSeriesBreaks = options.graphSeriesBreaks;
-  this.graphErrorBars = options.graphErrorBars;
-  this.graphTargetPoints = options.graphTargetPoints;
-  this.graphTargetLabels = options.graphTargetLabels;
   this.indicatorDownloads = options.indicatorDownloads;
   this.compositeBreakdownLabel = options.compositeBreakdownLabel;
   this.precision = options.precision;
   this.dataSchema = options.dataSchema;
-  this.graphStepsize = options.graphStepsize;
   this.proxy = options.proxy;
   this.proxySerieses = (this.proxy === 'both') ? options.proxySeries : [];
 
@@ -2854,7 +2845,6 @@ function getTimeSeriesAttributes(rows) {
     if (this.hasSerieses) {
       if (helpers.GRAPH_TITLE_FROM_SERIES) {
         this.chartTitle = this.selectedSeries;
-        this.chartSubtitle = helpers.getChartTitle(this.chartSubtitle, this.chartSubtitles, this.selectedUnit, this.selectedSeries);
       }
       this.data = helpers.getDataBySeries(this.allData, this.selectedSeries);
       this.years = helpers.getUniqueValuesByProperty(helpers.YEAR_COLUMN, this.data).sort();
@@ -2921,10 +2911,6 @@ function getTimeSeriesAttributes(rows) {
 
   this.updateChartTitle = function() {
     this.chartTitle = helpers.getChartTitle(this.chartTitle, this.chartTitles, this.selectedUnit, this.selectedSeries);
-  }
-
-  this.updateChartSubtitle = function() {
-    this.chartSubtitle = helpers.getChartTitle(this.chartSubtitle, this.chartSubtitles, this.selectedUnit, this.selectedSeries);
   }
 
   this.updateChartType = function() {
@@ -3074,8 +3060,6 @@ function getTimeSeriesAttributes(rows) {
         precisionItems: this.precision,
         dataSchema: this.dataSchema,
         chartTitles: this.chartTitles,
-        chartSubtitles: this.chartSubtitles,
-        graphStepsize: helpers.getGraphStepsize(this.graphStepsize, this.selectedUnit, this.selectedSeries),
         proxy: this.proxy,
         proxySerieses: this.proxySerieses,
       });
@@ -3103,8 +3087,8 @@ function getTimeSeriesAttributes(rows) {
       headline = helpers.sortData(headline, this.selectedUnit);
     }
 
-    var combinations = helpers.getCombinationData(this.selectedFields, this.dataSchema);
-    var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, translations.data.total, this.colors, this.selectableFields, this.colorAssignments, this.showLine, this.spanGaps );
+    var combinations = helpers.getCombinationData(this.selectedFields);
+    var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields, this.colorAssignments);
     var selectionsTable = helpers.tableDataFromDatasets(datasets, this.years);
 
     var datasetCountExceedsMax = false;
@@ -3114,7 +3098,6 @@ function getTimeSeriesAttributes(rows) {
     }
 
     this.updateChartTitle();
-    this.updateChartSubtitle();
     this.updateChartType();
 
     this.onFieldsStatusUpdated.notify({
@@ -3135,13 +3118,11 @@ function getTimeSeriesAttributes(rows) {
       selectedSeries: this.selectedSeries,
       graphLimits: helpers.getGraphLimits(this.graphLimits, this.selectedUnit, this.selectedSeries),
       stackedDisaggregation: this.stackedDisaggregation,
-      graphAnnotations: helpers.getGraphAnnotations(this.graphAnnotations, this.selectedUnit, this.selectedSeries, this.graphTargetLines, this.graphSeriesBreaks, this.graphErrorBars, this.graphTargetPoints, this.graphTargetLabels),
+      graphAnnotations: helpers.getGraphAnnotations(this.graphAnnotations, this.selectedUnit, this.selectedSeries, this.graphTargetLines, this.graphSeriesBreaks),
       chartTitle: this.chartTitle,
-      chartSubtitle: this.chartSubtitle,
       chartType: this.graphType,
       indicatorDownloads: this.indicatorDownloads,
       precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
-      graphStepsize: helpers.getGraphStepsize(this.graphStepsize, this.selectedUnit, this.selectedSeries),
       timeSeriesAttributes: timeSeriesAttributes,
       isProxy: this.proxy === 'proxy' || this.proxySerieses.includes(this.selectedSeries),
     });
@@ -3162,7 +3143,7 @@ var mapView = function () {
 
   "use strict";
 
-  this.initialise = function(indicatorId, precision, precisionItems, decimalSeparator, thousandsSeparator, dataSchema, viewHelpers, modelHelpers, chartTitles, chartSubtitles, startValues, proxy, proxySerieses) {
+  this.initialise = function(indicatorId, precision, precisionItems, decimalSeparator, dataSchema, viewHelpers, modelHelpers, chartTitles, startValues, proxy, proxySerieses) {
     $('.map').show();
     $('#map').sdgMap({
       indicatorId: indicatorId,
@@ -3171,12 +3152,10 @@ var mapView = function () {
       precision: precision,
       precisionItems: precisionItems,
       decimalSeparator: decimalSeparator,
-      thousandsSeparator: thousandsSeparator,
       dataSchema: dataSchema,
       viewHelpers: viewHelpers,
       modelHelpers: modelHelpers,
       chartTitles: chartTitles,
-      chartSubtitles: chartSubtitles,
       proxy: proxy,
       proxySerieses: proxySerieses,
       startValues: startValues,
