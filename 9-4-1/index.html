@@ -146,7 +146,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20231127114600">
+        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20231127121843">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -541,9 +541,9 @@ data-event-label="high"
                 data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to indicator.national_metadata tab"
+data-event-label="Change to indicator.details tab"
 
-            >National Metadata</button>
+            >indicator.details</button>
         </li>
     
         
@@ -555,16 +555,37 @@ data-event-label="Change to indicator.national_metadata tab"
                 type="button"
                 class="nav-link "
                 data-bs-toggle="tab"
-                id="tab-global"
-                data-bs-target="#global"
-                aria-controls="global"
+                id="tab-content"
+                data-bs-target="#content"
+                aria-controls="content"
                 role="tab"
                 data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to indicator.global_metadata tab"
+data-event-label="Change to indicator.contentAndProgress tab"
 
-            >Global Metadata</button>
+            >indicator.contentAndProgress</button>
+        </li>
+    
+        
+        
+        
+        
+        <li role="presentation" class="nav-item">
+            <button
+                type="button"
+                class="nav-link "
+                data-bs-toggle="tab"
+                id="tab-history_1"
+                data-bs-target="#history_1"
+                aria-controls="history_1"
+                role="tab"
+                data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to indicator.history tab"
+
+            >indicator.history</button>
         </li>
     
         
@@ -605,7 +626,7 @@ data-event-label="Change to indicator.sources tab"
     
     <div role="tabpanel" class="tab-pane active" id="national">
       <article>
-        <p>This table provides metadata for the actual indicator available from Hessen statistics closest to the corresponding global SDG indicator. Please note that even when the global SDG indicator is fully available from Hessische statistics, this table should be consulted for information on national methodology and other Hessische-specific metadata information.</p>
+        <p>indicator.dns_metadata_blurb</p>
 
         
 <table class="table" style="width:100%; table-layout: fixed;">
@@ -1763,145 +1784,14 @@ data-event-label="Change to indicator.sources tab"
     
     
     
-    <div role="tabpanel" class="tab-pane " id="global">
+    <div role="tabpanel" class="tab-pane " id="content">
       <article>
-        <p>This table provides information on metadata for SDG indicators as defined by the UN Statistical Commission. <a href="https://unstats.un.org/sdgs/metadata/">Complete global metadata</a> is provided by the UN Statistics Division.</p>
-
+        
         
 <table class="table" style="width:100%; table-layout: fixed;">
   
-      
-
-      
-      
-
-
-      
-        
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left; width: 130px;">Indicator </th>
-            <td>
-              
-                <p>Indicator 9.4.1: CO<sub>2</sub> emission per unit of value added</p>
-
-              
-            </td>
-          </tr>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
-  
-      
-
-      
-      
-
-
-      
-        
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left; width: 130px;">Target </th>
-            <td>
-              
-                <p>Target 9.4: By 2030, upgrade infrastructure and retrofit industries to make them sustainable, with increased resource-use efficiency and greater adoption of clean and environmentally sound technologies and industrial processes, with all countries taking action in accordance with their respective capabilities</p>
-
-              
-            </td>
-          </tr>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
-  
-      
-
-      
-      
-
-
-      
-        
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left; width: 130px;">Metadata update </th>
-            <td>
-              
-                <p>2022-03-31</p>
-
-              
-            </td>
-          </tr>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
   
-      
-
-      
-      
-
-
-      
-        
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left; width: 130px;">International organisations(s) responsible for global monitoring </th>
-            <td>
-              
-                <p>International Energy Agency (IEA)</p>
-<p>United Nations Industrial Development Organization (UNIDO)</p>
-
-              
-            </td>
-          </tr>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
   
-      
-
-      
-      
-
-
-      
-        
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left; width: 130px;">Related indicators </th>
-            <td>
-              
-                <p>Indicator 7.2.1: Renewable energy share in the total final energy consumption</p>
-<p>Indicator 7.3.1: Energy intensity measured in terms of primary energy and GDP</p>
-<p>Indicator 13.2.2 : Total greenhouse gas emissions per year</p>
-
-              
-            </td>
-          </tr>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
   
   
   
@@ -2016,33 +1906,27 @@ data-event-label="Change to indicator.sources tab"
   
   
   
-      
-
-      
-      
-
-
-      
-        
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left; width: 130px;">UN designated tier </th>
-            <td>
-              
-                
-
-              
-            </td>
-          </tr>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
+  
+  
   
 </table>
+
+      </article>
+    </div>
+    
+    
+    
+    
+    
+    <div role="tabpanel" class="tab-pane " id="history_1">
+      <article>
+        <p>indicator.history_blurb</p>
+
+        <!-- Count the non-empty histories (up to 2) -->
+
+
+
+
 
       </article>
     </div>
@@ -2176,12 +2060,12 @@ data-event-label="Change to indicator.sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/seite/assets/js/sdg.js?v=20231127114600'></script>
+<script src='/seite/assets/js/sdg.js?v=20231127121843'></script>
 
 
     
     
-    <script src="/seite/assets/js/custom.js?v=20231127114600"></script><script>
+    <script src="/seite/assets/js/custom.js?v=20231127121843"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

@@ -146,7 +146,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20231127114600">
+        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20231127121843">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -541,9 +541,9 @@ data-event-label="high"
                 data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to indicator.national_metadata tab"
+data-event-label="Change to indicator.details tab"
 
-            >Nationale Metadaten</button>
+            >indicator.details</button>
         </li>
     
         
@@ -555,16 +555,37 @@ data-event-label="Change to indicator.national_metadata tab"
                 type="button"
                 class="nav-link "
                 data-bs-toggle="tab"
-                id="tab-global"
-                data-bs-target="#global"
-                aria-controls="global"
+                id="tab-content"
+                data-bs-target="#content"
+                aria-controls="content"
                 role="tab"
                 data-on="click"
 data-event-category="Tab change"
 data-event-action="Change metadata view"
-data-event-label="Change to indicator.global_metadata tab"
+data-event-label="Change to indicator.contentAndProgress tab"
 
-            >Globale Metadaten</button>
+            >indicator.contentAndProgress</button>
+        </li>
+    
+        
+        
+        
+        
+        <li role="presentation" class="nav-item">
+            <button
+                type="button"
+                class="nav-link "
+                data-bs-toggle="tab"
+                id="tab-history_1"
+                data-bs-target="#history_1"
+                aria-controls="history_1"
+                role="tab"
+                data-on="click"
+data-event-category="Tab change"
+data-event-action="Change metadata view"
+data-event-label="Change to indicator.history tab"
+
+            >indicator.history</button>
         </li>
     
         
@@ -605,7 +626,7 @@ data-event-label="Change to indicator.sources tab"
     
     <div role="tabpanel" class="tab-pane active" id="national">
       <article>
-        <p>Im Folgenden werden Metadaten zu den national verfügbaren Zeitreihen für Hessen zum jeweiligen globalen SDG-Indikator bereitgestellt. Die angegebene Datenreihe ist die vergleichbarste, national verfügbare Zeitreihe. Entspricht die angezeigte Datenreihe voll den globalen Metadaten, so ist dennoch auf diese nationalen Metadaten für methodische sowie weitere länderspezifische Informationen hinzuweisen.</p>
+        <p>indicator.dns_metadata_blurb</p>
 
         
 <table class="table" style="width:100%; table-layout: fixed;">
@@ -1763,142 +1784,14 @@ data-event-label="Change to indicator.sources tab"
     
     
     
-    <div role="tabpanel" class="tab-pane " id="global">
+    <div role="tabpanel" class="tab-pane " id="content">
       <article>
-        <p>Diese Übersicht stellt Informationen zu den globalen Metadaten des jeweiligen SDG-Indikators bereit. Die <a href="https://unstats.un.org/sdgs/metadata/">globalen Metadaten</a> werden durch die Statistische Division der Vereinten Nationen bereitgestellt.</p>
-
+        
         
 <table class="table" style="width:100%; table-layout: fixed;">
   
-      
-
-      
-      
-
-
-      
-        
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left; width: 130px;">Indikator </th>
-            <td>
-              
-                <p>Indicator 1.2.2: Proportion of men, women and children of all ages living in poverty in all its dimensions according to national definitions</p>
-
-              
-            </td>
-          </tr>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
-  
-      
-
-      
-      
-
-
-      
-        
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left; width: 130px;">Ziel </th>
-            <td>
-              
-                <p>Target 1.2: By 2030, reduce at least by half the proportion of men, women and children of all ages living in poverty in all its dimensions according to national definitions</p>
-
-              
-            </td>
-          </tr>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
-  
-      
-
-      
-      
-
-
-      
-        
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left; width: 130px;">Metadaten-Update </th>
-            <td>
-              
-                <p>2023-03-31</p>
-
-              
-            </td>
-          </tr>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
   
-      
-
-      
-      
-
-
-      
-        
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left; width: 130px;">Internationale Organisation(en), die für die globale Überwachung zuständig sind </th>
-            <td>
-              
-                <p>The World Bank, United Nations Children&#x2019;s Fund (UNICEF), United Nations Development Programme (UNDP)</p>
-
-              
-            </td>
-          </tr>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
   
-      
-
-      
-      
-
-
-      
-        
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left; width: 130px;">Zugehörige Indikatoren </th>
-            <td>
-              
-                <p>Not applicable</p>
-
-              
-            </td>
-          </tr>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
   
   
   
@@ -2013,33 +1906,27 @@ data-event-label="Change to indicator.sources tab"
   
   
   
-      
-
-      
-      
-
-
-      
-        
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left; width: 130px;">VN Tier Klassifikation </th>
-            <td>
-              
-                
-
-              
-            </td>
-          </tr>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
+  
+  
   
 </table>
+
+      </article>
+    </div>
+    
+    
+    
+    
+    
+    <div role="tabpanel" class="tab-pane " id="history_1">
+      <article>
+        <p>indicator.history_blurb</p>
+
+        <!-- Count the non-empty histories (up to 2) -->
+
+
+
+
 
       </article>
     </div>
@@ -2173,12 +2060,12 @@ data-event-label="Change to indicator.sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Suche';</script>
 
-<script src='/seite/assets/js/sdg.js?v=20231127114600'></script>
+<script src='/seite/assets/js/sdg.js?v=20231127121843'></script>
 
 
     
     
-    <script src="/seite/assets/js/custom.js?v=20231127114600"></script><script>
+    <script src="/seite/assets/js/custom.js?v=20231127121843"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
