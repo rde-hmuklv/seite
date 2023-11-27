@@ -180,18 +180,23 @@ menu:
   - path: /about
     translation_key: menu.about
     dropdown: []
-metadata_edit_url: metadata
 metadata_tabs:
   - scope: national
-    title: indicator.national_metadata
-    description: indicator.national_metadata_blurb
-  - scope: global
-    title: indicator.global_metadata
-    description: indicator.global_metadata_blurb
+    title: indicator.details
+    description: indicator.dns_metadata_blurb
+  - scope: content
+    title: indicator.contentAndProgress
+    description: ''
+  - scope: history_1
+    title: indicator.history
+    description: indicator.history_blurb
   - scope: sources
     title: indicator.sources
     description: ''
-meta_tags: []
+# Configure the text (or "translation key") to be used on the
+# non-global metadata tab.
+non_global_metadata: indicator.national_metadata
+
 news:
   category_links: false
 progress_status:
