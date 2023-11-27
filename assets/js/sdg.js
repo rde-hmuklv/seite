@@ -3706,11 +3706,12 @@ function strToArray (str, limit) {
     common: {
         // This "common" preset is applied to all annotations automatically.
         borderColor: '#949494',
+        //drawTime: 'afterDraw',
         type: 'line',
         borderDash: [10, 5],
         borderWidth: 1,
         label: {
-            backgroundColor: 'white',
+            backgroundColor: 'rgba(255,255,255,0.6)',
             color: 'black',
         },
         // This "highContrast" overrides colors when in high-contrast mode.
@@ -3728,7 +3729,7 @@ function strToArray (str, limit) {
         description: function() {
             var descriptionParts = [translations.indicator.chart_annotation];
             if (this.label && this.label.content) {
-                descriptionParts.push(translations.t(this.label.content));
+                descriptionParts.push(translations.t(this.label.content) + ': ' + this.value);
             }
             else {
                 // If there is no label, just specify whether it is a box or line.
@@ -3762,6 +3763,46 @@ function strToArray (str, limit) {
             position: 'top',
             content: translations.indicator.annotation_series_break,
         },
+    },
+    error_bar: {
+        adjustScaleRange: true,
+        drawTime: 'afterDatasetsDraw',
+        type: 'line',
+        backgroundColor: 'blue',
+        xScaleID: 'x',
+        yScaleID: 'y',
+        xMin: 2,
+        xMax: 2,
+        yMin: 15000,
+        yMax: 25000,
+    },
+    target_point: {
+        adjustScaleRange: true,
+        drawTime: 'afterDatasetsDraw',
+        type: 'point',
+        radius: 1,
+        backgroundColor: 'white',
+        borderWidth: 2,
+        borderDash: [1,0],
+        radius: 8,
+    },
+    target_label: {
+        type: 'label',
+        content: ['In this point of time,', 'something happened'],
+        textAlign: 'start',
+        font: {
+          size: 18
+        },
+        display: true,
+    },
+    target_labels: {
+        type: 'label',
+        content: ['In this point of time,', 'something happened'],
+        textAlign: 'start',
+        font: {
+          size: 18
+        },
+        display: true
     },
 };
 
