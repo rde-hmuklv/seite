@@ -146,7 +146,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20231127094548">
+        <link rel="stylesheet" href="/seite/assets/css/style.css?v=20231127101739">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -205,18 +205,24 @@ layout-indicator
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav" id="menu"><li class="nav-item ">
     <a class="nav-link" href="/seite/">Home</a>
-</li><li class="nav-item ">
+</li>
+<li class="nav-item ">
     <a class="nav-link" href="/seite/goals">Goals</a>
-</li><li class="nav-item ">
+</li>
+<li class="nav-item ">
     <a class="nav-link" href="/seite/reporting-status">Reporting Status</a>
-</li><li class="nav-item ">
+</li>
+<li class="nav-item ">
     <a class="nav-link" href="/seite/news">Updates</a>
-</li><li class="nav-item ">
+</li>
+<li class="nav-item ">
     <a class="nav-link" href="/seite/faq">FAQ</a>
-</li><li class="nav-item ">
+</li>
+<li class="nav-item ">
     <a class="nav-link" href="/seite/about">About</a>
-</li></ul>
-    
+</li>
+</ul>
+
                 </div>
                 <div class="header-search-bar">
                     <form class="align-self-lg-end" id="search" action="/seite/search/">
@@ -2096,6 +2102,7 @@ data-event-label="Change to indicator.sources tab"
 </div>
 
 
+
 <footer role="contentinfo">
     <div class="container">
         <div class="row">
@@ -2103,27 +2110,33 @@ data-event-label="Change to indicator.sources tab"
                 <div id="footerLinks">
                     <ul>
                         <li>
-                            <a href="https://open-sdg.org">Built using Open SDG</a>
+                            <a href="https://open-sdg.org" target="_blank" onclick="return confirm_alert('open-sdg', 'En');">
+                              Built using Open SDG
+                            </a>
                         </li>
                         
                         <li>
-                            <a href="/seite/contact-us">Contact us</a>
-                            
-                        </li>
+                              <a href="/seite/contact-us ">Contact us</a>
+                              
+                          </li>
                         <li>
-                            
-                            <a href="https://twitter.com/UmweltHessen" target="_blank">Twitter</a>
-                            
-                        </li>
+                              
+                                
+                                  <a href="https://twitter.com/UmweltHessen">Twitter</a>
+                                
+                              
+                          </li>
                         <li>
-                            
-                            <a href="https://facebook.com/MyFacebookAccount" target="_blank">Facebook</a>
-                            
-                        </li>
+                              
+                                
+                                  <a href="https://facebook.com/MyFacebookAccount">Facebook</a>
+                                
+                              
+                          </li>
                         <li>
-                            <a href="/seite/about/cookies-and-privacy/">Cookies</a>
-                            
-                        </li>
+                              <a href="/seite/about/cookies-and-privacy/ ">Cookies</a>
+                              
+                          </li>
                         
                         
                         
@@ -2166,12 +2179,12 @@ data-event-label="Change to indicator.sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Search';</script>
 
-<script src='/seite/assets/js/sdg.js?v=20231127094548'></script>
+<script src='/seite/assets/js/sdg.js?v=20231127101739'></script>
 
 
     
     
-    <script src="/seite/assets/js/custom.js?v=20231127094548"></script><script>
+    <script src="/seite/assets/js/custom.js?v=20231127101739"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
@@ -2179,3 +2192,4 @@ data-event-label="Change to indicator.sources tab"
 
 </body>
 </html>
+
