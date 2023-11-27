@@ -4915,8 +4915,6 @@ var indicatorInit = function () {
                         shortIndicatorId: domData.id,
                         chartTitle: domData.charttitle,
                         chartTitles: domData.charttitles,
-                        chartSubtitle: domData.chartsubtitle,
-                        chartSubtitles: domData.chartsubtitles,
                         measurementUnit: domData.measurementunit,
                         xAxisLabel: domData.xaxislabel,
                         showData: domData.showdata,
@@ -4925,19 +4923,13 @@ var indicatorInit = function () {
                         startValues: domData.startvalues,
                         graphLimits: domData.graphlimits,
                         stackedDisaggregation: domData.stackeddisaggregation,
-                        showLine: domData.showline,
-                        spanGaps: domData.spangaps,
                         graphAnnotations: domData.graphannotations,
                         graphTargetLines: domData.graphtargetlines,
                         graphSeriesBreaks: domData.graphseriesbreaks,
-                        graphErrorBars: domData.grapherrorbars,
-                        graphTargetPoints: domData.graphtargetpoints,
-                        graphTargetLabels: domData.graphtargetlabels,
                         indicatorDownloads: domData.indicatordownloads,
                         dataSchema: domData.dataschema,
                         compositeBreakdownLabel: domData.compositebreakdownlabel,
                         precision: domData.precision,
-                        graphStepsize: domData.graphstepsize,
                         proxy: domData.proxy,
                         proxySeries: domData.proxyseries,
                     });
@@ -4945,12 +4937,11 @@ var indicatorInit = function () {
                         rootElement: '#indicatorData',
                         legendElement: '#plotLegend',
                         decimalSeparator: '',
-                        thousandsSeparator: '',
                         maxChartHeight: 420,
                         tableColumnDefs: [
                             { maxCharCount: 25 }, // nowrap
-                            //{ maxCharCount: 35, width: 200 },
-                            { maxCharCount: Infinity, width: 300 }
+                            { maxCharCount: 35, width: 200 },
+                            { maxCharCount: Infinity, width: 250 }
                         ]
                     });
                     var controller = new indicatorController(model, view);
