@@ -15,7 +15,7 @@
         },
         {
           "id": "1-2-1",
-          "title": "Anteil der Bevölkerung, die unter der nationalen Armutsgrenze lebt, nach Geschlecht und Alter",
+          "title": "global_indicators.1-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/1-2-1/",
@@ -23,7 +23,7 @@
         },
         {
           "id": "1-2-2",
-          "title": "Anteil der Männer, Frauen und Kinder jeden Alters, die in Armut in all ihren Dimensionen gemäß nationaler Definitionen leben",
+          "title": "global_indicators.1-2-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/1-2-2/",
@@ -31,7 +31,7 @@
         },
         {
           "id": "1-3-1",
-          "title": "Anteil der Bevölkerung, die durch soziale Sicherungssysteme abgesichert sind, nach Geschlecht, untergliedert nach Kindern, Arbeitslosen, älteren Personen, Menschen mit Behinderungen, Schwangeren, Neugeborenen, Opfern von Arbeitsunfällen sowie Armen und Schwachen",
+          "title": "global_indicators.1-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/1-3-1/",
@@ -39,7 +39,7 @@
         },
         {
           "id": "1-4-1",
-          "title": "Anteil der Bevölkerung, die in Haushalten mit Anschluss an die Grundversorgung lebt",
+          "title": "global_indicators.1-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/1-4-1/",
@@ -47,7 +47,7 @@
         },
         {
           "id": "1-4-2",
-          "title": "Anteil der erwachsenen Gesamtbevölkerung mit gesicherter Verfügungsgewalt über Grundeigentum, (a) mit gesetzlich anerkannter Dokumentation und (b) die ihr Eigentumsrecht als sicher erachten, nach Geschlecht und nach Art der Eigentumsverhältnisse",
+          "title": "global_indicators.1-4-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/1-4-2/",
@@ -55,7 +55,7 @@
         },
         {
           "id": "1-5-1",
-          "title": "Anzahl der infolge von Katastrophen getöteten, vermissten und direkt betroffenen Personen, je 100.000 Einwohner",
+          "title": "global_indicators.1-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/1-5-1/",
@@ -63,7 +63,7 @@
         },
         {
           "id": "1-5-2",
-          "title": "Unmittelbarer wirtschaftlicher Schaden infolge von Katastrophen, im Verhältnis zum globalen Bruttoinlandsprodukt (BIP)",
+          "title": "global_indicators.1-5-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/1-5-2/",
@@ -71,7 +71,7 @@
         },
         {
           "id": "1-5-3",
-          "title": "Anzahl der Staaten, die nationale Strategien zur Reduzierung des Katastrophenrisikos in Einklang mit dem Sendai-Rahmenwerk zur Katastrophenvorsorge 2015-2030 verabschiedet und umgesetzt haben",
+          "title": "global_indicators.1-5-3-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/1-5-3/",
@@ -79,7 +79,7 @@
         },
         {
           "id": "1-5-4",
-          "title": "Anteil der lokalen Regierungen, die lokale Strategien zur Reduzierung des Katastrophenrisikos in Einklang mit den nationalen Strategien zur Katastrophenvorsorge verabschiedet und umgesetzt haben",
+          "title": "global_indicators.1-5-4-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/1-5-4/",
@@ -87,7 +87,7 @@
         },
         {
           "id": "1-a-1",
-          "title": "Anteil der inländisch erwirtschafteten Ressourcen, die von der Regierung direkt für Programme zur Armutsbekämpfung bereitgestellt werden",
+          "title": "global_indicators.1-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/1-a-1/",
@@ -95,7 +95,7 @@
         },
         {
           "id": "1-a-2",
-          "title": "Anteil der gesamten staatlichen Ausgaben für Grundleistungen (Bildung, Gesundheit und soziale Sicherung)",
+          "title": "global_indicators.1-a-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/1-a-2/",
@@ -103,7 +103,7 @@
         },
         {
           "id": "1-b-1",
-          "title": "Anteil der wiederkehrenden staatlichen und Investitionsausgaben für Sektoren, die überdurchschnittlich Frauen, Arme und benachteiligte Gruppen begünstigen",
+          "title": "global_indicators.1-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/1-b-1/",
@@ -119,7 +119,7 @@
         
         {
           "id": "2-1-1",
-          "title": "Prävalenz von Unterernährung",
+          "title": "global_indicators.2-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/2-1-1/",
@@ -127,7 +127,7 @@
         },
         {
           "id": "2-1-2",
-          "title": "Prävalenz mittlerer oder schwerer Ernährungsunsicherheit in der Bevölkerung, basierend auf der Erfahrungsskala für Ernährungsunsicherheit (FIES)",
+          "title": "global_indicators.2-1-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/2-1-2/",
@@ -135,7 +135,7 @@
         },
         {
           "id": "2-2-1",
-          "title": "Prävalenz von Kleinwuchs (Körpergröße zum Alter < -2 Standardabweichung vom Median des Wachstumsstandards für Kinder der Weltgesundheitsorganisation (WHO)) bei Kindern unter 5 Jahren",
+          "title": "global_indicators.2-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/2-2-1/",
@@ -143,7 +143,7 @@
         },
         {
           "id": "2-2-2",
-          "title": "Prävalenz von Fehlernährung (Gewicht zur Körpergröße > +2 oder < -2 Standardabweichung vom Median des Wachstumsstandards für Kinder der WHO) bei Kindern unter 5 Jahren, nach der Art (Auszehrung und Übergewicht)",
+          "title": "global_indicators.2-2-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/2-2-2/",
@@ -151,7 +151,7 @@
         },
         {
           "id": "2-2-3",
-          "title": "Prävalenz von Anämie bei Frauen im Alter von 15 bis 49 Jahren, nach Schwangerschaftsstatus (in Prozent)",
+          "title": "global_indicators.2-2-3-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/2-2-3/",
@@ -159,7 +159,7 @@
         },
         {
           "id": "2-3-1",
-          "title": "Produktionsvolumen je Arbeitskraft nach Unternehmensgrößenklassen der Betriebsgröße in Land-/Weide-/Forstwirtschaft",
+          "title": "global_indicators.2-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/2-3-1/",
@@ -167,7 +167,7 @@
         },
         {
           "id": "2-3-2",
-          "title": "Durchschnittliches Einkommen kleiner Nahrungsmittelproduzenten, nach Geschlecht und indigenem Status",
+          "title": "global_indicators.2-3-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/2-3-2/",
@@ -175,7 +175,7 @@
         },
         {
           "id": "2-4-1",
-          "title": "Anteil der landwirtschaftlichen Fläche unter produktiver und nachhaltiger Bewirtschaftung",
+          "title": "global_indicators.2-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/2-4-1/",
@@ -183,7 +183,7 @@
         },
         {
           "id": "2-5-1",
-          "title": "Anzahl der pflanzlichen und tierischen genetischen Ressourcen für Ernährung und Landwirtschaft, die entweder in mittel- oder langfristigen Einrichtungen zu deren Erhalt gesichert sind",
+          "title": "global_indicators.2-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/2-5-1/",
@@ -191,7 +191,7 @@
         },
         {
           "id": "2-5-2",
-          "title": "Anteil der einheimischen Arten, die als gefährdet oder nicht gefährdet klassifiziert sind oder deren Gefährdungsgrad unbekannt ist",
+          "title": "global_indicators.2-5-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/2-5-2/",
@@ -199,7 +199,7 @@
         },
         {
           "id": "2-a-1",
-          "title": "Der Agriculture Orientation Index für staatliche Ausgaben",
+          "title": "global_indicators.2-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/2-a-1/",
@@ -207,7 +207,7 @@
         },
         {
           "id": "2-a-2",
-          "title": "Öffentliche Leistungen insgesamt (öffentliche Entwicklungszusammenarbeit plus sonstige öffentliche Ausgaben) für den Landwirtschaftssektor",
+          "title": "global_indicators.2-a-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/2-a-2/",
@@ -215,7 +215,7 @@
         },
         {
           "id": "2-b-1",
-          "title": "Ausfuhrsubventionen für landwirtschaftliche Güter",
+          "title": "global_indicators.2-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/2-b-1/",
@@ -223,7 +223,7 @@
         },
         {
           "id": "2-c-1",
-          "title": "Indikator zu Preisschwankungen bei Lebensmittelpreisen",
+          "title": "global_indicators.2-c-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/2-c-1/",
@@ -239,7 +239,7 @@
         
         {
           "id": "3-1-1",
-          "title": "Müttersterblichkeitsrate",
+          "title": "global_indicators.3-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-1-1/",
@@ -247,7 +247,7 @@
         },
         {
           "id": "3-1-2",
-          "title": "Anteil der Geburten unter der Aufsicht von qualifiziertem Gesundheitspersonal",
+          "title": "global_indicators.3-1-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-1-2/",
@@ -255,7 +255,7 @@
         },
         {
           "id": "3-2-1",
-          "title": "Sterblichkeitsrate von Kindern unter 5 Jahren",
+          "title": "global_indicators.3-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-2-1/",
@@ -263,7 +263,7 @@
         },
         {
           "id": "3-2-2",
-          "title": "Sterblichkeitsrate von Neugeborenen",
+          "title": "global_indicators.3-2-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-2-2/",
@@ -271,7 +271,7 @@
         },
         {
           "id": "3-3-1",
-          "title": "Anzahl der HIV-Neuinfektionen je 1.000 nicht infizierter Einwohner, nach Geschlecht, Alter und Risikogruppen",
+          "title": "global_indicators.3-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-3-1/",
@@ -279,7 +279,7 @@
         },
         {
           "id": "3-3-2",
-          "title": "Tuberkulose-Inzidenz je 100.000 Einwohner",
+          "title": "global_indicators.3-3-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-3-2/",
@@ -287,7 +287,7 @@
         },
         {
           "id": "3-3-3",
-          "title": "Malaria-Inzidenz je 1.000 Einwohner",
+          "title": "global_indicators.3-3-3-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-3-3/",
@@ -295,7 +295,7 @@
         },
         {
           "id": "3-3-4",
-          "title": "Hepatitis-B-Inzidenz je 100.000 Einwohner",
+          "title": "global_indicators.3-3-4-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-3-4/",
@@ -303,7 +303,7 @@
         },
         {
           "id": "3-3-5",
-          "title": "Anzahl der Personen, die Maßnahmen gegen vernachlässigte Tropenkrankheiten benötigen",
+          "title": "global_indicators.3-3-5-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-3-5/",
@@ -311,7 +311,7 @@
         },
         {
           "id": "3-4-1",
-          "title": "Sterblichkeitsrate infolge von Herz-Kreislauf-Erkrankungen, Krebs, Diabetes oder chronischen Atemwegserkrankungen",
+          "title": "global_indicators.3-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-4-1/",
@@ -319,7 +319,7 @@
         },
         {
           "id": "3-4-2",
-          "title": "Sterblichkeitsrate bei Suizid",
+          "title": "global_indicators.3-4-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-4-2/",
@@ -327,7 +327,7 @@
         },
         {
           "id": "3-5-1",
-          "title": "Abdeckung durch Behandlungsmaßnahmen (pharmakologische, psychosoziale und Rehabilitations- und Nachsorgeleistungen) bei Substanzmissbrauch",
+          "title": "global_indicators.3-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-5-1/",
@@ -335,7 +335,7 @@
         },
         {
           "id": "3-5-2",
-          "title": "Schädlicher Alkoholkonsum, definiert gemäß den nationalen Gegebenheiten als Alkoholkonsum pro Kopf (15 Jahre und älter) innerhalb eines Kalenderjahres in Litern reinem Alkohol",
+          "title": "global_indicators.3-5-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-5-2/",
@@ -343,7 +343,7 @@
         },
         {
           "id": "3-6-1",
-          "title": "Sterblichkeitsrate aufgrund von Straßenverkehrsunfällen",
+          "title": "global_indicators.3-6-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-6-1/",
@@ -351,7 +351,7 @@
         },
         {
           "id": "3-7-1",
-          "title": "Anteil der Frauen im gebärfähigen Alter (15-49 Jahre), die ihren Anspruch auf Familienplanung durch moderne Methoden umsetzen können",
+          "title": "global_indicators.3-7-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-7-1/",
@@ -359,7 +359,7 @@
         },
         {
           "id": "3-7-2",
-          "title": "Geburtenrate von Jugendlichen (10-14 Jahre 15-19 Jahre) je 1.000 Frauen derselben Altersgruppe",
+          "title": "global_indicators.3-7-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-7-2/",
@@ -367,7 +367,7 @@
         },
         {
           "id": "3-8-1",
-          "title": "Abdeckung der grundlegenden Gesundheitsleistungen (definiert als durchschnittliche Abdeckung der grundlegenden Leistungen basierend auf Tracer-Interventionen, einschließlich reproduktiver, Mütter-, Neugeborenen- und Kindergesundheit, infektiöser Krankheiten und nicht übertragbarer Krankheiten sowie Kapazitäten und Zugang zu Serviceleistungen, innerhalb der allgemein und der überwiegend benachteiligten Bevölkerung)",
+          "title": "global_indicators.3-8-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-8-1/",
@@ -375,7 +375,7 @@
         },
         {
           "id": "3-8-2",
-          "title": "Anteil der Bevölkerung mit hohen Haushaltsausgaben für Gesundheit als Anteil an den gesamten Haushaltsausgaben oder -einkommen",
+          "title": "global_indicators.3-8-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-8-2/",
@@ -383,7 +383,7 @@
         },
         {
           "id": "3-9-1",
-          "title": "Sterblichkeitsrate infolge von Luftverschmutzung im Haushalt und der Umgebung",
+          "title": "global_indicators.3-9-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-9-1/",
@@ -391,7 +391,7 @@
         },
         {
           "id": "3-9-2",
-          "title": "Sterblichkeitsrate infolge von Kontakt mit verunreinigtem Wasser, unzureichenden sanitären Verhältnissen und mangelnder Hygiene (Kontakt mit unzureichenden 'Wasser, Sanitäreinrichtungen und Hygiene für alle'-Leistungen (WASH))",
+          "title": "global_indicators.3-9-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-9-2/",
@@ -399,7 +399,7 @@
         },
         {
           "id": "3-9-3",
-          "title": "Sterblichkeitsrate infolge von unbeabsichtigtem Vergiften",
+          "title": "global_indicators.3-9-3-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-9-3/",
@@ -407,7 +407,7 @@
         },
         {
           "id": "3-a-1",
-          "title": "Altersstandardisierte Prävalenz des aktuellen Tabakkonsums bei Personen im Alter von 15 Jahren und älter",
+          "title": "global_indicators.3-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-a-1/",
@@ -415,7 +415,7 @@
         },
         {
           "id": "3-b-1",
-          "title": "Anteil der Zielbevölkerung, die alle Impfungen laut nationalen Programm besitzt",
+          "title": "global_indicators.3-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-b-1/",
@@ -423,7 +423,7 @@
         },
         {
           "id": "3-b-2",
-          "title": "Gesamte öffentliche Netto-Entwicklungszusammenarbeit für medizinische Forschung und grundlegende Gesundheitsversorgung",
+          "title": "global_indicators.3-b-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-b-2/",
@@ -431,7 +431,7 @@
         },
         {
           "id": "3-b-3",
-          "title": "Anteil der Gesundheitseinrichtungen, die über einen Kernsatz relevanter und wichtiger Medikamente verfügen, die nachhaltig verfügbar und bezahlbar sind",
+          "title": "global_indicators.3-b-3-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-b-3/",
@@ -439,7 +439,7 @@
         },
         {
           "id": "3-c-1",
-          "title": "Dichte und Verteilung von medizinischem Fachpersonal",
+          "title": "global_indicators.3-c-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-c-1/",
@@ -447,7 +447,7 @@
         },
         {
           "id": "3-d-1",
-          "title": "Kapazitäten für internationale Gesundheitsvorschriften (IGV) und Gesundheitsnotfallvorsorge",
+          "title": "global_indicators.3-d-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-d-1/",
@@ -455,7 +455,7 @@
         },
         {
           "id": "3-d-2",
-          "title": "Prozentualer Anteil von Infektionen der Blutbahn durch ausgewählte antimikrobiell resistente Organismen",
+          "title": "global_indicators.3-d-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/3-d-2/",
@@ -471,7 +471,7 @@
         
         {
           "id": "4-1-1",
-          "title": "Anteil der Kinder und Jugendlichen, die (a) in Klasse 2/3 (b) am Ende der Grundschule und (c) am Ende der Sekundarstufe I ein Mindestleistungsniveau in (i) Lesen und (ii) Mathematik erreichen, nach Geschlecht",
+          "title": "global_indicators.4-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/4-1-1/",
@@ -479,7 +479,7 @@
         },
         {
           "id": "4-1-2",
-          "title": "Abschlussquote (Grundschulbildung, Sekundarstufe I, Sekundarstufe II)",
+          "title": "global_indicators.4-1-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/4-1-2/",
@@ -487,7 +487,7 @@
         },
         {
           "id": "4-2-1",
-          "title": "Anteil der Kinder unter 5 Jahren mit einer altersgemäßen  Entwicklung hinsichtlich Gesundheit, Lernen und psycho-sozialem Wohlbefinden, nach Geschlecht",
+          "title": "global_indicators.4-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/4-2-1/",
@@ -495,7 +495,7 @@
         },
         {
           "id": "4-2-2",
-          "title": "Teilnahmequote an frühkindlicher Bildung (ein Jahr vor dem offiziellen Einschulungsalter), nach Geschlecht",
+          "title": "global_indicators.4-2-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/4-2-2/",
@@ -503,7 +503,7 @@
         },
         {
           "id": "4-3-1",
-          "title": "Teilnahmequote von Jugendlichen und Erwachsenen an formaler und non-formaler Bildung und Ausbildung in den vergangenen 12 Monaten, nach Geschlecht",
+          "title": "global_indicators.4-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/4-3-1/",
@@ -511,7 +511,7 @@
         },
         {
           "id": "4-4-1",
-          "title": "Anteil der Jugendlichen und Erwachsenen mit Kompetenzen in Informations- und Kommunikationstechnologie (IKT), nach Art der Kompetenz",
+          "title": "global_indicators.4-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/4-4-1/",
@@ -519,7 +519,7 @@
         },
         {
           "id": "4-5-1",
-          "title": "Paritäts-Indizes (weiblich/männlich, rural/urban, unterstes/oberstes Vermögensquantil und sonstige, wie z. B. Grad der Behinderung, indigene Bevölkerung und konfliktbetroffen, sobald Daten verfügbar werden) für alle Bildungsindikatoren dieser Liste, die disaggregiert werden können",
+          "title": "global_indicators.4-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/4-5-1/",
@@ -527,7 +527,7 @@
         },
         {
           "id": "4-6-1",
-          "title": "Anteil der Bevölkerung einer bestimmten Altersgruppe, die über ein festes Mindestniveau an funktionalen (a) Lese- und (b) Rechenfähigkeiten verfügt, nach Geschlecht",
+          "title": "global_indicators.4-6-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/4-6-1/",
@@ -535,7 +535,7 @@
         },
         {
           "id": "4-7-1",
-          "title": "Umfang, in dem (i) Bildung zu globaler Staatsbürgerschaft und (ii) Bildung für nachhaltige Entwicklung, einschließlich der Geschlechtergleichstellung und der Menschenrechte, auf allen Ebenen in: (a) nationale Bildungspolitik, (b) Lehrpläne, (c) Lehrerausbildung und (d) Schulleistungsuntersuchung berücksichtigt werden",
+          "title": "global_indicators.4-7-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/4-7-1/",
@@ -543,7 +543,7 @@
         },
         {
           "id": "4-a-1",
-          "title": "Anteil der Schulen mit Zugang zu: (a) Strom (b) Internet für Unterrichtszwecke (c) Computern für Unterrichtszwecke (d) angepasste Infrastruktur und Materialien für Schüler mit Behinderungen (e) Trinkwasser (f) geschlechterspezifischen sanitären Anlagen und g) grundlegende Ausstattung zum Händewaschen (gemäß den WASH-Indikator-Definitionen)",
+          "title": "global_indicators.4-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/4-a-1/",
@@ -551,7 +551,7 @@
         },
         {
           "id": "4-b-1",
-          "title": "Umfang der Ausgaben öffentlicher Entwicklungszusammenarbeit für Stipendien nach Sektor und Art des Studiums",
+          "title": "global_indicators.4-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/4-b-1/",
@@ -559,7 +559,7 @@
         },
         {
           "id": "4-c-1",
-          "title": "Anteil der Lehrer in: (a) Vorschule (b) Grundschule (c ) Sekundarstufe I und (d) Sekundarstufe II, die vor oder während ihrer Tätigkeit mindestens die geforderte Grundausbildung (z. B. pädagogisches Training) zum Unterrichten für die entsprechende Klassenstufe im jeweiligen Land erhalten haben",
+          "title": "global_indicators.4-c-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/4-c-1/",
@@ -575,7 +575,7 @@
         
         {
           "id": "5-1-1",
-          "title": "Existenz gesetzlicher Rahmenbedingungen, die Gleichstellung und Nicht-Diskriminierung aufgrund des Geschlechts fördern, durchsetzen und überwachen",
+          "title": "global_indicators.5-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/5-1-1/",
@@ -583,7 +583,7 @@
         },
         {
           "id": "5-2-1",
-          "title": "Anteil der Frauen und Mädchen im Alter von 15 Jahren und älter, die sich in ihrer jetzigen oder früheren Partnerschaft physischer, sexueller oder psychischer Gewalt durch ihren aktuellen oder früheren Intimpartner in den vergangenen 12 Monaten ausgesetzt waren, nach Art der Gewalt und Alter",
+          "title": "global_indicators.5-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/5-2-1/",
@@ -591,7 +591,7 @@
         },
         {
           "id": "5-2-2",
-          "title": "Anteil der Frauen und Mädchen im Alter von 15 Jahren und älter, die sexueller Gewalt durch andere Personen als einem Intimpartner in den vergangenen 12 Monaten ausgesetzt waren, nach Alter und Ort des Geschehens",
+          "title": "global_indicators.5-2-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/5-2-2/",
@@ -599,7 +599,7 @@
         },
         {
           "id": "5-3-1",
-          "title": "Anteil der 20- bis 24-jährigen Frauen, die vor einem Alter von 15 oder 18 Jahren verheiratet oder in einer vergleichbaren Verbindung waren",
+          "title": "global_indicators.5-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/5-3-1/",
@@ -607,7 +607,7 @@
         },
         {
           "id": "5-3-2",
-          "title": "Anteil der Mädchen und Frauen im Alter von 15-49 Jahren, die weiblicher Genitalverstümmelung unterzogen wurden, nach Alter",
+          "title": "global_indicators.5-3-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/5-3-2/",
@@ -615,7 +615,7 @@
         },
         {
           "id": "5-4-1",
-          "title": "Anteil des Zeitaufwands für unbezahlte Haus- und Pflegearbeit, nach Geschlecht, Alter und Ort",
+          "title": "global_indicators.5-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/5-4-1/",
@@ -623,7 +623,7 @@
         },
         {
           "id": "5-5-1",
-          "title": "Frauenanteil in (a) nationalen Parlamenten und (b) lokalen Regierungen",
+          "title": "global_indicators.5-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/5-5-1/",
@@ -631,7 +631,7 @@
         },
         {
           "id": "5-5-2",
-          "title": "Frauenanteil an  Führungspositionen",
+          "title": "global_indicators.5-5-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/5-5-2/",
@@ -639,7 +639,7 @@
         },
         {
           "id": "5-6-1",
-          "title": "Anteil der Frauen im Alter von 15-49 Jahren, die eigenständig fundierte Entscheidungen über sexuelle Beziehungen, Verhütung und reproduktive Gesundheitsversorgung treffen",
+          "title": "global_indicators.5-6-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/5-6-1/",
@@ -647,7 +647,7 @@
         },
         {
           "id": "5-6-2",
-          "title": "Anzahl der Staaten mit Gesetzen und Vorschriften, die einen uneingeschränkten und gleichberechtigten Zugang für Frauen und Männer im Alter von 15 Jahren und älter zu sexuellen und reproduktiven Gesundheitsleistungen, Information und Bildung garantieren",
+          "title": "global_indicators.5-6-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/5-6-2/",
@@ -655,7 +655,7 @@
         },
         {
           "id": "5-a-1",
-          "title": "(a) Anteil der gesamten landwirtschaftlichen Bevölkerung mit Eigentum oder sicheren Rechten an landwirtschaftlichen Flächen, nach Geschlecht und (b) Anteil der Frauen an den Eigentümern oder Rechteinhabern landwirtschaftlicher Flächen, nach Art der Besitzverhältnisse",
+          "title": "global_indicators.5-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/5-a-1/",
@@ -663,7 +663,7 @@
         },
         {
           "id": "5-a-2",
-          "title": "Anteil der Staaten, in denen der Rechtsrahmen (einschließlich Gewohnheitsrecht) Frauen die gleichen Rechte auf Landeigentum und/oder -nutzung garantiert",
+          "title": "global_indicators.5-a-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/5-a-2/",
@@ -671,7 +671,7 @@
         },
         {
           "id": "5-b-1",
-          "title": "Anteil der Personen, die ein Mobiltelefon besitzen, nach Geschlecht",
+          "title": "global_indicators.5-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/5-b-1/",
@@ -679,7 +679,7 @@
         },
         {
           "id": "5-c-1",
-          "title": "Anteil der Staaten mit Systemen zur transparenten Verfolgung und Veröffentlichung von Zuwendungen für Geschlechtergleichstellung und Stärkung der Rolle der Frau",
+          "title": "global_indicators.5-c-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/5-c-1/",
@@ -695,7 +695,7 @@
         
         {
           "id": "6-1-1",
-          "title": "Anteil der Bevölkerung mit Zugang zu einer sicheren Trinkwasserversorgung",
+          "title": "global_indicators.6-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/6-1-1/",
@@ -703,7 +703,7 @@
         },
         {
           "id": "6-2-1",
-          "title": "Anteil der Bevölkerung mit (a) Zugang zu sicherer Sanitärversorgung und (b) einem Handwaschbecken mit Seife und Wasser",
+          "title": "global_indicators.6-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/6-2-1/",
@@ -711,7 +711,7 @@
         },
         {
           "id": "6-3-1",
-          "title": "Anteil des sicher behandelten Abwassers",
+          "title": "global_indicators.6-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/6-3-1/",
@@ -719,7 +719,7 @@
         },
         {
           "id": "6-3-2",
-          "title": "Anteil der Gewässer mit guter Wasserqualität",
+          "title": "global_indicators.6-3-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/6-3-2/",
@@ -727,7 +727,7 @@
         },
         {
           "id": "6-4-1",
-          "title": "Veränderung der Wassernutzungseffizienz im Zeitablauf",
+          "title": "global_indicators.6-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/6-4-1/",
@@ -735,7 +735,7 @@
         },
         {
           "id": "6-4-2",
-          "title": "Grad der Wasserknappheit: Süßwasserentnahme als Anteil an den verfügbaren Süßwasserressourcen",
+          "title": "global_indicators.6-4-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/6-4-2/",
@@ -743,7 +743,7 @@
         },
         {
           "id": "6-5-1",
-          "title": "Grad der Umsetzung eines integrierten Wasserressourcenmanagements (0-100)",
+          "title": "global_indicators.6-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/6-5-1/",
@@ -751,7 +751,7 @@
         },
         {
           "id": "6-5-2",
-          "title": "Anteil der grenzüberschreitenden Flussgebiete mit einer operativen Vereinbarung zur Wasserkooperation",
+          "title": "global_indicators.6-5-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/6-5-2/",
@@ -759,7 +759,7 @@
         },
         {
           "id": "6-6-1",
-          "title": "Veränderung des Umfangs wasserbezogener Ökosysteme im Zeitablauf",
+          "title": "global_indicators.6-6-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/6-6-1/",
@@ -767,7 +767,7 @@
         },
         {
           "id": "6-a-1",
-          "title": "Betrag der wasser- und sanitärbezogenen öffentlichen Entwicklungszusammenarbeit, die Teil eines geregelten öffentlichen Haushaltsplans ist",
+          "title": "global_indicators.6-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/6-a-1/",
@@ -775,7 +775,7 @@
         },
         {
           "id": "6-b-1",
-          "title": "Anteil der lokalen Verwaltungseinheiten mit etablierten und operativen Strategien und Verfahren zur Beteiligung der Gemeinden am Wasser- und Abwassermanagement",
+          "title": "global_indicators.6-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/6-b-1/",
@@ -791,7 +791,7 @@
         
         {
           "id": "7-1-1",
-          "title": "Anteil der Bevölkerung mit Zugang zu Elektrizität",
+          "title": "global_indicators.7-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/7-1-1/",
@@ -799,7 +799,7 @@
         },
         {
           "id": "7-1-2",
-          "title": "Anteil der Bevölkerung mit überwiegender Abhängigkeit von sauberen Energieträgern und Technologien",
+          "title": "global_indicators.7-1-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/7-1-2/",
@@ -807,7 +807,7 @@
         },
         {
           "id": "7-2-1",
-          "title": "Anteil der erneuerbaren Energien am gesamten Endenergieverbrauch",
+          "title": "global_indicators.7-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/7-2-1/",
@@ -815,7 +815,7 @@
         },
         {
           "id": "7-3-1",
-          "title": "Energieintensität gemessen als Primärenergie zum BIP",
+          "title": "global_indicators.7-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/7-3-1/",
@@ -823,7 +823,7 @@
         },
         {
           "id": "7-a-1",
-          "title": "Internationale Finanzströme an Entwicklungsländer zur Förderung von Forschung und Entwicklung im Bereich sauberer Energien sowie erneuerbarer Energieproduktion, einschließlich Hybridsystemen",
+          "title": "global_indicators.7-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/7-a-1/",
@@ -831,7 +831,7 @@
         },
         {
           "id": "7-b-1",
-          "title": "Investitionen in Energieeffizienz als Anteil am BIP und der Betrag der ausländischen Direktinvestitionen in Form von Finanzmitteln für Infrastruktur und Technologien der Dienstleistungen für nachhaltige Entwicklung",
+          "title": "global_indicators.7-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/7-b-1/",
@@ -842,12 +842,12 @@
   {
     "goal": {
       "id": "8",
-      "title": "Dauerhaftes, breitenwirksames und nachhaltiges Wirtschaftswachstum, produktive Vollbeschäftigung und menschenwürdige Arbeit für alle fördern",
+      "title": "Dauerhaftes, inklusives und nachhaltiges Wirtschaftswachstum, produktive Vollbeschäftigung und menschenwürdige Arbeit für alle fördern",
       "indicators": [
         
         {
           "id": "8-1-1",
-          "title": "Jährliche Wachstumsrate des realen BIP pro Kopf",
+          "title": "global_indicators.8-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-1-1/",
@@ -855,7 +855,7 @@
         },
         {
           "id": "8-2-1",
-          "title": "Jährliche Wachstumsrate des realen BIP je Beschäftigten",
+          "title": "global_indicators.8-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-2-1/",
@@ -863,7 +863,7 @@
         },
         {
           "id": "8-3-1",
-          "title": "Anteil der informellen Beschäftigung an allen Beschäftigungsverhältnissen außerhalb der Landwirtschaft, nach Geschlecht",
+          "title": "global_indicators.8-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-3-1/",
@@ -871,7 +871,7 @@
         },
         {
           "id": "8-4-1",
-          "title": "Rohstoff-Fußabdruck, Rohstoff-Fußabdruck pro Kopf und Rohstoff-Fußabdruck pro BIP",
+          "title": "global_indicators.8-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-4-1/",
@@ -879,7 +879,7 @@
         },
         {
           "id": "8-4-2",
-          "title": "Inländische Materialverwendung, inländische Materialverwendung pro Kopf und inländische Materialverwendung pro BIP",
+          "title": "global_indicators.8-4-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-4-2/",
@@ -887,7 +887,7 @@
         },
         {
           "id": "8-5-1",
-          "title": "Durchschnittlicher Stundenlohn von weiblichen und männlichen Beschäftigten, nach Beruf, Alter und Personen mit Behinderungen",
+          "title": "global_indicators.8-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-5-1/",
@@ -895,7 +895,7 @@
         },
         {
           "id": "8-5-2",
-          "title": "Arbeitslosenquote, nach Geschlecht, Alter und Personen mit Behinderungen",
+          "title": "global_indicators.8-5-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-5-2/",
@@ -903,7 +903,7 @@
         },
         {
           "id": "8-6-1",
-          "title": "Anteil der Jugendlichen (im Alter von 15-24 Jahren), die nicht in schulischer Ausbildung, in Beschäftigung oder Berufsaus- oder -weiterbildung sind",
+          "title": "global_indicators.8-6-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-6-1/",
@@ -911,7 +911,7 @@
         },
         {
           "id": "8-7-1",
-          "title": "Anteil und Anzahl der Kinder im Alter von 5-17 Jahren, die Kinderarbeit verrichten, nach Geschlecht und Alter",
+          "title": "global_indicators.8-7-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-7-1/",
@@ -919,7 +919,7 @@
         },
         {
           "id": "8-8-1",
-          "title": "Häufigkeitsraten von tödlichen und nicht-tödlichen Arbeitsunfällen, nach Geschlecht und Migrationsstatus",
+          "title": "global_indicators.8-8-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-8-1/",
@@ -927,7 +927,7 @@
         },
         {
           "id": "8-8-2",
-          "title": "Grad der nationalen Einhaltung der Arbeitnehmerrechte (Vereinigungsfreiheit und Tarifverhandlungen) basierend auf Textquellen der Internationalen Arbeitsorganisation (ILO) und nationaler Gesetzesgrundlagen, nach Geschlecht und Migrationsstatus",
+          "title": "global_indicators.8-8-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-8-2/",
@@ -935,7 +935,7 @@
         },
         {
           "id": "8-9-1",
-          "title": "Direktes BIP des Tourismus als Anteil am gesamten BIP und als Wachstumsrate",
+          "title": "global_indicators.8-9-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-9-1/",
@@ -943,7 +943,7 @@
         },
         {
           "id": "8-10-1",
-          "title": "(a) Anzahl der Bankfilialen je 100.000 Erwachsener und (b) Anzahl der Geldautomaten je 100.000 Erwachsener",
+          "title": "global_indicators.8-10-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-10-1/",
@@ -951,7 +951,7 @@
         },
         {
           "id": "8-10-2",
-          "title": "Anteil der Erwachsenen (15 Jahre und älter) mit einem Konto bei einer Bank oder einem anderen Finanzinstitut oder einem mobilen Geldleistungsanbiete",
+          "title": "global_indicators.8-10-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-10-2/",
@@ -959,7 +959,7 @@
         },
         {
           "id": "8-a-1",
-          "title": "Aid for Trade-Zusagen und -Auszahlungen",
+          "title": "global_indicators.8-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-a-1/",
@@ -967,7 +967,7 @@
         },
         {
           "id": "8-b-1",
-          "title": "Existenz einer entwickelten und operationalisierten nationalen Strategie zu Jugendbeschäftigung , als eigenständige Strategie oder als Teil einer nationalen Beschäftigungsstrategie",
+          "title": "global_indicators.8-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/8-b-1/",
@@ -978,12 +978,12 @@
   {
     "goal": {
       "id": "9",
-      "title": "Eine widerstandsfähige Infrastruktur aufbauen, breitenwirksame und nachhaltige Industrialisierung fördern und Innovationen unterstützen",
+      "title": "Eine widerstandsfähige Infrastruktur aufbauen, inklusive und nachhaltige Industrialisierung fördern und Innovationen unterstützen",
       "indicators": [
         
         {
           "id": "9-1-1",
-          "title": "Anteil der ländlichen Bevölkerung, die im Umkreis von 2 km entfernt an einer ganzjährig befahrbaren Straße lebt",
+          "title": "global_indicators.9-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/9-1-1/",
@@ -991,7 +991,7 @@
         },
         {
           "id": "9-1-2",
-          "title": "Passagiere und Frachtvolumen, nach der Art des Transports",
+          "title": "global_indicators.9-1-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/9-1-2/",
@@ -999,7 +999,7 @@
         },
         {
           "id": "9-2-1",
-          "title": "Wertschöpfung des Verarbeitenden Gewerbes als Anteil am BIP und pro Kopf",
+          "title": "global_indicators.9-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/9-2-1/",
@@ -1007,7 +1007,7 @@
         },
         {
           "id": "9-2-2",
-          "title": "Beschäftigung im Verarbeitenden Gewerbe als Anteil an der Beschäftigung insgesamt",
+          "title": "global_indicators.9-2-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/9-2-2/",
@@ -1015,7 +1015,7 @@
         },
         {
           "id": "9-3-1",
-          "title": "Anteil der kleiner Unternehmen an der gesamten Wertschöpfung der Industrie",
+          "title": "global_indicators.9-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/9-3-1/",
@@ -1023,7 +1023,7 @@
         },
         {
           "id": "9-3-2",
-          "title": "Anteil kleiner Unternehmen mit einem Kredit oder einem Kreditrahmen",
+          "title": "global_indicators.9-3-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/9-3-2/",
@@ -1031,7 +1031,7 @@
         },
         {
           "id": "9-4-1",
-          "title": "CO2-Emissionen pro Wertschöpfungseinheit",
+          "title": "global_indicators.9-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/9-4-1/",
@@ -1039,7 +1039,7 @@
         },
         {
           "id": "9-5-1",
-          "title": "Ausgaben für Forschung und Entwicklung als Anteil am BIP",
+          "title": "global_indicators.9-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/9-5-1/",
@@ -1047,7 +1047,7 @@
         },
         {
           "id": "9-5-2",
-          "title": "Wissenschaftler (in Vollzeit-Äquivalenten) je eine Million Einwohner",
+          "title": "global_indicators.9-5-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/9-5-2/",
@@ -1055,7 +1055,7 @@
         },
         {
           "id": "9-a-1",
-          "title": "Gesamte öffentliche internationale Unterstützung (öffentliche Entwicklungszusammenarbeit und andere öffentliche Mittel) für Infrastruktu",
+          "title": "global_indicators.9-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/9-a-1/",
@@ -1063,7 +1063,7 @@
         },
         {
           "id": "9-b-1",
-          "title": "Anteil der Wertschöpfung der Medium- und High-Tech-Industrie an der Wertschöpfung insgesamt",
+          "title": "global_indicators.9-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/9-b-1/",
@@ -1071,7 +1071,7 @@
         },
         {
           "id": "9-c-1",
-          "title": "Anteil der Bevölkerung, die durch ein Mobilfunknetz abgedeckt ist, nach Technologie",
+          "title": "global_indicators.9-c-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/9-c-1/",
@@ -1087,7 +1087,7 @@
         
         {
           "id": "10-1-1",
-          "title": "Wachstumsraten der Haushaltsausgaben oder -einkommen pro Kopf der unteren 40 Prozent der Bevölkerung und der Gesamtbevölkerung",
+          "title": "global_indicators.10-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/10-1-1/",
@@ -1095,7 +1095,7 @@
         },
         {
           "id": "10-2-1",
-          "title": "Anteil der Bevölkerung, die mit weniger als 50% des Medianeinkommens leben, nach Geschlecht, Alter und Menschen mit Behinderung",
+          "title": "global_indicators.10-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/10-2-1/",
@@ -1103,7 +1103,7 @@
         },
         {
           "id": "10-3-1",
-          "title": "Anteil der Bevölkerung, die angibt sich in den vergangenen 12 Monaten persönlich diskriminiert oder belästigt gefühlt zu haben basierend auf einem Diskriminierungsgrund, der nach internationalem Menschenrechtsgesetzen verboten ist",
+          "title": "global_indicators.10-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/10-3-1/",
@@ -1111,7 +1111,7 @@
         },
         {
           "id": "10-4-1",
-          "title": "Anteil des Arbeitsnehmerentgelts am BIP, bestehend aus Löhnen, Gehältern und Sozialversicherungsbeiträgen",
+          "title": "global_indicators.10-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/10-4-1/",
@@ -1119,7 +1119,7 @@
         },
         {
           "id": "10-4-2",
-          "title": "Umverteilungswirkung der Fiskalpolitik",
+          "title": "global_indicators.10-4-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/10-4-2/",
@@ -1127,7 +1127,7 @@
         },
         {
           "id": "10-5-1",
-          "title": "Financial Soundness Indicators",
+          "title": "global_indicators.10-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/10-5-1/",
@@ -1135,7 +1135,7 @@
         },
         {
           "id": "10-6-1",
-          "title": "Anteil der Mitglieder und Stimmrechte der Entwicklungsländer  in internationalen Organisationen",
+          "title": "global_indicators.10-6-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/10-6-1/",
@@ -1143,7 +1143,7 @@
         },
         {
           "id": "10-7-1",
-          "title": "Von Beschäftigten getragene Einstellungskosten als Anteil des Jahreseinkommens des Bestimmungslandes",
+          "title": "global_indicators.10-7-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/10-7-1/",
@@ -1151,7 +1151,7 @@
         },
         {
           "id": "10-7-2",
-          "title": "Anzahl der Staaten mit gut umgesetzter Migrationspolitik",
+          "title": "global_indicators.10-7-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/10-7-2/",
@@ -1159,7 +1159,7 @@
         },
         {
           "id": "10-7-3",
-          "title": "Anzahl der Personen, die während des Migrationsprozesses in Richtung eines internationalen Ziels gestorben oder verschwunden sind",
+          "title": "global_indicators.10-7-3-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/10-7-3/",
@@ -1167,7 +1167,7 @@
         },
         {
           "id": "10-7-4",
-          "title": "Anteil der Bevölkerung, die Flüchtlinge sind, nach Herkunftsland",
+          "title": "global_indicators.10-7-4-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/10-7-4/",
@@ -1175,7 +1175,7 @@
         },
         {
           "id": "10-a-1",
-          "title": "Anteil der Zolltarife auf Einfuhren aus den am wenigsten entwickelten Ländern sowie Entwicklungsländer mit Zollfreiheit",
+          "title": "global_indicators.10-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/10-a-1/",
@@ -1183,7 +1183,7 @@
         },
         {
           "id": "10-b-1",
-          "title": "Gesamte Kapitalströme für Entwicklung, nach Nehmer- und Geberländern und Art des Zahlungsstroms (z. B. öffentliche Entwicklungszusammenarbeit, ausländische Direktinvestitionen und sonstige Geldströme)",
+          "title": "global_indicators.10-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/10-b-1/",
@@ -1191,7 +1191,7 @@
         },
         {
           "id": "10-c-1",
-          "title": "Überweisungskosten  als Anteil am überwiesenen Betrag",
+          "title": "global_indicators.10-c-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/10-c-1/",
@@ -1207,7 +1207,7 @@
         
         {
           "id": "11-1-1",
-          "title": "Anteil der urbanen Bevölkerung, die in Slums, informellen Siedlungen oder unzureichenden Behausungen lebt",
+          "title": "global_indicators.11-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/11-1-1/",
@@ -1215,7 +1215,7 @@
         },
         {
           "id": "11-2-1",
-          "title": "Anteil der Bevölkerung, der einen angemessenen Zugang zu öffentlichen Verkehrsmitteln hat, nach Geschlecht, Alter und Menschen mit Behinderung",
+          "title": "global_indicators.11-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/11-2-1/",
@@ -1223,7 +1223,7 @@
         },
         {
           "id": "11-3-1",
-          "title": "Verhältnis der Flächennutzungs- zur Bevölkerungswachstumsrate",
+          "title": "global_indicators.11-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/11-3-1/",
@@ -1231,7 +1231,7 @@
         },
         {
           "id": "11-3-2",
-          "title": "Anteil der Städte mit einer direkten Beteiligungsstruktur der Zivilgesellschaft an der Stadtplanung und -verwaltung, die regelmäßig und demokratisch arbeiten",
+          "title": "global_indicators.11-3-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/11-3-2/",
@@ -1239,7 +1239,7 @@
         },
         {
           "id": "11-4-1",
-          "title": "Gesamtausgaben (öffentlich und privat) pro Kopf für die Bewahrung, den Schutz und die Erhaltung des Kultur- und Naturerbes, nach Art des Erbes (Kultur, Natur, gemischt und durch das Welterbezentrum ernannt), Regierungsebene (national, regional und lokal/kommunal), Art der Ausgabe (Betriebsausgabe/Investition) und Art der privaten Finanzierung (Sachspenden, privater gemeinnütziger Sektor und Förderer)",
+          "title": "global_indicators.11-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/11-4-1/",
@@ -1247,7 +1247,7 @@
         },
         {
           "id": "11-5-1",
-          "title": "Anzahl der infolge von Katastrophen getöteten, vermissten und direkt betroffenen Personen, je 100.000 Einwohner",
+          "title": "global_indicators.11-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/11-5-1/",
@@ -1255,7 +1255,7 @@
         },
         {
           "id": "11-5-2",
-          "title": "Unmittelbarer wirtschaftlicher Schaden im Verhältnis zum globalen BIP, Schäden kritischer Infrastruktur und Anzahl der Ausfälle von Grundversorgungsleistungen infolge von Katastrophen",
+          "title": "global_indicators.11-5-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/11-5-2/",
@@ -1271,7 +1271,7 @@
         },
         {
           "id": "11-6-1",
-          "title": "Anteil der Siedlungsabfälle, die regelmäßig gesammelt und ordnungsgemäß entsorgt werden, an den insgesamt erzeugten Siedlungsabfällen, nach Städten",
+          "title": "global_indicators.11-6-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/11-6-1/",
@@ -1279,7 +1279,7 @@
         },
         {
           "id": "11-6-2",
-          "title": "Jahresmittelwerte für Feinstaub (z. B. PM2,5 und PM10) in Städten (bevölkerungsgewichtet)",
+          "title": "global_indicators.11-6-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/11-6-2/",
@@ -1287,7 +1287,7 @@
         },
         {
           "id": "11-7-1",
-          "title": "Durchschnittlicher Anteil der bebauten Fläche in Städten, die als Freifläche öffentlich zugänglich ist, nach Geschlecht, Alter und Personen mit Behinderungen",
+          "title": "global_indicators.11-7-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/11-7-1/",
@@ -1295,7 +1295,7 @@
         },
         {
           "id": "11-7-2",
-          "title": "Anteil der Personen, die in den vergangenen 12 Monaten Opfer körperlicher oder sexueller Belästigung wurden, nach Geschlecht, Alter, Behinderungsstatus und Ort des Geschehens",
+          "title": "global_indicators.11-7-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/11-7-2/",
@@ -1303,7 +1303,7 @@
         },
         {
           "id": "11-a-1",
-          "title": "Anteil der Bevölkerung in Städten, die Stadt- und Regionalentwicklungspläne unter Berücksichtigung der Bevölkerungsprognosen und des Ressourcenbedarfs umsetzen, nach Größe der Stadt",
+          "title": "global_indicators.11-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/11-a-1/",
@@ -1311,7 +1311,7 @@
         },
         {
           "id": "11-b-1",
-          "title": "Anzahl der Staaten, die nationale Strategien zur Reduzierung des Katastrophenrisikos in Einklang mit dem Sendai-Rahmenwerk zur Katastrophenvorsorge 2015-2030 verabschiedet und umgesetzt haben",
+          "title": "global_indicators.11-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/11-b-1/",
@@ -1319,7 +1319,7 @@
         },
         {
           "id": "11-b-2",
-          "title": "Anteil der lokalen Regierungen, die lokale Strategien zur Reduzierung des Katastrophenrisikos in Einklang mit den nationalen Strategien zur Katastrophenvorsorge verabschiedet und umgesetzt haben",
+          "title": "global_indicators.11-b-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/11-b-2/",
@@ -1343,7 +1343,7 @@
         },
         {
           "id": "12-2-1",
-          "title": "Rohstoff-Fußabdruck, Rohstoff-Fußabdruck pro Kopf und Rohstoff-Fußabdruck pro BIP",
+          "title": "global_indicators.12-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/12-2-1/",
@@ -1351,7 +1351,7 @@
         },
         {
           "id": "12-2-2",
-          "title": "Inländische Materialverwendung, inländische Materialverwendung pro Kopf und inländische Materialverwendung pro BIP",
+          "title": "global_indicators.12-2-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/12-2-2/",
@@ -1359,7 +1359,7 @@
         },
         {
           "id": "12-3-1",
-          "title": "Index zu globalen Nahrungsmittelverlusten",
+          "title": "global_indicators.12-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/12-3-1/",
@@ -1367,7 +1367,7 @@
         },
         {
           "id": "12-4-1",
-          "title": "Anzahl der Vertragsparteien internationaler multilateraler Umweltabkommen über gefährliche Abfälle und andere Chemikalien, die ihren Bekenntnissen und Verpflichtungen nachkommen, indem sie die gemäß dem jeweiligen Übereinkommen geforderten Informationen übermitteln",
+          "title": "global_indicators.12-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/12-4-1/",
@@ -1375,7 +1375,7 @@
         },
         {
           "id": "12-4-2",
-          "title": "Erzeugte gefährliche Abfälle pro Kopf und Anteil der behandelten gefährlichen Abfälle, nach Art der Behandlung",
+          "title": "global_indicators.12-4-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/12-4-2/",
@@ -1383,7 +1383,7 @@
         },
         {
           "id": "12-5-1",
-          "title": "Nationale Recyclingquote, Tonnen an recyceltem Material",
+          "title": "global_indicators.12-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/12-5-1/",
@@ -1391,7 +1391,7 @@
         },
         {
           "id": "12-6-1",
-          "title": "Anzahl der Unternehmen, die Nachhaltigkeitsberichte veröffentlichen",
+          "title": "global_indicators.12-6-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/12-6-1/",
@@ -1399,7 +1399,7 @@
         },
         {
           "id": "12-7-1",
-          "title": "Anzahl der Staaten, die nachhaltige öffentliche Beschaffungspolitik und Aktionspläne umsetzen",
+          "title": "global_indicators.12-7-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/12-7-1/",
@@ -1407,7 +1407,7 @@
         },
         {
           "id": "12-8-1",
-          "title": "Umfang, in dem (i) Bildung zu globaler Staatsbürgerschaft und (ii) Bildung für nachhaltige Entwicklung, einschließlich der Geschlechtergleichstellung und der Menschenrechte, auf allen Ebenen in: (a) nationale Bildungspolitik, (b) Lehrpläne, (c) Lehrerausbildung und (d) Schulleistungsuntersuchung berücksichtigt werden",
+          "title": "global_indicators.12-8-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/12-8-1/",
@@ -1415,7 +1415,7 @@
         },
         {
           "id": "12-a-1",
-          "title": "Umfang der Unterstützung für Entwicklungsländer bei Forschung und Entwicklung im Hinblick auf nachhaltigen Konsum und nachhaltige Produktion sowie umweltfreundliche Technologien",
+          "title": "global_indicators.12-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/12-a-1/",
@@ -1423,7 +1423,7 @@
         },
         {
           "id": "12-b-1",
-          "title": "Anzahl der Strategien oder Politiken für einen nachhaltigen Tourismus und umgesetzte Aktionspläne mit vereinbarten Kontroll- und Bewertungsinstrumenten",
+          "title": "global_indicators.12-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/12-b-1/",
@@ -1431,7 +1431,7 @@
         },
         {
           "id": "12-c-1",
-          "title": "Betrag der Subventionen für fossile Energieträger je Einheit BIP (Produktion und Konsum) und als Anteil an den gesamten nationalen Ausgaben für fossile Energieträger",
+          "title": "global_indicators.12-c-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/12-c-1/",
@@ -1447,7 +1447,7 @@
         
         {
           "id": "13-1-1",
-          "title": "Anzahl der infolge von Katastrophen getöteten, vermissten und direkt betroffenen Personen, je 100.000 Einwohner",
+          "title": "global_indicators.13-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/13-1-1/",
@@ -1455,7 +1455,7 @@
         },
         {
           "id": "13-1-2",
-          "title": "Anzahl der Staaten, die nationale Strategien zur Reduzierung des Katastrophenrisikos in Einklang mit dem Sendai-Rahmenwerk zur Katastrophenvorsorge 2015-2030 verabschiedet und umgesetzt haben",
+          "title": "global_indicators.13-1-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/13-1-2/",
@@ -1463,7 +1463,7 @@
         },
         {
           "id": "13-1-3",
-          "title": "Anteil der lokalen Regierungen, die lokale Strategien zur Reduzierung des Katastrophenrisikos in Einklang mit den nationalen Strategien zur Katastrophenvorsorge verabschiedet und umgesetzt haben",
+          "title": "global_indicators.13-1-3-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/13-1-3/",
@@ -1471,7 +1471,7 @@
         },
         {
           "id": "13-2-1",
-          "title": "Anzahl der Staaten, die die Ausarbeitung oder Umsetzung einer/s integrierten Politik/Strategie/Plans verkündet haben, welche/r ihre Fähigkeit zur Anpassung an die negativen Auswirkungen des Klimawandels erhöht und die Widerstandsfähigkeit gegenüber Klimaänderungen als auch eine rückläufige Entwicklung der Treibhausgasemissionen fördert ohne die Nahrungsmittelproduktion zu gefährden (einschließlich eines nationalen Anpassungsplans, national festgelegten Beitrags, nationaler Kommunikation, zweijährlichen Aktualisierungsberichts oder anderer)",
+          "title": "global_indicators.13-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/13-2-1/",
@@ -1479,7 +1479,7 @@
         },
         {
           "id": "13-2-2",
-          "title": "Gesamte Treibhausgasemissionen pro Jahr",
+          "title": "global_indicators.13-2-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/13-2-2/",
@@ -1487,7 +1487,7 @@
         },
         {
           "id": "13-3-1",
-          "title": "Anzahl der Staaten, die die Minderung, Anpassung, Reduzierung der Auswirkungen und Frühwarnsysteme in den primären, sekundären und tertiären Lehrplänen integriert haben",
+          "title": "global_indicators.13-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/13-3-1/",
@@ -1495,7 +1495,7 @@
         },
         {
           "id": "13-a-1",
-          "title": "Mobilisierter Betrag an US-Dollar pro Jahr zwischen 2020 und 2025, anrechenbar auf die Zusage von 100 Milliarden US-Dollar",
+          "title": "global_indicators.13-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/13-a-1/",
@@ -1503,7 +1503,7 @@
         },
         {
           "id": "13-b-1",
-          "title": "Anzahl der am wenigsten entwickelten Länder und kleinen Inselentwicklungsstaaten, die besondere Unterstützung erhalten und der Betrag der Unterstützung (Finanzmittel, Technologie und capacity-building umfassend) für Mechanismen zum Aufbau von Kapazitäten für eine wirksame klimawandelbezogene Planung und Verwaltung, mit Fokus auf Frauen, Jugendliche und lokale und marginalisierte Gemeinschaften",
+          "title": "global_indicators.13-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/13-b-1/",
@@ -1519,7 +1519,7 @@
         
         {
           "id": "14-1-1",
-          "title": "Index der Eutrophierung der Küsten und Konzentration des schwimmenden Plastikmülls",
+          "title": "global_indicators.14-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/14-1-1/",
@@ -1527,7 +1527,7 @@
         },
         {
           "id": "14-2-1",
-          "title": "Anteil der nationalen ausschließlichen Wirtschaftszonen, die mit ökosystembasierten Ansätzen verwaltet werden",
+          "title": "global_indicators.14-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/14-2-1/",
@@ -1535,7 +1535,7 @@
         },
         {
           "id": "14-3-1",
-          "title": "Durchschnittliche Versauerung der Meere (pH) gemessen an einer vereinbarten Reihe von repräsentativen Probeentnahmestationen",
+          "title": "global_indicators.14-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/14-3-1/",
@@ -1543,7 +1543,7 @@
         },
         {
           "id": "14-4-1",
-          "title": "Anteil der Fischbestände innerhalb des biologisch nachhaltigen Niveaus",
+          "title": "global_indicators.14-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/14-4-1/",
@@ -1551,7 +1551,7 @@
         },
         {
           "id": "14-5-1",
-          "title": "Abdeckung durch Schutzgebiete im Vergleich zu Meeresgebieten",
+          "title": "global_indicators.14-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/14-5-1/",
@@ -1559,7 +1559,7 @@
         },
         {
           "id": "14-6-1",
-          "title": "Fortschritt der Staaten hinsichtlich des Grades der Umsetzung internationaler Instrumente mit dem Ziel zur Bekämpfung illegaler, nicht gemeldeter und unregulierter Fischerei",
+          "title": "global_indicators.14-6-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/14-6-1/",
@@ -1567,7 +1567,7 @@
         },
         {
           "id": "14-7-1",
-          "title": "Nachhaltige Fischerei als Anteil am BIP in kleinen Inselentwicklungsstaaten, in den am wenigsten entwickelten Ländern und allen Ländern",
+          "title": "global_indicators.14-7-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/14-7-1/",
@@ -1575,7 +1575,7 @@
         },
         {
           "id": "14-a-1",
-          "title": "Anteil am gesamten Forschungsbudget für Forschung im Bereich der Meerestechnik",
+          "title": "global_indicators.14-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/14-a-1/",
@@ -1583,7 +1583,7 @@
         },
         {
           "id": "14-b-1",
-          "title": "Fortschritt der Staaten hinsichtlich der Umsetzung von gesetzlichen/ regulatorischen/ politischen/ institutionellen Rahmenwerken, die Zugangsrechte für kleine Fischereien anerkennen und schützen",
+          "title": "global_indicators.14-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/14-b-1/",
@@ -1591,7 +1591,7 @@
         },
         {
           "id": "14-c-1",
-          "title": "Anzahl der Staaten, die durch rechtliche, politische und institutionelle Rahmenbedingungen bei der Ratifizierung, Verabschiedung und Umsetzung meeresbezogener Instrumentarien, die internationales Recht zum Schutz und zur nachhaltigen Nutzung der Ozeane und ihrer Ressourcen (wie es dem Seerechtsübereinkommen der Vereinten Nationen entspricht) umsetzen, Fortschritte machen",
+          "title": "global_indicators.14-c-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/14-c-1/",
@@ -1607,7 +1607,7 @@
         
         {
           "id": "15-1-1",
-          "title": "Waldfläche als Anteil an der gesamten Landfläche",
+          "title": "global_indicators.15-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/15-1-1/",
@@ -1615,7 +1615,7 @@
         },
         {
           "id": "15-1-2",
-          "title": "Anteil der bedeutenden Gebiete für Biodiversität an Land und im Süßwasser, die in Schutzgebieten liegen, nach Ökosystemtyp",
+          "title": "global_indicators.15-1-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/15-1-2/",
@@ -1623,7 +1623,7 @@
         },
         {
           "id": "15-2-1",
-          "title": "Fortschritt bei der nachhaltigen Waldbewirtschaftung",
+          "title": "global_indicators.15-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/15-2-1/",
@@ -1631,7 +1631,7 @@
         },
         {
           "id": "15-3-1",
-          "title": "Anteil der Fläche, die von Bodendegradation betroffenen ist, an der gesamten Landfläche",
+          "title": "global_indicators.15-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/15-3-1/",
@@ -1639,7 +1639,7 @@
         },
         {
           "id": "15-4-1",
-          "title": "Abdeckung der wichtigen Gebiete für Biodiversität in den Bergen durch Schutzgebiete",
+          "title": "global_indicators.15-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/15-4-1/",
@@ -1647,7 +1647,7 @@
         },
         {
           "id": "15-4-2",
-          "title": "Index der Grünbedeckung in den Bergen",
+          "title": "global_indicators.15-4-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/15-4-2/",
@@ -1655,7 +1655,7 @@
         },
         {
           "id": "15-5-1",
-          "title": "Rote Liste Index",
+          "title": "global_indicators.15-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/15-5-1/",
@@ -1663,7 +1663,7 @@
         },
         {
           "id": "15-6-1",
-          "title": "Anzahl der Staaten, die gesetzliche, administrative und politische Rahmenbedingungen geschaffen haben, um Vorteile gerecht und gleichmäßig zu verteilen",
+          "title": "global_indicators.15-6-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/15-6-1/",
@@ -1671,7 +1671,7 @@
         },
         {
           "id": "15-7-1",
-          "title": "Anteil der gehandelten Wildtiere, die gewildert oder geschmuggelt wurden",
+          "title": "global_indicators.15-7-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/15-7-1/",
@@ -1679,7 +1679,7 @@
         },
         {
           "id": "15-8-1",
-          "title": "Anteil der Staaten, die relevante nationale Rechtsvorschriften verabschiedet haben und Maßnahmen zur Vermeidung oder Bekämpfung von invasiven, gebietsfremden Arten angemessen finanzieren",
+          "title": "global_indicators.15-8-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/15-8-1/",
@@ -1687,7 +1687,7 @@
         },
         {
           "id": "15-9-1",
-          "title": "Fortschritte bei der Erreichung nationaler Ziele, die in Übereinstimmung mit dem Aichi-Biodiversitätsziel 2 des Strategischen Plans zur Biodiversität 2011-2020 beschlossen wurden",
+          "title": "global_indicators.15-9-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/15-9-1/",
@@ -1695,7 +1695,7 @@
         },
         {
           "id": "15-a-1",
-          "title": "Öffentliche Entwicklungszusammenarbeit und öffentliche Ausgaben für den Erhalt und die nachhaltige Nutzung biologischer Vielfalt und der Ökosysteme",
+          "title": "global_indicators.15-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/15-a-1/",
@@ -1703,7 +1703,7 @@
         },
         {
           "id": "15-b-1",
-          "title": "Öffentliche Entwicklungszusammenarbeit und öffentliche Ausgaben für den Erhalt und die nachhaltige Nutzung biologischer Vielfalt und der Ökosysteme",
+          "title": "global_indicators.15-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/15-b-1/",
@@ -1711,7 +1711,7 @@
         },
         {
           "id": "15-c-1",
-          "title": "Anteil der gehandelten Wildtiere, die gewildert oder geschmuggelt wurden",
+          "title": "global_indicators.15-c-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/15-c-1/",
@@ -1727,7 +1727,7 @@
         
         {
           "id": "16-1-1",
-          "title": "Anzahl der Opfern vorsätzlicher Tötung je 100.000 Einwohner, nach Geschlecht und Alter",
+          "title": "global_indicators.16-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-1-1/",
@@ -1735,7 +1735,7 @@
         },
         {
           "id": "16-1-2",
-          "title": "Konfliktbedingte  Todesfälle je 100.000 Einwohner, nach Geschlecht, Alter und Ursache",
+          "title": "global_indicators.16-1-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-1-2/",
@@ -1743,7 +1743,7 @@
         },
         {
           "id": "16-1-3",
-          "title": "Anteil der Bevölkerung, die in den vergangenen 12 Monaten (a) körperlicher Gewalt, (b) psychischer Gewalt und (c) sexueller Gewalt ausgesetzt war",
+          "title": "global_indicators.16-1-3-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-1-3/",
@@ -1751,7 +1751,7 @@
         },
         {
           "id": "16-1-4",
-          "title": "Anteil der Bevölkerung, die sich in ihrem Wohngebiet alleine sicher fühlt",
+          "title": "global_indicators.16-1-4-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-1-4/",
@@ -1759,7 +1759,7 @@
         },
         {
           "id": "16-2-1",
-          "title": "Anteil der Kinder im Alter von 1-17 Jahren, die im vergangenen Monat eine körperliche Strafe und/oder psychische Aggression durch Betreuungspersonen erfahren haben",
+          "title": "global_indicators.16-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-2-1/",
@@ -1767,7 +1767,7 @@
         },
         {
           "id": "16-2-2",
-          "title": "Anzahl der Opfer von Menschenhandel je 100.000 Einwohner, nach Geschlecht, Alter und Art der Ausbeutung",
+          "title": "global_indicators.16-2-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-2-2/",
@@ -1775,7 +1775,7 @@
         },
         {
           "id": "16-2-3",
-          "title": "Anteil der jungen Frauen und Männer im Alter von 18-29 Jahren, die bis zum Alter von 18 Jahren sexuelle Gewalt erlebt haben",
+          "title": "global_indicators.16-2-3-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-2-3/",
@@ -1783,7 +1783,7 @@
         },
         {
           "id": "16-3-1",
-          "title": "Anteil der Opfer von Gewalttaten in den vergangenen 12 Monaten, die ihre Viktimisierung den zuständigen Behörden oder anderen offiziell anerkannten Stellen der Konfliktaufarbeitung gemeldet haben",
+          "title": "global_indicators.16-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-3-1/",
@@ -1791,7 +1791,7 @@
         },
         {
           "id": "16-3-2",
-          "title": "Nicht-verurteilte Häftlinge als Anteil an der gesamten Gefangenenpopulation",
+          "title": "global_indicators.16-3-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-3-2/",
@@ -1799,7 +1799,7 @@
         },
         {
           "id": "16-3-3",
-          "title": "Anteil der Bevölkerung, die in den letzten zwei Jahren einen Streitfall erlebt haben und einen formellen oder informellen Streitbeilegungsmechanismus in Anspruch genommen haben, nach Art des Mechanismus",
+          "title": "global_indicators.16-3-3-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-3-3/",
@@ -1807,7 +1807,7 @@
         },
         {
           "id": "16-4-1",
-          "title": "Gesamtwert der ein- und ausgehenden illegalen Finanzströme (in aktuellen US-Dollar)",
+          "title": "global_indicators.16-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-4-1/",
@@ -1815,7 +1815,7 @@
         },
         {
           "id": "16-4-2",
-          "title": "Anteil der beschlagnahmten, aufgegriffenen oder abgegebenen Waffen, deren illegale Herkunft oder Verwendung von einer zuständigen Behörde in Übereinstimmung mit internationalen Methoden nachverfolgt oder festgestellt wurde",
+          "title": "global_indicators.16-4-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-4-2/",
@@ -1823,7 +1823,7 @@
         },
         {
           "id": "16-5-1",
-          "title": "Anteil der Personen, die in den vergangenen 12 Monaten mindestens einen Kontakt zu einem öffentlichen Bediensteten hatten und diesem ein Bestechungsgeld gezahlt haben oder von diesen um eine Bestechung gebeten wurden",
+          "title": "global_indicators.16-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-5-1/",
@@ -1831,7 +1831,7 @@
         },
         {
           "id": "16-5-2",
-          "title": "Anteil der Unternehmen, die in den vergangenen 12 Monaten mindestens einen Kontakt mit einem öffentlichen Bediensteten hatten und diesem ein Bestechungsgeld gezahlt haben oder von diesen um eine Bestechung gebeten wurden",
+          "title": "global_indicators.16-5-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-5-2/",
@@ -1839,7 +1839,7 @@
         },
         {
           "id": "16-6-1",
-          "title": "Primärausgaben des Staates als Anteil am ursprünglich genehmigten Budget, nach Sektor (oder nach Haushaltscodes oder Ähnlichem)",
+          "title": "global_indicators.16-6-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-6-1/",
@@ -1847,7 +1847,7 @@
         },
         {
           "id": "16-6-2",
-          "title": "Anteil der Bevölkerung, die mit ihrer letzten Erfahrung mit öffentlichen Dienstleistungen zufrieden war",
+          "title": "global_indicators.16-6-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-6-2/",
@@ -1855,7 +1855,7 @@
         },
         {
           "id": "16-7-1",
-          "title": "Anteil der Stellen (nach Geschlecht, Alter, Personen mit Behinderungen und Bevölkerungsgruppen) in öffentlichen Institutionen (nationale und lokale Gesetzgebung, öffentlicher Dienst und Judikative) im Vergleich zur nationalen Verteilungen",
+          "title": "global_indicators.16-7-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-7-1/",
@@ -1863,7 +1863,7 @@
         },
         {
           "id": "16-7-2",
-          "title": "Anteil der Bevölkerung, die glaubt, dass die Entscheidungsfindung inklusiv und bedarfsgesteuert ist, nach Geschlecht, Alter, Behinderung und Bevölkerungsgruppe",
+          "title": "global_indicators.16-7-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-7-2/",
@@ -1871,7 +1871,7 @@
         },
         {
           "id": "16-8-1",
-          "title": "Anteil der Mitglieder und Stimmrechte von Entwicklungsländern in internationalen Organisationen",
+          "title": "global_indicators.16-8-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-8-1/",
@@ -1879,7 +1879,7 @@
         },
         {
           "id": "16-9-1",
-          "title": "Anteil der Kinder unter 5 Jahre, deren Geburt von einer Zivilbehörde registriert wurde, nach Alter",
+          "title": "global_indicators.16-9-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-9-1/",
@@ -1887,7 +1887,7 @@
         },
         {
           "id": "16-10-1",
-          "title": "Anzahl der bestätigten Fälle von Tötung, Entführung, erzwungenem Verschwinden, willkürlicher Inhaftierung und Folter von Journalisten, zugehörigem Medienpersonal, Gewerkschaftern und Menschenrechtsanwälten in den vergangenen 12 Monaten",
+          "title": "global_indicators.16-10-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-10-1/",
@@ -1895,7 +1895,7 @@
         },
         {
           "id": "16-10-2",
-          "title": "Anzahl der Staaten, die verfassungsrechtliche, gesetzliche und/oder politische Garantieren für den öffentlichen Zugang zu Informationen verabschiedet und umgesetzt haben",
+          "title": "global_indicators.16-10-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-10-2/",
@@ -1903,7 +1903,7 @@
         },
         {
           "id": "16-a-1",
-          "title": "Existenz von unabhängigen nationalen Menschenrechtsinstitutionen in Übereinstimmung mit den 'Pariser Grundsätzen",
+          "title": "global_indicators.16-a-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-a-1/",
@@ -1911,7 +1911,7 @@
         },
         {
           "id": "16-b-1",
-          "title": "Anteil der Bevölkerung, die angibt sich in den vergangenen 12 Monaten persönlich auf Basis einer Diskriminierung, die nach internationalem Menschenrecht verboten ist, diskriminiert oder belästigt gefühlt zu haben",
+          "title": "global_indicators.16-b-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/16-b-1/",
@@ -1927,7 +1927,7 @@
         
         {
           "id": "17-1-1",
-          "title": "Gesamte Staatseinnahmen als Anteil am BIP, nach Quelle",
+          "title": "global_indicators.17-1-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-1-1/",
@@ -1935,7 +1935,7 @@
         },
         {
           "id": "17-1-2",
-          "title": "Anteil des Haushaltsbudgets, das durch inländische Steuern finanziert wird",
+          "title": "global_indicators.17-1-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-1-2/",
@@ -1943,7 +1943,7 @@
         },
         {
           "id": "17-2-1",
-          "title": "Öffentliche Nettoentwicklungsausgaben, insgesamt und an am wenigsten entwickelte Länder, als Anteil am Bruttonationaleinkommen (BNE) der Geberländer des Ausschusses für Entwicklungshilfe der Organisation für wirtschaftliche Zusammenarbeit und Entwicklung (OECD)",
+          "title": "global_indicators.17-2-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-2-1/",
@@ -1951,7 +1951,7 @@
         },
         {
           "id": "17-3-1",
-          "title": "Ausländische Direktinvestitionen, öffentliche Entwicklungszusammenarbeit und Süd-Süd-Kooperationen als Anteil am gesamten Haushaltsbudget",
+          "title": "global_indicators.17-3-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-3-1/",
@@ -1959,7 +1959,7 @@
         },
         {
           "id": "17-3-2",
-          "title": "Volumen der (Rück-)Überweisungen (in US-Dollar) als Anteil am gesamten BIP",
+          "title": "global_indicators.17-3-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-3-2/",
@@ -1967,7 +1967,7 @@
         },
         {
           "id": "17-4-1",
-          "title": "Schuldendienst als Anteil an Güter- und Dienstleistungsexporten",
+          "title": "global_indicators.17-4-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-4-1/",
@@ -1975,7 +1975,7 @@
         },
         {
           "id": "17-5-1",
-          "title": "Anzahl der Staaten, die Investitionsförderprogramme für die am wenigsten entwickelten Länder einführen und umsetzen",
+          "title": "global_indicators.17-5-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-5-1/",
@@ -1983,7 +1983,7 @@
         },
         {
           "id": "17-6-1",
-          "title": "Anzahl der Vereinbarungen und Programme über Wissenschafts- und/oder Technologie-Kooperationen zwischen Staaten, nach Art der Kooperation",
+          "title": "global_indicators.17-6-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-6-1/",
@@ -1991,7 +1991,7 @@
         },
         {
           "id": "17-7-1",
-          "title": "Gesamtbetrag der für Entwicklungsländer genehmigten Mittel zur Förderung der Entwicklung, des Transfers, der öffentlichen Bereitstellung und der Verbreitung umweltfreundlicher Technologien",
+          "title": "global_indicators.17-7-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-7-1/",
@@ -1999,7 +1999,7 @@
         },
         {
           "id": "17-8-1",
-          "title": "Anteil der Einzelpersonen, die das Internet nutzen",
+          "title": "global_indicators.17-8-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-8-1/",
@@ -2007,7 +2007,7 @@
         },
         {
           "id": "17-9-1",
-          "title": "Dollar-Wert der finanziellen und technischen Zusammenarbeit (einschließlich durch Nord-Süd-, Süd-Süd- und Dreieckskooperationen) mit Entwicklungsländern",
+          "title": "global_indicators.17-9-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-9-1/",
@@ -2015,7 +2015,7 @@
         },
         {
           "id": "17-10-1",
-          "title": "Weltweit gewichtete durchschnittliche Zollsätze",
+          "title": "global_indicators.17-10-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-10-1/",
@@ -2023,7 +2023,7 @@
         },
         {
           "id": "17-11-1",
-          "title": "Anteil der Entwicklungsländer und der am wenigsten entwickelten Länder an den weltweiten Exporten",
+          "title": "global_indicators.17-11-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-11-1/",
@@ -2031,7 +2031,7 @@
         },
         {
           "id": "17-12-1",
-          "title": "Durchschnittliche Zölle für Entwicklungsländer, am wenigsten entwickelte Länder und kleine Inselentwicklungsländer",
+          "title": "global_indicators.17-12-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-12-1/",
@@ -2039,7 +2039,7 @@
         },
         {
           "id": "17-13-1",
-          "title": "Makroökonomisches Dashboard",
+          "title": "global_indicators.17-13-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-13-1/",
@@ -2047,7 +2047,7 @@
         },
         {
           "id": "17-14-1",
-          "title": "Anzahl der Staaten mit Mechanismen zur Verbesserung der Politikkohärenz bezogen auf nachhaltige Entwicklung",
+          "title": "global_indicators.17-14-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-14-1/",
@@ -2055,7 +2055,7 @@
         },
         {
           "id": "17-15-1",
-          "title": "Umfang der Nutzung ländereigener Ergebnisrahmenwerke und Planungsinstrumente durch  Anbieter von Entwicklungszusammenarbeit",
+          "title": "global_indicators.17-15-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-15-1/",
@@ -2063,7 +2063,7 @@
         },
         {
           "id": "17-16-1",
-          "title": "Anzahl der Staaten, die Fortschritte bei der Kontrolle der Multi-Stakeholder-Entwicklungswirksamkeit, die das Erreichen der Ziele für nachhaltige Entwicklung unterstützen, berichten",
+          "title": "global_indicators.17-16-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-16-1/",
@@ -2071,7 +2071,7 @@
         },
         {
           "id": "17-17-1",
-          "title": "Betrag an US-Dollar, der für (a) öffentlich-private Partnerschaften und (b) zivilgesellschaftliche Partnerschaften zugesagt wurde",
+          "title": "global_indicators.17-17-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-17-1/",
@@ -2079,7 +2079,7 @@
         },
         {
           "id": "17-18-1",
-          "title": "Anteil der Nachhaltigkeitsindikatoren, die auf nationaler Ebene vollständig - sofern gemäß dem Unterziel relevant - disaggregiert sind, in Übereinstimmung mit den Grundprinzipien der amtlichen Statistik",
+          "title": "global_indicators.17-18-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-18-1/",
@@ -2087,7 +2087,7 @@
         },
         {
           "id": "17-18-2",
-          "title": "Anzahl der Staaten mit einer nationalen statistischen Gesetzgebung im Einklang mit den Grundprinzipien der amtlichen Statistik",
+          "title": "global_indicators.17-18-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-18-2/",
@@ -2095,7 +2095,7 @@
         },
         {
           "id": "17-18-3",
-          "title": "Anzahl der Staaten mit einem nationalen statistischen Plan, der vollständig finanziert ist und umgesetzt wird, nach Quelle der Finanzierung",
+          "title": "global_indicators.17-18-3-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-18-3/",
@@ -2103,7 +2103,7 @@
         },
         {
           "id": "17-19-1",
-          "title": "Dollar-Wert aller zur Verfügung gestellten Ressourcen zur Stärkung der statistischen Kapazität in Entwicklungsländern",
+          "title": "global_indicators.17-19-1-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-19-1/",
@@ -2111,7 +2111,7 @@
         },
         {
           "id": "17-19-2",
-          "title": "Anteil der Staaten, die (a) in den letzten 10 Jahren mindestens eine Bevölkerungs- und Wohnungszählung durchgeführt haben und (b) 100% bei der Geburtenregistrierung sowie 80% bei der Registrierung der Sterbefälle erreicht haben",
+          "title": "global_indicators.17-19-2-title",
           "description": "",
           "keywords": "",
           "href": "/seite/de/17-19-2/",
