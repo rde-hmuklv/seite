@@ -29,23 +29,6 @@ collections:
   goals:
     output: true
 
-metadata_tabs:
-  - scope: national
-    title: indicator.details
-    description: indicator.dns_metadata_blurb
-  - scope: content
-    title: indicator.contentAndProgress
-    description: ''
-  - scope: history_1
-    title: indicator.history
-    description: indicator.history_blurb
-  - scope: sources
-    title: indicator.sources
-    description: ''
-# Configure the text (or "translation key") to be used on the
-# non-global metadata tab.
-non_global_metadata: indicator.national_metadata
-
 search_index_extra_fields:
   #- indicator_number
   - national_indicator_available
